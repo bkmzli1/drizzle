@@ -1,10 +1,3 @@
-/*
- * DISCLAIMER:
- * 
- * Content of this class is purely experimental and should not be used as a measurement of quality
- * of this project. It is distributed AS-IS without any guarantees or rights reserved.
- */
-
 package ru.bkmz.drizzle.experimental;
 
 import ru.bkmz.drizzle.event.StateEvent;
@@ -38,5 +31,34 @@ class MenuButton extends HBox {
 
         this.getChildren().add(imageView);
         this.setAlignment(Pos.TOP_LEFT);
+    }
+}
+class EventButton extends HBox {
+
+    /*
+     * Constructors
+     */
+    EventButton(EventType<StateEvent> eventType,boolean mirror) {
+
+        ImageView imageView = new ImageView(ImageLoader.INSTANCE.getImage("gui/icons/back"));
+        imageView.setOpacity(0.1);
+        imageView.setLayoutY(0);
+        imageView.setScaleY(1);
+        imageView.setTranslateY(10);
+        if(mirror){
+            imageView.setRotate(180);
+        }
+        this.setOnMouseClicked(event -> {
+            fireEvent(new StateEvent(eventType));
+        });
+        this.setOnMouseEntered(event -> {
+            imageView.setOpacity(0.8);
+        });
+
+        this.setOnMouseExited(event -> {
+            imageView.setOpacity(0.3);
+        });
+        this.getChildren().add(imageView);
+        this.setAlignment(Pos.CENTER);
     }
 }

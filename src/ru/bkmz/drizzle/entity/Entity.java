@@ -1,19 +1,14 @@
-/*
- * Copyright (c) 2017 - 2018 Hiraishin Software. All Rights Reserved.
- */
-
 package ru.bkmz.drizzle.entity;
 
-import java.util.Objects;
-import java.util.Random;
-
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import ru.bkmz.drizzle.Application;
 import ru.bkmz.drizzle.graphics.Drawable;
 import ru.bkmz.drizzle.graphics.Sprite;
 import ru.bkmz.drizzle.level.Level;
 
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
+import java.util.Objects;
+import java.util.Random;
 
 public abstract class Entity implements Drawable {
 
@@ -35,7 +30,6 @@ public abstract class Entity implements Drawable {
     protected Entity(double x, double y, double width, double height, Level level) {
         this(x, y, width, height, null, 0, 0, level);
     }
-
     protected Entity(double x, double y, double width, double height, Sprite sprite, double offsetX,
                      double offsetY, Level level) {
         this.x = x;

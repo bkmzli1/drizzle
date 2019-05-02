@@ -1,10 +1,3 @@
-/*
- * DISCLAIMER:
- * 
- * Content of this class is purely experimental and should not be used as a measurement of quality
- * of this project. It is distributed AS-IS without any guarantees or rights reserved.
- */
-
 package ru.bkmz.drizzle.experimental;
 
 import ru.bkmz.drizzle.event.StateEvent;
@@ -23,9 +16,6 @@ import javafx.scene.text.TextAlignment;
 
 public class HelpPane extends BorderPane {
 
-    /*
-     * Static functions
-     */
     private static void addEntry(VBox v1, VBox v2, String s1, String s2) {
         Text t1 = new Text(s1);
         t1.setFill(Color.BLUE);

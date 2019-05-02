@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2017 - 2018 Hiraishin Software. All Rights Reserved.
- */
-
 package ru.bkmz.drizzle.graphics;
 
 import javafx.scene.canvas.GraphicsContext;
@@ -18,8 +14,8 @@ public class Sprite {
     private int selectedRow = 0;
     private int selectedCol = 0;
 
-    private int rowSize = 1;
-    private int colSize = 1;
+    private double rowSize = 1;
+    private double colSize = 1;
 
     private double xScale = 1;
     private double yScale = 1;
@@ -76,7 +72,7 @@ public class Sprite {
         }
     }
 
-    public void setTileSpan(int rows, int cols) {
+    public void setTileSpan(double rows, double cols) {
         this.rowSize = rows;
         this.colSize = cols;
     }

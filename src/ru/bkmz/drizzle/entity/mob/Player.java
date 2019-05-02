@@ -1,12 +1,9 @@
-/*
- * Copyright (c) 2017 - 2018 Hiraishin Software. All Rights Reserved.
- */
+
 
 package ru.bkmz.drizzle.entity.mob;
 
-import java.util.Objects;
-
-import ru.bkmz.drizzle.entity.Entity;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import ru.bkmz.drizzle.graphics.animation.AnimatedSprite;
 import ru.bkmz.drizzle.graphics.animation.Step;
 import ru.bkmz.drizzle.input.Keyboard;
@@ -16,8 +13,7 @@ import ru.bkmz.drizzle.level.player.PlayerProperties;
 import ru.bkmz.drizzle.util.Commons;
 import ru.bkmz.drizzle.util.ImageLoader;
 
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
+import java.util.Objects;
 
 public class Player extends Mob {
 

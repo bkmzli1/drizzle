@@ -4,13 +4,10 @@
 
 package ru.bkmz.drizzle.level;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.application.Platform;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import ru.bkmz.drizzle.Application;
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.entity.item.Item;
@@ -18,22 +15,16 @@ import ru.bkmz.drizzle.entity.mob.Mob;
 import ru.bkmz.drizzle.entity.mob.Player;
 import ru.bkmz.drizzle.entity.particle.Particle;
 import ru.bkmz.drizzle.entity.particle.RainParticle;
-import ru.bkmz.drizzle.entity.spawner.AcidSpawner;
-import ru.bkmz.drizzle.entity.spawner.ArmorSpawner;
-import ru.bkmz.drizzle.entity.spawner.EnergySpawner;
-import ru.bkmz.drizzle.entity.spawner.RainSpawner;
-import ru.bkmz.drizzle.entity.spawner.Spawner;
-import ru.bkmz.drizzle.entity.spawner.StarSpawner;
+import ru.bkmz.drizzle.entity.spawner.*;
 import ru.bkmz.drizzle.graphics.Overlay;
 import ru.bkmz.drizzle.input.Keyboard;
 import ru.bkmz.drizzle.level.player.PlayerProperties;
 import ru.bkmz.drizzle.util.Commons;
 import ru.bkmz.drizzle.util.ImageLoader;
 
-import javafx.application.Platform;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 import static ru.bkmz.drizzle.level.GameData.*;
 

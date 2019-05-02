@@ -14,7 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
 
-class Game {
+class Games {
     private final Canvas canvas = new Canvas(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
     private final GraphicsContext gc = canvas.getGraphicsContext2D();
 
@@ -22,7 +22,7 @@ class Game {
 
       private final LevelController levelController;
 
-    Game(Keyboard keyboard) {
+    Games(Keyboard keyboard) {
 
         this.levelController = new Level(keyboard).getLevelController();
 

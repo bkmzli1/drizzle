@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2017 - 2018 Hiraishin Software. All Rights Reserved.
- */
-
 package ru.bkmz.drizzle.level;
 
 import java.io.*;
@@ -27,7 +23,9 @@ public enum GameData {
     UPGRADE_SHOCKWAVE(0, 1, "Навык \"Ударная Волна\" "),
     UPGRADE_DOUBLEXP(0, 1, "Двойной навык XP"),
     UPGRADE_SHIELDSPAWN(0, 1, "Щит отродясь мастерства"),
-    ;
+    ACID_Volume(0, 10, "Громкость капель"),
+    RAIN_Volume(0, 10, "Громкость дождя");
+
     public static Properties properties = new Properties();
     private static int AcidSpawner_rate;
     private static int AcidSpawner_variation;
@@ -121,7 +119,10 @@ public enum GameData {
         ooStream.reset();
 
         for (int i = 0; i < GameData.values().length; i++) {
-            ooStream.writeInt(GameData.values()[i].value);
+            ooStream.writeDouble(GameData.values()[i].value);
+            /*System.out.print(GameData.values()[i].name);
+            System.out.println(GameData.values()[i].value);*/
+
         }
 
         ooStream.close();
@@ -139,25 +140,27 @@ public enum GameData {
         return this.name;
     }
 
-    public int getMax() {
+    public double getMax() {
         return this.max;
     }
 
-    public int getMin() {
+    public double getMin() {
         return this.min;
     }
 
     public int getValue() {
         return this.value;
     }
-
+    public double getValueD() {
+        return this.value;
+    }
     public void increment() {
         if (this.value < this.max) {
             this.value++;
         }
     }
 
-    public void incrementBy(int value) {
+    public void incrementBy(float value) {
         if (this.value + value > this.max) {
             this.value = this.max;
         } else if (this.value + value < this.min) {

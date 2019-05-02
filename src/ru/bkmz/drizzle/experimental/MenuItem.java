@@ -50,4 +50,40 @@ class MenuItem extends HBox {
         this.setAlignment(Pos.BASELINE_CENTER);
     }
 
+
+}
+class MenuItemS extends HBox {
+
+    /*
+     * Definitions
+     */
+    private static final Font FONT_LAYOUT_ITEM = Font.font("", FontWeight.BOLD, 18);
+
+    /*
+     * Constructors
+     */
+    private Color color1 = Color.rgb(0, 145, 225), color2 = Color.rgb(0, 225, 225);
+
+    MenuItemS(String label, EventType<StateEvent> eventType) {
+        Text labelText = new Text(label);
+        labelText.setFont(FONT_LAYOUT_ITEM);
+        labelText.setFill(color1);
+
+        labelText.setOnMouseClicked(event -> {
+            fireEvent(new StateEvent(eventType));
+        });
+
+        labelText.setOnMouseEntered(event -> {
+            labelText.setFill(color2);
+        });
+
+        labelText.setOnMouseExited(event -> {
+            labelText.setFill(color1);
+        });
+
+        this.getChildren().add(labelText);
+        this.setAlignment(Pos.BASELINE_CENTER);
+    }
+
+
 }

@@ -90,7 +90,13 @@ class Comands extends Entity {
 class ThendlerConsol extends Thread {
     @Override
     public void run() {
-        Comands comands = new Comands(1, 1, 1, 1, null);
-        comands.comands();
+        if (GameData.isDebugMode()) {
+            System.out.println("консоль вкл");
+            Comands comands = new Comands(1, 1, 1, 1, null);
+            comands.comands();
+        }else
+        {
+            System.out.println("консоль выкл");
+        }
     }
 }

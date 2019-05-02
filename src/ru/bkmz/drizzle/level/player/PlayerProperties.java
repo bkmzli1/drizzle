@@ -4,14 +4,13 @@
 
 package ru.bkmz.drizzle.level.player;
 
-import java.util.Objects;
-
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import java.util.Objects;
 
 public class PlayerProperties {
 
@@ -40,15 +39,15 @@ public class PlayerProperties {
     }
 
     public PlayerProperties() {
-        healthProperty.set(GameData.PLAYER_HEALTH.getValue());
-        levelProperty.set(GameData.PLAYER_LEVEL.getValue());
+        healthProperty.set((int)GameData.PLAYER_HEALTH.getValue());
+        levelProperty.set((int)GameData.PLAYER_LEVEL.getValue());
 
-        int ord = GameData.PLAYER_SELECTEDSKILL.getValue();
+        int ord =(int) GameData.PLAYER_SELECTEDSKILL.getValue();
         selectedSkill = (ord > 0) ?
                 ((ord - 1 < Skill.values().length) ? Skill.values()[ord - 1] : null) :
                 null;
 
-        energyRate = (Objects.isNull(selectedSkill) ? 0 :
+        energyRate =(int) (Objects.isNull(selectedSkill) ? 0 :
                 selectedSkill.getRateMultiplier() * GameData.UPGRADE_POWERRATE.getValue());
     }
 

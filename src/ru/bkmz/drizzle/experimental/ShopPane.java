@@ -1,9 +1,3 @@
-/*
- * DISCLAIMER:
- * 
- * Content of this class is purely experimental and should not be used as a measurement of quality
- * of this project. It is distributed AS-IS without any guarantees or rights reserved.
- */
 
 package ru.bkmz.drizzle.experimental;
 
@@ -159,15 +153,13 @@ public class ShopPane extends BorderPane {
         vbox.getChildren().addAll(label, hbox2, vbox4);
     }
 
-    /*
-     * Instance functions
-     */
     public void refresh() {
         vbox1.getChildren().clear();
         vbox2.getChildren().clear();
         vbox3.getChildren().clear();
 
         text.setText("улучшения: " + GameData.PLAYER_POINTS.getValue());
+
         addEntry(this, vbox1, vbox2, vbox3, GameData.PLAYER_HEALTH);
         addEntry(this, vbox1, vbox2, vbox3, GameData.UPGRADE_POWERRATE);
         addEntry(this, vbox1, vbox2, vbox3, GameData.UPGRADE_MOVEMENT);
@@ -178,6 +170,7 @@ public class ShopPane extends BorderPane {
         if (vbox4.getChildren().size() > 1) {
             vbox4.getChildren().subList(1, vbox4.getChildren().size()).clear();
         }
+
         addEntry(this, vbox4, "КУПУТ ДОЖДЮ", GameData.UPGRADE_SHOCKWAVE, 1);
         addEntry(this, vbox4, "ЩИТ НЕ СПАСЁТ", GameData.UPGRADE_SHIELDSPAWN, 2);
         addEntry(this, vbox4, "ФААААРМММ", GameData.UPGRADE_DOUBLEXP, 3);
