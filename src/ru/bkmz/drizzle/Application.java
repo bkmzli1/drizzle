@@ -24,7 +24,7 @@ import java.util.Objects;
 import static ru.bkmz.drizzle.level.GameData.*;
 
 public class Application extends javafx.application.Application {
-    private static final String VERSION = "v3.6_Void";
+    private static final String VERSION = "v3.7";
     private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
     private static final String TITLE = "Rain";
     private static final String ARG_DEBUG = "debug";

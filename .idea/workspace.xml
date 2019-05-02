@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af6e2d79-5a33-405f-8fc2-2a4b07bddbc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configData.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/playdata.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/Comands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/Comands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Acid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Acid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/particle/RainParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/particle/RainParticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/event/StateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/event/StateEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/Setings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/SetingsPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/level/GameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/level/GameData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/util/Commons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/util/Commons.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -96,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/particle/RainParticle.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-14">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="34" />
+              <caret line="33" selection-start-line="33" selection-end-line="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/util/Commons.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -231,9 +219,9 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -272,12 +260,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556778277840</updated>
-      <workItem from="1556778280448" duration="15277000" />
+      <workItem from="1556778280448" duration="15582000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15277000" />
+    <option name="totallyTimeSpent" value="15582000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -288,7 +276,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1769341" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1769341" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Messages" weight="0.32974428" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
@@ -298,7 +286,7 @@
       <window_info anchor="bottom" id="Event Log" sideWeight="0.5007163" side_tool="true" weight="0.32974428" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928367" visible="true" weight="0.31359354" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928367" visible="true" weight="0.31359354" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39973083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -436,7 +424,7 @@
     <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/particle/RainParticle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-14">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="34" />
+          <caret line="33" selection-start-line="33" selection-end-line="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -446,7 +434,7 @@
     <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/util/Commons.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
@@ -474,10 +462,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>drizzle:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -485,6 +475,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
