@@ -6,16 +6,15 @@ package ru.bkmz.drizzle.entity.particle;
 
 import java.util.Objects;
 
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.util.Commons;
 
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-
 public class RainParticle extends Particle {
 
-    private static final Color COLOR_1 = Color.rgb(100, 149, 237, 0.22);
-    private static final Color COLOR_2 = Color.rgb(173, 216, 230, 0.233);
+    private static final Color COLOR_1 = Color.rgb(100, 149, 237, 0.2);
+    private static final Color COLOR_2 = Color.rgb(173, 216, 230, 0.2);
 
     private final Color color;
 
@@ -33,8 +32,8 @@ public class RainParticle extends Particle {
     public void draw(GraphicsContext gc) {
         gc.setFill(this.color);
         gc.fillRect(this.x, this.y, this.width,
-                    this.y + this.height > Commons.SCENE_GROUND ? this.y - Commons.SCENE_GROUND :
-                            this.height);
+                this.y + this.height > Commons.SCENE_GROUND ? this.y - Commons.SCENE_GROUND :
+                        this.height);
     }
 
     @Override

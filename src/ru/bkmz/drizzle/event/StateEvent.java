@@ -23,11 +23,6 @@ public class StateEvent extends Event {
     public static final EventType<StateEvent> UNPAUSE = new EventType<>(GAME, "UNPAUSE");
     public static final EventType<StateEvent> STOP = new EventType<>(GAME, "STOP");
 
-    public static final EventType<StateEvent> RAIN_VOLUME_PLUS = new EventType<>(STATE, "RAIN_VOLUME_PLUS");
-    public static final EventType<StateEvent> RAIN_VOLUME_MINUS = new EventType<>(STATE, "RAIN_VOLUME_MINUS");
-    public static final EventType<StateEvent> ACID_VOLUME_PLUS = new EventType<>(STATE, "ACID_VOLUME_PLUS");
-    public static final EventType<StateEvent> ACID_VOLUME_MINUS = new EventType<>(STATE, "ACID_VOLUME_MINUS");
-
     public StateEvent(EventType<? extends Event> eventType) {
         super(eventType);
     }

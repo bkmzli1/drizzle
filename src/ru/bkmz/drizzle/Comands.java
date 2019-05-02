@@ -11,7 +11,7 @@ class Comands extends Entity {
         super(x, y, width, height, level);
     }
 
-    void comands() {
+   public static void comands() {
         try {
             Scanner scanner = new Scanner(System.in);
             String s = String.valueOf(scanner.next());
@@ -84,19 +84,5 @@ class Comands extends Entity {
     @Override
     public void tick() {
 
-    }
-}
-
-class ThendlerConsol extends Thread {
-    @Override
-    public void run() {
-        if (GameData.isDebugMode()) {
-            System.out.println("консоль вкл");
-            Comands comands = new Comands(1, 1, 1, 1, null);
-            comands.comands();
-        }else
-        {
-            System.out.println("консоль выкл");
-        }
     }
 }

@@ -12,51 +12,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import ru.bkmz.drizzle.Application;
+import ru.bkmz.drizzle.entity.mob.Acid;
 import ru.bkmz.drizzle.event.StateEvent;
+import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.util.Commons;
 
 import static ru.bkmz.drizzle.level.GameData.*;
 
-public class Setings extends BorderPane {
+public class SetingsPane extends BorderPane {
     private VBox vbox2;
     private HBox Hbox1, Hbox2;
     private static Text rainVolume = new Text(), acidVolume = new Text();
 
-    private static void addEntry(HBox HBox1, HBox hBox, HBox HBox3, VBox vbox2, String s1, String s2) {
-        Text t2 = new Text();
-        rainVolume.setText(s1);
-        t2.setText(s2);
-
-        rainVolume.setFill(Color.CORNFLOWERBLUE);
-        t2.setFill(Color.CORNFLOWERBLUE);
-
-        rainVolume.setFont(Font.font("", FontWeight.BOLD, 20));
-        t2.setFont(Font.font("", FontWeight.BOLD, 20));
-
-        int valve = ACID_Volume.getValue() + 1;
-        rainVolume.setText(valve + "");
-
-        hBox.getChildren().add(t2);
-        hBox.getChildren().add(HBox1);
-        hBox.getChildren().add(rainVolume);
-        hBox.getChildren().add(HBox3);
-
-    }
-
-    public static void setRainVolume(int volume) {
-        if (volume != -1) {
-            rainVolume.setText(volume + "");
-        }
-
-    }
-    public static void setAcidVolume(int volume) {
-        if (volume != -1) {
-            acidVolume.setText(volume + "");
-        }
-    }
-
-
-    public Setings() {
+    public SetingsPane() {
         this.setPrefSize(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         this.setPadding(new Insets(10, 10, 10, 10));
 
@@ -107,14 +76,13 @@ public class Setings extends BorderPane {
         int valveAcid = ACID_Volume.getValue();
         acidVolume.setText(valveAcid + "");
 
-        addEntry2(RAIN_Volume.getName(), StateEvent.RAIN_VOLUME_PLUS, StateEvent.RAIN_VOLUME_MINUS, Hbox2, vbox2, rainVolume);
-        addEntry2(ACID_Volume.getName(), StateEvent.ACID_VOLUME_PLUS, StateEvent.ACID_VOLUME_MINUS, Hbox1, vbox2, acidVolume);
-
+        addEntry2(RAIN_Volume.getName(),null, null, Hbox2, vbox2, rainVolume, RAIN_Volume);
+        addEntry2(ACID_Volume.getName(), null, null, Hbox1, vbox2, acidVolume, ACID_Volume);
 
 
     }
 
-    private void addEntry2(String names, EventType<StateEvent> eventTypeL, EventType<StateEvent> eventTypeR, HBox hBox, VBox vBox, Text setT) {
+    private void addEntry2(String names, EventType<StateEvent> eventTypeL, EventType<StateEvent> eventTypeR, HBox hBox, VBox vBox, Text setT, GameData pd) {
         Text name = new Text(names);
 
         name.setFill(Color.CORNFLOWERBLUE);
@@ -123,12 +91,42 @@ public class Setings extends BorderPane {
         EventButton eventButtonL = new EventButton(eventTypeL, false);
         EventButton eventButtonR = new EventButton(eventTypeR, true);
 
+        eventButtonL.setOnMouseClicked(event -> {
+            int value = Integer.parseInt(setT.getText()) + 1;
+            System.out.println("+");
+            eventButtons(pd, value);
+
+        });
+        eventButtonR.setOnMouseClicked(event -> {
+            int value = Integer.parseInt(setT.getText()) - 1;
+            System.out.println("-");
+            eventButtons(pd, value);
+
+        });
         hBox.getChildren().add(name);
         hBox.getChildren().add(eventButtonL);
         hBox.getChildren().add(setT);
         hBox.getChildren().add(eventButtonR);
 
         vBox.getChildren().add(hBox);
+    }
+
+    private void eventButtons(GameData pd, int value) {
+        if (0 <= value && value <=10) {
+            if (pd.getName().equals(RAIN_Volume.getName())) {
+                System.out.println("Application");
+                Application.oracleVid.setVolume(Integer.parseInt(String.valueOf(value)));
+                pd.setValue(value);
+                save();
+                this.refresh();
+            }else if(pd.getName().equals(ACID_Volume.getName())){
+                System.out.println("Acid");
+                Acid.oracleVid.setVolume(value);
+                pd.setValue(value);
+                save();
+                this.refresh();
+            }
+        }
     }
 
 

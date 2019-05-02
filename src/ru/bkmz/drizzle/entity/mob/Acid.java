@@ -10,7 +10,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.entity.particle.AcidParticle;
-import ru.bkmz.drizzle.experimental.Setings;
+import ru.bkmz.drizzle.experimental.SetingsPane;
 import ru.bkmz.drizzle.graphics.animation.AnimatedSprite;
 import ru.bkmz.drizzle.graphics.animation.Step;
 import ru.bkmz.drizzle.level.GameData;
@@ -47,7 +47,7 @@ public class Acid extends Mob {
                 new AnimatedSprite(IMAGE, IMAGE_ROWS, IMAGE_COLS, ANIMATION_DELTA, ANIMATION_STEPS),
                 SPRITE_X_OFFSET, SPRITE_Y_OFFSET, level);
         ((AnimatedSprite) this.sprite).play();
-        oracleVid.setVolume(0.2);
+        oracleVid.setVolume(ACID_Volume.getValue());
         this.dx = dx;
         this.dy = dy;
     }
@@ -97,16 +97,7 @@ public class Acid extends Mob {
             }
         });
     }
-    private static final MediaPlayer oracleVid = new MediaPlayer(
+    public static final MediaPlayer oracleVid = new MediaPlayer(
             new Media(new File(MEDIA).toURI().toString())
     );
-    public static void Volume(int valve) {
-        if (valve <= 10) {
-            float valveF = valve / 10f;
-            oracleVid.setVolume(valveF);
-            ACID_Volume.setValue(valve);
-            Setings.setAcidVolume(valve);
-            GameData.save();
-        }
-    }
 }

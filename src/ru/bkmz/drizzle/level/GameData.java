@@ -74,12 +74,12 @@ public enum GameData {
 
     public static void load() {
         try {
-            read();
+            read(SER_FILE);
 
 
         } catch (Exception e) {
             try {
-                write();
+                write(SER_FILE);
             } catch (Exception f) {
                 f.printStackTrace();
             }
@@ -88,14 +88,13 @@ public enum GameData {
 
     public static void save() {
         try {
-            write();
+            write(SER_FILE);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    private static void read() throws ClassNotFoundException, IOException {
-        FileInputStream fiStream = new FileInputStream(new File(GameData.SER_FILE));
+    private static void read(String file) throws ClassNotFoundException, IOException {
+        FileInputStream fiStream = new FileInputStream(new File(file));
         ObjectInputStream oiStream = new ObjectInputStream(fiStream);
 
         for (int i = 0; i < GameData.values().length; i++) {
@@ -113,21 +112,19 @@ public enum GameData {
         fiStream.close();
     }
 
-    private static void write() throws IOException {
-        FileOutputStream foStream = new FileOutputStream(new File(GameData.SER_FILE), false);
+    private static void write(String file) throws IOException {
+        FileOutputStream foStream = new FileOutputStream(new File(file), false);
         ObjectOutputStream ooStream = new ObjectOutputStream(foStream);
         ooStream.reset();
 
         for (int i = 0; i < GameData.values().length; i++) {
-            ooStream.writeDouble(GameData.values()[i].value);
-            /*System.out.print(GameData.values()[i].name);
-            System.out.println(GameData.values()[i].value);*/
-
+            ooStream.writeInt(GameData.values()[i].value);
         }
 
         ooStream.close();
         foStream.close();
     }
+
 
     GameData(int defaultValue, int max, String name) {
         this.value = defaultValue;
