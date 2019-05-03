@@ -233,12 +233,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.drizzle">
-    <recent_temporary>
-      <list>
-        <item itemvalue="JAR Application.drizzle.jar" />
-      </list>
-    </recent_temporary>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.bkmz.drizzle.Application" />
+      <module name="drizzle2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
