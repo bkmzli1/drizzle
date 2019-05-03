@@ -11,6 +11,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import ru.bkmz.drizzle.entity.mob.Acid;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.experimental.*;
 import ru.bkmz.drizzle.input.Keyboard;
@@ -105,7 +106,8 @@ public class Application extends javafx.application.Application {
         MediaLoader.INSTANCE.setCommonSuffix(".mp3");
 
         MediaLoader.INSTANCE.load("res/media/sine");
-        MediaLoader.INSTANCE.load("res/media/a_drop");
+        MediaLoader.INSTANCE.setCommonSuffix(".wav");
+        MediaLoader.INSTANCE.load("res/media/Acid");
 
         this.paneMenu = new MenuPane();
         this.paneShop = new ShopPane();
@@ -119,7 +121,6 @@ public class Application extends javafx.application.Application {
 
         this.users = new Group();
         this.root = new Group(this.games.getCanvas(), this.users);
-
 
     }
 

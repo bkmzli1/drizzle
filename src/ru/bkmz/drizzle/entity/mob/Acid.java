@@ -12,8 +12,12 @@ import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.util.Commons;
 import ru.bkmz.drizzle.util.ImageLoader;
 import ru.bkmz.drizzle.util.MediaLoader;
+import ru.bkmz.drizzle.util.Sound;
 
+import javax.sound.sampled.*;
 import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
 
 import static ru.bkmz.drizzle.level.GameData.ACID_Volume;
 
@@ -30,10 +34,13 @@ public class Acid extends Mob {
     private static final double SPRITE_X_OFFSET = -1;
     private static final double SPRITE_Y_OFFSET = -14;
     private static final int ANIMATION_DELTA = 10;
+
+
     private static final Step[] ANIMATION_STEPS = {new Step(0, 0), new Step(0, 1), new Step(0, 2),
             new Step(0, 3), new Step(0, 0)};
     private static final int PARTICLE_COUNT = 5;
-
+    private static final String MEDIA = MediaLoader.INSTANCE.getMedia("res/media/Acid");
+    static Sound sound = new Sound(new File(MEDIA));
 
     private Acid(double x, double y, double dx, double dy, Level level) {
 
@@ -48,6 +55,7 @@ public class Acid extends Mob {
 
     public Acid(double x, double y, Level level) {
         this(x, y, SPEED_X_DEFAULT, SPEED_Y_DEFAULT, level);
+
     }
 
     @Override
@@ -57,8 +65,7 @@ public class Acid extends Mob {
 
         if (this.y + this.height >= Commons.SCENE_GROUND) {
             this.y = Commons.SCENE_GROUND - this.height;
-            Medias media = new Medias();
-            media.start();
+            sound.play();
             kill();
             spawnParticles(0);
         }
@@ -74,9 +81,11 @@ public class Acid extends Mob {
 
             kill();
         }
-
         ((AnimatedSprite) this.sprite).tick();
+
     }
+
+
 
     private void spawnParticles(double ySpeed) {
         Platform.runLater(() -> {
@@ -89,17 +98,9 @@ public class Acid extends Mob {
             }
         });
     }
-    public static class Medias extends Thread{
-        private static final String MEDIA = MediaLoader.INSTANCE.getMedia("res/media/a_drop");
-
-        public static   MediaPlayer oracleVid = new MediaPlayer(
-                new Media(new File(MEDIA).toURI().toString())
-
-        );
-        @Override
-        public void run() {
-            oracleVid.setCycleCount(1);
-            oracleVid.setVolume(ACID_Volume.getValue());
-            oracleVid.play();
-        }}
+    public static void acidVolume(float volume){
+        sound.setVolume(volume);
+        sound.play();
+    }
 }
+

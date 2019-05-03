@@ -90,7 +90,7 @@ public class PlayerProperties {
 
             levelProperty.set(levelProperty.intValue() + 1);
             GameData.PLAYER_POINTS.increment();
-            GameData.PLAYER_LEVEL.setValue(levelProperty.intValue());
+            GameData.PLAYER_LEVEL.setVolume(levelProperty.intValue());
         }
     }
 

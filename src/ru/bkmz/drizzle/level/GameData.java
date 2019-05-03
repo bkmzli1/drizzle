@@ -156,7 +156,7 @@ public enum GameData {
         }
     }
 
-    public void setValue(int value) {
+    public void setVolume(int value) {
         if (value > this.max) {
             this.value = this.max;
         } else if (value < this.min) {

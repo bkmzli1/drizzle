@@ -39,9 +39,9 @@ public class ShopPane extends BorderPane {
         t1.setOnMouseClicked(event -> {
             if (d.getValue() == d.getMax()) {
                 if (GameData.PLAYER_SELECTEDSKILL.getValue() == id) {
-                    GameData.PLAYER_SELECTEDSKILL.setValue(0);
+                    GameData.PLAYER_SELECTEDSKILL.setVolume(0);
                 } else {
-                    GameData.PLAYER_SELECTEDSKILL.setValue(id);
+                    GameData.PLAYER_SELECTEDSKILL.setVolume(id);
                 }
 
                 p.refresh();
