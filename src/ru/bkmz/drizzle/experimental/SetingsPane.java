@@ -207,7 +207,7 @@ public class SetingsPane extends BorderPane {
                 pd.setVolume(Volume);
             } else if (pd.getName().equals(ACID_Volume.getName())) {
                 System.out.println("Acid");
-                Acid.acidVolume(VolumeF);
+                Acid.acidVolumeS(VolumeF);
                 pd.setVolume(Volume);
             }
             save();

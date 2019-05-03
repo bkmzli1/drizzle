@@ -24,13 +24,14 @@ import java.net.URL;
 
 public class HelpPane extends BorderPane {
     int sizeTxt = 20;
+    Color color =  Color.rgb(0,225,225);
     private static void addEntry(VBox v1, VBox v2, String s1, String s2) {
         Text t1 = new Text(s1);
         t1.setFill(Color.BLUE);
         t1.setFont(Font.font("", FontWeight.BOLD, 20));
 
         Text t2 = new Text(s2);
-        t2.setFill(Color.rgb(0,225,225));
+        t2.setFill(Color.rgb(0, 225, 225));
         t2.setFont(Font.font("", FontWeight.NORMAL, 20));
 
         v1.getChildren().add(t1);
@@ -77,11 +78,11 @@ public class HelpPane extends BorderPane {
 
         Text creators = new Text("Создатель игры:Илья Егорушкин Андреевич\n" +
                 "Сcылки:");
-        creators.setFill(Color.BLUE);
+        creators.setFill(color);
         creators.setFont(Font.font("", FontWeight.LIGHT, sizeTxt));
         creators.setTextAlignment(TextAlignment.CENTER);
         Text creatorsGit = new Text("github.com");
-        creatorsGit.setFill(Color.BLUE);
+        creatorsGit.setFill(color);
         creatorsGit.setFont(Font.font("", FontWeight.LIGHT, sizeTxt));
         creatorsGit.setTextAlignment(TextAlignment.CENTER);
         creatorsGit.setOnMouseClicked(event -> {
@@ -102,7 +103,15 @@ public class HelpPane extends BorderPane {
             Glow glow = new Glow(0);
             creatorsGit.setEffect(glow);
         });
-        vbox.getChildren().addAll(label, hbox, label2, creators,creatorsGit);
+
+        Text helpMy = new Text("Помогите мне найти:\n" +
+                "1.нормальные звуки\n" +
+                "2.нормальные скины");
+        helpMy.setFill(color);
+        helpMy.setFont(Font.font("", FontWeight.LIGHT, sizeTxt));
+        helpMy.setTextAlignment(TextAlignment.CENTER);
+
+        vbox.getChildren().addAll(label, hbox, label2, creators, creatorsGit, helpMy);
     }
 
 

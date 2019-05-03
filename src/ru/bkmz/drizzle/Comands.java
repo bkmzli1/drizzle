@@ -31,7 +31,7 @@ class Comands extends Entity {
             switch (comand[0]) {
                 case "en":
                     System.out.println("en:" + GameData.PLAYER_POINTS.getValue());
-                    GameData.PLAYER_POINTS.setVolume(Integer.parseInt(value + GameData.PLAYER_POINTS.getValue()));
+                    GameData.PLAYER_POINTS.setVolume(Integer.parseInt(value)+ GameData.PLAYER_POINTS.getValue());
                     System.out.println("en:" + GameData.PLAYER_POINTS.getValue());
                     break;
                 case "hp":

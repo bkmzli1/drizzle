@@ -27,7 +27,7 @@ import java.util.Objects;
 import static ru.bkmz.drizzle.level.GameData.*;
 
 public class Application extends javafx.application.Application {
-    private static final String VERSION = "v3.8";
+    private static final String VERSION = "v3.8.1";
     private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
     private static final String TITLE = "drizzle";
     private static final String ARG_DEBUG = "debug";
@@ -88,7 +88,7 @@ public class Application extends javafx.application.Application {
         ImageLoader.INSTANCE.load("entity/acid");
         ImageLoader.INSTANCE.load("entity/armor");
         ImageLoader.INSTANCE.load("entity/energy");
-        ImageLoader.INSTANCE.load("entity/player3");
+        ImageLoader.INSTANCE.load("entity/player4");
         ImageLoader.INSTANCE.load("entity/star");
         ImageLoader.INSTANCE.load("gui/bars/armor");
         ImageLoader.INSTANCE.load("gui/bars/energy");
@@ -203,7 +203,8 @@ public class Application extends javafx.application.Application {
         float valveF = RAIN_Volume.getValue() / 10f;
         oracleVid.setVolume(valveF);
         oracleVid.play();
-
+        float VolumeF = ACID_Volume.getValue()/10f;
+        Acid.acidVolume(VolumeF);
 
         stage.fireEvent(new StateEvent(StateEvent.MENU));
         if (consoleOn) {

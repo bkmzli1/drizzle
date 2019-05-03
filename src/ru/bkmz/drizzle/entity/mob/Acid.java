@@ -41,6 +41,7 @@ public class Acid extends Mob {
     private static final int PARTICLE_COUNT = 5;
     private static final String MEDIA = MediaLoader.INSTANCE.getMedia("res/media/Acid");
     static Sound sound = new Sound(new File(MEDIA));
+    static float volume2;
 
     private Acid(double x, double y, double dx, double dy, Level level) {
 
@@ -65,7 +66,8 @@ public class Acid extends Mob {
 
         if (this.y + this.height >= Commons.SCENE_GROUND) {
             this.y = Commons.SCENE_GROUND - this.height;
-            sound.play();
+            Sound sound2 = new Sound(new File(MEDIA));
+            sound2.play2(volume2);
             kill();
             spawnParticles(0);
         }
@@ -78,13 +80,11 @@ public class Acid extends Mob {
             if (this.level.getPlayerProperties().getHealth() > 0) {
                 spawnParticles(-1);
             }
-
             kill();
         }
         ((AnimatedSprite) this.sprite).tick();
 
     }
-
 
 
     private void spawnParticles(double ySpeed) {
@@ -98,9 +98,16 @@ public class Acid extends Mob {
             }
         });
     }
-    public static void acidVolume(float volume){
+
+    public static void acidVolumeS(float volume) {
         sound.setVolume(volume);
+        volume2 = volume;
         sound.play();
+    }
+
+    public static void acidVolume(float volume) {
+        sound.setVolume(volume);
+        volume2 = volume;
     }
 }
 

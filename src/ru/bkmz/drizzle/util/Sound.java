@@ -35,7 +35,7 @@ public class Sound {
         return released;
     }
 
-    //проигрывается ли звук в данный момент
+
     public boolean isPlaying() {
         return playing;
     }
@@ -43,11 +43,6 @@ public class Sound {
     public void play(boolean breakOld) {
         if (released) {
             if (breakOld) {
-                clip.stop();
-                clip.setFramePosition(0);
-                clip.start();
-                playing = true;
-            } else if (!isPlaying()) {
                 clip.setFramePosition(0);
                 clip.start();
                 playing = true;
@@ -96,6 +91,11 @@ public class Sound {
         Sound snd = new Sound(f);
         snd.play();
         return snd;
+    }
+
+    public void play2(float volumeF) {
+        setVolume(volumeF);
+        play();
     }
 
     private class Listener implements LineListener {
