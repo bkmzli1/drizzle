@@ -1,12 +1,6 @@
-/*
- * DISCLAIMER:
- * 
- * Content of this class is purely experimental and should not be used as a measurement of quality
- * of this project. It is distributed AS-IS without any guarantees or rights reserved.
- */
-
 package ru.bkmz.drizzle.experimental;
 
+import javafx.scene.effect.Glow;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.util.Commons;
 
@@ -21,15 +15,30 @@ import javafx.scene.text.Text;
 
 public class PausePane extends BorderPane {
 
-    /*
-     * Constructors
-     */
     public PausePane() {
         this.setPrefSize(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         this.setPadding(new Insets(10, 10, 10, 10));
 
-        MenuButton menu = new MenuButton(StateEvent.STOP);
-        this.setBottom(menu);
+        Text exit = new Text("ВЫХОД");
+        exit.setOnMouseClicked(event -> {
+            fireEvent(new StateEvent(StateEvent.STOP));
+        });
+        exit.setFont(Font.font("", FontWeight.BOLD, 30));
+        exit.setFill(Commons.GRADIENT2);
+        exit.setUnderline(true);
+        exit.setOpacity(0.5);
+        exit.setOnMouseEntered(event -> {
+            exit.setOpacity(1);
+            Glow glow = new Glow(1000);
+            exit.setEffect(glow);
+        });
+
+        exit.setOnMouseExited(event -> {
+            exit.setOpacity(0.5);
+            Glow glow = new Glow(0);
+            exit.setEffect(glow);
+        });
+        this.setBottom(exit);
 
         VBox vbox = new VBox(20);
         vbox.setAlignment(Pos.CENTER);

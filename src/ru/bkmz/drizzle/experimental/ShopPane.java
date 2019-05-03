@@ -1,6 +1,6 @@
-
 package ru.bkmz.drizzle.experimental;
 
+import javafx.scene.effect.Glow;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.util.Commons;
@@ -21,8 +21,10 @@ public class ShopPane extends BorderPane {
     private Text text = new Text();
 
     private static void addEntry(ShopPane p, VBox v, String name, GameData d, int id) {
-        Text t1 = new Text(name);
 
+
+        Text t1 = new Text(name);
+        Glow glow = new Glow(0);
         if (d.getValue() == d.getMax()) {
             if (GameData.PLAYER_SELECTEDSKILL.getValue() == id) {
                 t1.setFill(Color.LAWNGREEN);
@@ -48,19 +50,20 @@ public class ShopPane extends BorderPane {
 
         t1.setOnMouseEntered(event -> {
             t1.setOpacity(1);
+            glow.setLevel(1);
+            t1.setEffect(glow);
         });
 
         t1.setOnMouseExited(event -> {
             t1.setOpacity(0.5);
+            glow.setLevel(0);
+            t1.setEffect(glow);
         });
 
         v.getChildren().add(t1);
     }
-
-    /*
-     * Static functions
-     */
     private static void addEntry(ShopPane p, VBox v1, VBox v2, VBox v3, GameData pd) {
+        Glow glow = new Glow(0);
         Text t1 = new Text(pd.getName());
         t1.setOpacity(0.5);
 
@@ -88,10 +91,14 @@ public class ShopPane extends BorderPane {
 
         t1.setOnMouseEntered(event -> {
             t1.setOpacity(1);
+            glow.setLevel(0.5);
+            t1.setEffect(glow);
         });
 
         t1.setOnMouseExited(event -> {
             t1.setOpacity(0.5);
+            glow.setLevel(0);
+            t1.setEffect(glow);
         });
 
         Text t2 = new Text("" + pd.getValue());
@@ -102,10 +109,30 @@ public class ShopPane extends BorderPane {
         v2.getChildren().add(t2);
     }
 
-    /*
-     * Constructors
-     */
     public ShopPane() {
+        Text cleaning = new Text("Сбросс всего");
+        cleaning.setOnMouseClicked(event -> {
+            fireEvent(new StateEvent(StateEvent.COLLECTION));
+            refresh();
+
+        });
+        cleaning.setFont(Font.font("", FontWeight.BOLD, 30));
+        cleaning.setFill(Commons.GRADIENT2);
+        cleaning.setUnderline(true);
+        cleaning.setOpacity(0.5);
+        cleaning.setOnMouseEntered(event -> {
+            cleaning.setOpacity(1);
+            Glow glow = new Glow(1000);
+            cleaning.setEffect(glow);
+        });
+
+        cleaning.setOnMouseExited(event -> {
+            cleaning.setOpacity(0.5);
+            Glow glow = new Glow(0);
+            cleaning.setEffect(glow);
+        });
+        this.setBottom(cleaning);
+
         this.setPrefSize(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         this.setPadding(new Insets(10, 10, 10, 10));
 

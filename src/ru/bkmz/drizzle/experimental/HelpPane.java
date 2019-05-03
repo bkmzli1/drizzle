@@ -1,5 +1,6 @@
 package ru.bkmz.drizzle.experimental;
 
+import javafx.scene.effect.Glow;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.util.Commons;
 
@@ -14,8 +15,15 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
-public class HelpPane extends BorderPane {
+import java.awt.*;
 
+import java.io.IOException;
+
+import java.net.URISyntaxException;
+import java.net.URL;
+
+public class HelpPane extends BorderPane {
+    int sizeTxt = 20;
     private static void addEntry(VBox v1, VBox v2, String s1, String s2) {
         Text t1 = new Text(s1);
         t1.setFill(Color.BLUE);
@@ -29,9 +37,6 @@ public class HelpPane extends BorderPane {
         v2.getChildren().add(t2);
     }
 
-    /*
-     * Constructors
-     */
     public HelpPane() {
         this.setPrefSize(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         this.setPadding(new Insets(10, 10, 10, 10));
@@ -70,11 +75,35 @@ public class HelpPane extends BorderPane {
         label2.setFill(Commons.GRADIENT2);
         label2.setUnderline(true);
 
-        Text about = new Text("Создатель игры:Илья Егорушкин Андреевич");
-        about.setFill(Color.BLUE);
-        about.setFont(Font.font("", FontWeight.LIGHT, 25));
-        about.setTextAlignment(TextAlignment.CENTER);
+        Text creators = new Text("Создатель игры:Илья Егорушкин Андреевич\n" +
+                "Сcылки:");
+        creators.setFill(Color.BLUE);
+        creators.setFont(Font.font("", FontWeight.LIGHT, sizeTxt));
+        creators.setTextAlignment(TextAlignment.CENTER);
+        Text creatorsGit = new Text("github.com");
+        creatorsGit.setFill(Color.BLUE);
+        creatorsGit.setFont(Font.font("", FontWeight.LIGHT, sizeTxt));
+        creatorsGit.setTextAlignment(TextAlignment.CENTER);
+        creatorsGit.setOnMouseClicked(event -> {
+            try {
+                Desktop.getDesktop().browse(new URL("https://github.com/bkmzli1").toURI());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        });
+        creatorsGit.setOnMouseEntered(event -> {
+            Glow glow = new Glow(1000);
+            creatorsGit.setEffect(glow);
+        });
 
-        vbox.getChildren().addAll(label, hbox, label2, about);
+        creatorsGit.setOnMouseExited(event -> {
+            Glow glow = new Glow(0);
+            creatorsGit.setEffect(glow);
+        });
+        vbox.getChildren().addAll(label, hbox, label2, creators,creatorsGit);
     }
+
+
 }

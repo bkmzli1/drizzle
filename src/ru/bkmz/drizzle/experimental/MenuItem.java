@@ -1,12 +1,6 @@
-/*
- * DISCLAIMER:
- *
- * Content of this class is purely experimental and should not be used as a measurement of quality
- * of this project. It is distributed AS-IS without any guarantees or rights reserved.
- */
-
 package ru.bkmz.drizzle.experimental;
 
+import javafx.scene.effect.Glow;
 import ru.bkmz.drizzle.event.StateEvent;
 
 import javafx.event.EventType;
@@ -19,14 +13,8 @@ import javafx.scene.text.Text;
 
 class MenuItem extends HBox {
 
-    /*
-     * Definitions
-     */
     private static final Font FONT_LAYOUT_ITEM = Font.font("", FontWeight.BOLD, 18);
 
-    /*
-     * Constructors
-     */
     private Color color1 = Color.rgb(0, 145, 225), color2 = Color.rgb(0, 225, 225);
 
     MenuItem(String label, EventType<StateEvent> eventType) {
@@ -40,10 +28,14 @@ class MenuItem extends HBox {
 
         labelText.setOnMouseEntered(event -> {
             labelText.setFill(color2);
+            Glow glow = new Glow(1000);
+            labelText.setEffect(glow);
         });
 
         labelText.setOnMouseExited(event -> {
             labelText.setFill(color1);
+            Glow glow = new Glow(0);
+            labelText.setEffect(glow);
         });
 
         this.getChildren().add(labelText);
@@ -54,14 +46,9 @@ class MenuItem extends HBox {
 }
 class MenuItemS extends HBox {
 
-    /*
-     * Definitions
-     */
     private static final Font FONT_LAYOUT_ITEM = Font.font("", FontWeight.BOLD, 18);
 
-    /*
-     * Constructors
-     */
+
     private Color color1 = Color.rgb(0, 145, 225), color2 = Color.rgb(0, 225, 225);
 
     MenuItemS(String label, EventType<StateEvent> eventType) {
@@ -75,10 +62,14 @@ class MenuItemS extends HBox {
 
         labelText.setOnMouseEntered(event -> {
             labelText.setFill(color2);
+            Glow glow = new Glow(1000);
+            labelText.setEffect(glow);
         });
 
         labelText.setOnMouseExited(event -> {
             labelText.setFill(color1);
+            Glow glow = new Glow(0);
+            labelText.setEffect(glow);
         });
 
         this.getChildren().add(labelText);

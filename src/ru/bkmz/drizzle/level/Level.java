@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2017 - 2018 Hiraishin Software. All Rights Reserved.
- */
-
 package ru.bkmz.drizzle.level;
 
 import javafx.application.Platform;
@@ -219,7 +215,7 @@ public class Level {
         this.mobs.add(new Player((Commons.SCENE_WIDTH - Player.getWIDTH()) / 2, Commons.SCENE_GROUND,
                                  this, this.keyboard, this.properties));
 
-        this.spawners.add(new AcidSpawner(0, -50, Commons.SCENE_WIDTH, 0, this, getAcidSpawner_rate(), getAcidSpawner_variation(), getAcidSpawner_count()));
+        this.spawners.add(new AcidSpawner(0, -50, Commons.SCENE_WIDTH, 0, this, AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
         this.spawners.add(new ArmorSpawner(0, -50, Commons.SCENE_WIDTH, 0, this,
                                            Timescale.TICKS_PER_MINUTE >> 1,
                                            10 * Timescale.TICKS_PER_SECOND, 1));

@@ -10,9 +10,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.experimental.*;
 import ru.bkmz.drizzle.input.Keyboard;
+import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.util.Commons;
 import ru.bkmz.drizzle.util.ImageLoader;
 import ru.bkmz.drizzle.util.MediaLoader;
@@ -24,7 +26,7 @@ import java.util.Objects;
 import static ru.bkmz.drizzle.level.GameData.*;
 
 public class Application extends javafx.application.Application {
-    private static final String VERSION = "v3.7";
+    private static final String VERSION = "v3.8";
     private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
     private static final String TITLE = "drizzle";
     private static final String ARG_DEBUG = "debug";
@@ -47,10 +49,8 @@ public class Application extends javafx.application.Application {
 
     public static void main(String... args) {
 
-        try {
-
-            readC();
-        } catch (IOException e) {
+        File config_file = new File(GameData.config_file);
+        if (config_file.exists()) {
             try {
                 writeC();
                 readC();
@@ -87,7 +87,7 @@ public class Application extends javafx.application.Application {
         ImageLoader.INSTANCE.load("entity/acid");
         ImageLoader.INSTANCE.load("entity/armor");
         ImageLoader.INSTANCE.load("entity/energy");
-        ImageLoader.INSTANCE.load("entity/player2");
+        ImageLoader.INSTANCE.load("entity/player3");
         ImageLoader.INSTANCE.load("entity/star");
         ImageLoader.INSTANCE.load("gui/bars/armor");
         ImageLoader.INSTANCE.load("gui/bars/energy");
@@ -139,7 +139,6 @@ public class Application extends javafx.application.Application {
                 switchPane(this.users, this.paneMenu);
 
             } else if (eventType == StateEvent.PLAY) {
-
                 switchPane(this.users, null);
                 this.games.play();
 
@@ -182,6 +181,12 @@ public class Application extends javafx.application.Application {
                 switchPane(this.users, this.paneMenu);
                 this.games.close();
 
+            } else if (eventType == StateEvent.COLLECTION) {
+                try {
+                    cleaning();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             event.consume();
         });
@@ -194,8 +199,11 @@ public class Application extends javafx.application.Application {
             System.exit(0);
         });
         oracleVid.setCycleCount(MediaPlayer.INDEFINITE);
-        oracleVid.setVolume(RAIN_Volume.getValue());
+        float valveF = RAIN_Volume.getValue() / 10f;
+        oracleVid.setVolume(valveF);
         oracleVid.play();
+
+
         stage.fireEvent(new StateEvent(StateEvent.MENU));
         if (consoleOn) {
             new Thread(new Runnable() {
@@ -208,9 +216,9 @@ public class Application extends javafx.application.Application {
         }
 
     }
-
-
     public static final MediaPlayer oracleVid = new MediaPlayer(
             new Media(new File(MEDIA).toURI().toString())
+
     );
+
 }

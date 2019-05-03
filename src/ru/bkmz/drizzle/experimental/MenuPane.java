@@ -1,12 +1,9 @@
-/*
- * DISCLAIMER:
- * 
- * Content of this class is purely experimental and should not be used as a measurement of quality
- * of this project. It is distributed AS-IS without any guarantees or rights reserved.
- */
-
 package ru.bkmz.drizzle.experimental;
 
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Glow;
+import javafx.scene.effect.Reflection;
+import javafx.scene.paint.Color;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.util.Commons;
 
@@ -21,9 +18,6 @@ import javafx.scene.text.Text;
 
 public class MenuPane extends GridPane {
 
-    /*
-     * Constructors
-     */
     public MenuPane() {
         this.setPrefSize(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         this.setVgap(10);
@@ -35,6 +29,25 @@ public class MenuPane extends GridPane {
         label.setFont(Font.font("", FontWeight.LIGHT, 100));
         label.setFill(Commons.GRADIENT);
         label.setUnderline(true);
+        Glow glow = new Glow(1000);
+        label.setEffect(glow);
+
+        Reflection reflection = new Reflection();
+
+
+        reflection.setBottomOpacity(0.0);
+
+
+        reflection.setTopOpacity(0.1);
+
+        reflection.setTopOffset(10);
+
+
+        reflection.setFraction(0.7);
+        reflection.setInput(glow);
+
+        label.setEffect(reflection);
+
 
         this.add(label, 0, 0);
 

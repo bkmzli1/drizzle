@@ -23,13 +23,14 @@ public enum GameData {
     UPGRADE_SHOCKWAVE(0, 1, "Навык \"Ударная Волна\" "),
     UPGRADE_DOUBLEXP(0, 1, "Двойной навык XP"),
     UPGRADE_SHIELDSPAWN(0, 1, "Щит отродясь мастерства"),
+
     ACID_Volume(0, 10, "Громкость капель"),
-    RAIN_Volume(0, 10, "Громкость дождя");
+    RAIN_Volume(0, 10, "Громкость дождя"),
+    AcidSpawner_rate(10, 10, "Скорость"),
+    AcidSpawner_variation(10, 10, "отклонение"),
+    AcidSpawner_count(1, 3, "повтор");
 
     public static Properties properties = new Properties();
-    private static int AcidSpawner_rate;
-    private static int AcidSpawner_variation;
-    private static int AcidSpawner_count;
     private static boolean DEBUG_MODE;
 
 
@@ -37,20 +38,8 @@ public enum GameData {
         return DEBUG_MODE;
     }
 
-    public static int getAcidSpawner_rate() {
-        return AcidSpawner_rate;
-    }
-
-    public static int getAcidSpawner_variation() {
-        return AcidSpawner_variation;
-    }
-
-    public static int getAcidSpawner_count() {
-        return AcidSpawner_count;
-    }
-
     private static final String SER_FILE = "playdata.ser";
-    private static final String config_file = "configData.conf";
+    public static final String config_file = "configData.conf";
 
     private final int min;
     private final int max;
@@ -181,29 +170,31 @@ public enum GameData {
 
         InputStream inputStream = new FileInputStream(GameData.config_file);
         properties.load(inputStream);
-        AcidSpawner_rate = Integer.parseInt(properties.getProperty("AcidSpawner_rate"));
-        AcidSpawner_variation = Integer.parseInt(properties.getProperty("AcidSpawner_variation"));
-        AcidSpawner_count = Integer.parseInt(properties.getProperty("AcidSpawner_count"));
-        DEBUG_MODE = Boolean.parseBoolean(properties.getProperty("DEBUG_MODE"));
 
+        DEBUG_MODE = Boolean.parseBoolean(properties.getProperty("DEBUG_MODE"));
 
     }
 
     public static void writeC() throws IOException {
         OutputStream fileOutputStream = new FileOutputStream(GameData.config_file);
-        properties.setProperty("WIDTH", "1");
-        properties.setProperty("HEIGHT_MIN", "10");
-        properties.setProperty("HEIGHT_MAX", "40");
-        properties.setProperty("SPEED_X", "0");
-        properties.setProperty("SPEED_Y_MIN", "10");
-        properties.setProperty("SPEED_Y_MAX", "40");
-        properties.setProperty("AcidSpawner_rate", "10");
-        properties.setProperty("AcidSpawner_variation", "3");
-        properties.setProperty("AcidSpawner_count", "1");
-        properties.setProperty("DEBUG_MODE", "false");
-        properties.setProperty("PLAYER_HEALTH", "1");
+        properties.setProperty("DEBUG_MODE", "true");
         properties.store(fileOutputStream, null);
+    }
+    public static void cleaning() throws IOException {
 
+        File file = new File(SER_FILE);
+        file.delete();
+        FileOutputStream foStream = new FileOutputStream(new File(SER_FILE), false);
+        ObjectOutputStream ooStream = new ObjectOutputStream(foStream);
+        ooStream.reset();
+
+        for (int i = 0; i < GameData.values().length; i++) {
+            ooStream.writeInt(0);
+        }
+
+        ooStream.close();
+        foStream.close();
+        load();
     }
 
 

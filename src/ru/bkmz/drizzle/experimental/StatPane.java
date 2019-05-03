@@ -1,10 +1,3 @@
-/*
- * DISCLAIMER:
- * 
- * Content of this class is purely experimental and should not be used as a measurement of quality
- * of this project. It is distributed AS-IS without any guarantees or rights reserved.
- */
-
 package ru.bkmz.drizzle.experimental;
 
 import ru.bkmz.drizzle.event.StateEvent;
@@ -25,9 +18,7 @@ public class StatPane extends BorderPane {
 
     private VBox vbox1, vbox2;
 
-    /*
-     * Static functions
-     */
+
     private static void addEntry(VBox v1, VBox v2, GameData pd) {
         Text t1 = new Text(pd.getName() + ":");
         t1.setFill(Color.CORNFLOWERBLUE);
@@ -41,9 +32,6 @@ public class StatPane extends BorderPane {
         v2.getChildren().add(t2);
     }
 
-    /*
-     * Constructors
-     */
     public StatPane() {
         this.setPrefSize(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         this.setPadding(new Insets(10, 10, 10, 10));
@@ -74,9 +62,6 @@ public class StatPane extends BorderPane {
         vbox.getChildren().addAll(label, hbox);
     }
 
-    /*
-     * Instance functions
-     */
     public void refresh() {
         vbox1.getChildren().clear();
         vbox2.getChildren().clear();

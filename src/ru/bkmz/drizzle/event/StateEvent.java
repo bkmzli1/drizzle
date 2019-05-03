@@ -22,6 +22,7 @@ public class StateEvent extends Event {
     public static final EventType<StateEvent> PAUSE = new EventType<>(GAME, "PAUSE");
     public static final EventType<StateEvent> UNPAUSE = new EventType<>(GAME, "UNPAUSE");
     public static final EventType<StateEvent> STOP = new EventType<>(GAME, "STOP");
+    public static final EventType<StateEvent> COLLECTION = new EventType<>(GAME, "COLLECTION");
 
     public StateEvent(EventType<? extends Event> eventType) {
         super(eventType);

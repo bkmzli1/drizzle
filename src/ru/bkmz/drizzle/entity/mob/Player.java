@@ -1,5 +1,3 @@
-
-
 package ru.bkmz.drizzle.entity.mob;
 
 import javafx.scene.image.Image;
@@ -24,7 +22,7 @@ public class Player extends Mob {
     private static final double SPEED_X_INCREMENT = 0.5;
     private static final double SPEED_X_INCREMENT2 = 0.6;
     private static final double SPEED_Y_INCREMENT = 0.5;
-    private static final Image IMAGE = ImageLoader.INSTANCE.getImage("entity/player2");
+    private static final Image IMAGE = ImageLoader.INSTANCE.getImage("entity/player3");
     private static final int IMAGE_ROWS = 2;
     private static final int IMAGE_COLS = 4;
     private static final double SPRITE_X_OFFSET = -4;
@@ -55,7 +53,8 @@ public class Player extends Mob {
 
     @Override
     public void tick() {
-        if (this.keyboard.isHeld(KeyCode.D) && !this.keyboard.isHeld(KeyCode.A)) {
+
+        if ((this.keyboard.isHeld(KeyCode.D) && !this.keyboard.isHeld(KeyCode.A))) {
             this.dx = Math.min(this.dx + this.speed, SPEED_X_LIMIT);
         }
 
@@ -71,7 +70,7 @@ public class Player extends Mob {
             }
         }
 
-        if (this.keyboard.isHeld(KeyCode.SPACE)) {
+        if (this.keyboard.isHeld(KeyCode.SPACE)||this.keyboard.isHeld(KeyCode.W)) {
             if (!this.jump) {
                 this.jump = true;
                 this.dy = SPEED_Y_LIMIT;

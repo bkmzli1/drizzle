@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2017 - 2018 Hiraishin Software. All Rights Reserved.
- */
-
 package ru.bkmz.drizzle.entity.mob;
 
 import javafx.application.Platform;
@@ -10,10 +6,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.entity.particle.AcidParticle;
-import ru.bkmz.drizzle.experimental.SetingsPane;
 import ru.bkmz.drizzle.graphics.animation.AnimatedSprite;
 import ru.bkmz.drizzle.graphics.animation.Step;
-import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.util.Commons;
 import ru.bkmz.drizzle.util.ImageLoader;
@@ -30,7 +24,7 @@ public class Acid extends Mob {
     private static final double SPEED_X_DEFAULT = 0;
     private static final double SPEED_Y_DEFAULT = 10;
     private static final Image IMAGE = ImageLoader.INSTANCE.getImage("entity/acid");
-    private static final String MEDIA = MediaLoader.INSTANCE.getMedia("res/media/a_drop");
+
     private static final int IMAGE_ROWS = 1;
     private static final int IMAGE_COLS = 4;
     private static final double SPRITE_X_OFFSET = -1;
@@ -47,7 +41,7 @@ public class Acid extends Mob {
                 new AnimatedSprite(IMAGE, IMAGE_ROWS, IMAGE_COLS, ANIMATION_DELTA, ANIMATION_STEPS),
                 SPRITE_X_OFFSET, SPRITE_Y_OFFSET, level);
         ((AnimatedSprite) this.sprite).play();
-        oracleVid.setVolume(ACID_Volume.getValue());
+
         this.dx = dx;
         this.dy = dy;
     }
@@ -63,8 +57,8 @@ public class Acid extends Mob {
 
         if (this.y + this.height >= Commons.SCENE_GROUND) {
             this.y = Commons.SCENE_GROUND - this.height;
-
-            oracleVid.play();
+            Medias media = new Medias();
+            media.start();
             kill();
             spawnParticles(0);
         }
@@ -83,9 +77,7 @@ public class Acid extends Mob {
 
         ((AnimatedSprite) this.sprite).tick();
     }
-    private  double get_Volume(){
-        return oracleVid.getVolume();
-    }
+
     private void spawnParticles(double ySpeed) {
         Platform.runLater(() -> {
             for (int i = 0; i < Acid.PARTICLE_COUNT; i++) {
@@ -97,7 +89,17 @@ public class Acid extends Mob {
             }
         });
     }
-    public static final MediaPlayer oracleVid = new MediaPlayer(
-            new Media(new File(MEDIA).toURI().toString())
-    );
+    public static class Medias extends Thread{
+        private static final String MEDIA = MediaLoader.INSTANCE.getMedia("res/media/a_drop");
+
+        public static   MediaPlayer oracleVid = new MediaPlayer(
+                new Media(new File(MEDIA).toURI().toString())
+
+        );
+        @Override
+        public void run() {
+            oracleVid.setCycleCount(1);
+            oracleVid.setVolume(ACID_Volume.getValue());
+            oracleVid.play();
+        }}
 }
