@@ -207,6 +207,9 @@ public class Application extends javafx.application.Application {
         Acid.acidVolume(VolumeF);
 
         stage.fireEvent(new StateEvent(StateEvent.MENU));
+
+
+       /*
         if (consoleOn) {
             new Thread(new Runnable() {
                 @Override
@@ -216,6 +219,8 @@ public class Application extends javafx.application.Application {
             }).start();
             consoleOn = false;
         }
+        */
+
 
     }
     public static final MediaPlayer oracleVid = new MediaPlayer(

@@ -7,18 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af6e2d79-5a33-405f-8fc2-2a4b07bddbc9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configData.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/drizzle2/META-INF/drizzle2.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/playdata.ser" beforeDir="false" afterPath="$PROJECT_DIR$/playdata.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle.jar" beforeDir="false" afterPath="$PROJECT_DIR$/drizzle.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/Comands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/Comands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Acid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Acid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/HelpPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/HelpPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/SetingsPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/SetingsPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/util/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/util/Sound.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +44,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
+            <state relative-caret-position="154">
+              <caret line="216" column="22" selection-start-line="216" selection-start-column="22" selection-end-line="216" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -71,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+            <state relative-caret-position="306">
+              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -254,7 +245,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Unnamed">
+  <component name="RunManager" selected="JAR Application.drizzle.jar">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.bkmz.drizzle.Application" />
       <module name="drizzle2" />
@@ -290,7 +281,7 @@
       <workItem from="1556847885549" duration="18865000" />
       <workItem from="1556871273842" duration="8898000" />
       <workItem from="1556883806293" duration="5271000" />
-      <workItem from="1556899535264" duration="178000" />
+      <workItem from="1556899535264" duration="681000" />
     </task>
     <task id="LOCAL-00001" summary="effect">
       <created>1556812113324</created>
@@ -303,7 +294,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65628000" />
+    <option name="totallyTimeSpent" value="66295000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -318,7 +309,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928367" visible="true" weight="0.31359354" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928367" visible="true" weight="0.31359354" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39973083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -694,17 +685,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="49" />
         </state>
       </provider>
     </entry>
