@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="drizzle:jar" />
+      <artifact name="drizzle2:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af6e2d79-5a33-405f-8fc2-2a4b07bddbc9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/drizzle2_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/drizzle_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle.jar" beforeDir="false" afterPath="$PROJECT_DIR$/drizzle.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/playdata.ser" beforeDir="false" afterPath="$PROJECT_DIR$/playdata.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Acid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Acid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/SetingsPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/SetingsPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/bkmz/drizzle/util/Sound.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="216" column="22" selection-start-line="216" selection-start-column="22" selection-end-line="216" selection-end-column="22" />
+            <state relative-caret-position="133">
+              <caret line="205" column="51" selection-start-line="205" selection-start-column="51" selection-end-line="205" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -53,8 +60,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Acid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+            <state relative-caret-position="1360">
+              <caret line="91" selection-start-line="91" selection-end-line="91" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/SetingsPane.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="201">
+              <caret line="118" column="10" selection-start-line="118" selection-start-column="10" selection-end-line="118" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -64,18 +80,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/util/Sound.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
-              <caret line="97" column="15" selection-start-line="97" selection-start-column="15" selection-end-line="97" selection-end-column="15" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -144,14 +148,14 @@
         <option value="$PROJECT_DIR$/src/ru/bkmz/drizzle/util/QuadConsumer.java" />
         <option value="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/MenuPane.java" />
         <option value="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/StatPane.java" />
-        <option value="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/SetingsPane.java" />
         <option value="$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Player.java" />
         <option value="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/HelpPane.java" />
         <option value="$PROJECT_DIR$/src/ru/bkmz/drizzle/Comands.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/ru/bkmz/drizzle/util/Sound.java" />
         <option value="$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Acid.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/ru/bkmz/drizzle/Application.java" />
+        <option value="$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/SetingsPane.java" />
       </list>
     </option>
   </component>
@@ -182,6 +186,24 @@
             <path>
               <item name="drizzle" type="b2602c69:ProjectViewProjectNode" />
               <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="drizzle2_jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -189,6 +211,43 @@
               <item name="drizzle" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="item" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="mob" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="experimental" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -245,7 +304,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JAR Application.drizzle.jar">
+  <component name="RunManager" selected="JAR Application.drizzle2.jar">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.bkmz.drizzle.Application" />
       <module name="drizzle2" />
@@ -253,17 +312,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="drizzle.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/drizzle.jar" />
+    <configuration name="drizzle2.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/drizzle2_jar/drizzle2.jar" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.Unnamed" />
-      <item itemvalue="JAR Application.drizzle.jar" />
+      <item itemvalue="JAR Application.drizzle2.jar" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JAR Application.drizzle.jar" />
+        <item itemvalue="JAR Application.drizzle2.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -281,7 +340,7 @@
       <workItem from="1556847885549" duration="18865000" />
       <workItem from="1556871273842" duration="8898000" />
       <workItem from="1556883806293" duration="5271000" />
-      <workItem from="1556899535264" duration="681000" />
+      <workItem from="1556899535264" duration="1385000" />
     </task>
     <task id="LOCAL-00001" summary="effect">
       <created>1556812113324</created>
@@ -294,13 +353,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66295000" />
+    <option name="totallyTimeSpent" value="67013000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Learn" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49663526" visible="true" weight="0.18624642" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49663526" visible="true" weight="0.18624642" />
       <window_info id="Structure" order="2" sideWeight="0.50336474" side_tool="true" weight="0.1790831" />
       <window_info id="Designer" order="3" />
       <window_info id="Image Layers" order="4" />
@@ -309,7 +369,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928367" visible="true" weight="0.31359354" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928367" visible="true" weight="0.31359354" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39973083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -647,13 +707,6 @@
     <entry file="file://$PROJECT_DIR$/res/entity/acid2.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/SetingsPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="202" column="39" lean-forward="true" selection-start-line="202" selection-start-column="12" selection-end-line="202" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/Comands.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -670,18 +723,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/util/Sound.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="97" column="15" selection-start-line="97" selection-start-column="15" selection-end-line="97" selection-end-column="15" />
+        <state relative-caret-position="374">
+          <caret line="22" column="75" lean-forward="true" selection-start-line="22" selection-start-column="75" selection-end-line="22" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Acid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -692,10 +738,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/entity/mob/Acid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="49" />
+        <state relative-caret-position="133">
+          <caret line="205" column="51" selection-start-line="205" selection-start-column="51" selection-end-line="205" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/bkmz/drizzle/experimental/SetingsPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="118" column="10" selection-start-line="118" selection-start-column="10" selection-end-line="118" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -705,7 +765,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>drizzle:jar</last-edited>
+          <last-edited>drizzle2:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

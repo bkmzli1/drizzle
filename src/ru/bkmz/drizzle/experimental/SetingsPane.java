@@ -116,10 +116,10 @@ public class SetingsPane extends BorderPane {
 
 
         addEntryTwo(RAIN_Volume.getName(), hBox1, rainVolume, RAIN_Volume);
-        addEntryTwo(ACID_Volume.getName(), hBox2, acidVolume, ACID_Volume);
+        //addEntryTwo(ACID_Volume.getName(), hBox2, acidVolume, ACID_Volume);
         addEntryOne("Сложность:", AcidSpawner_rate, AcidSpawner_variation, AcidSpawner_count, hBox3);
         vBox.getChildren().add(hBox1);
-        vBox.getChildren().add(hBox2);
+        //vBox.getChildren().add(hBox2);
         vBox.getChildren().add(hBox3);
     }
 
@@ -207,7 +207,7 @@ public class SetingsPane extends BorderPane {
                 pd.setVolume(Volume);
             } else if (pd.getName().equals(ACID_Volume.getName())) {
                 System.out.println("Acid");
-                Acid.acidVolumeS(VolumeF);
+
                 pd.setVolume(Volume);
             }
             save();

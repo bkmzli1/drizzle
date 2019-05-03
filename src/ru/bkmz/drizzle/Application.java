@@ -27,7 +27,7 @@ import java.util.Objects;
 import static ru.bkmz.drizzle.level.GameData.*;
 
 public class Application extends javafx.application.Application {
-    private static final String VERSION = "v3.8.1";
+    private static final String VERSION = "v3.8";
     private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
     private static final String TITLE = "drizzle";
     private static final String ARG_DEBUG = "debug";
@@ -204,7 +204,6 @@ public class Application extends javafx.application.Application {
         oracleVid.setVolume(valveF);
         oracleVid.play();
         float VolumeF = ACID_Volume.getValue()/10f;
-        Acid.acidVolume(VolumeF);
 
         stage.fireEvent(new StateEvent(StateEvent.MENU));
 

@@ -2,8 +2,6 @@ package ru.bkmz.drizzle.entity.mob;
 
 import javafx.application.Platform;
 import javafx.scene.image.Image;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.entity.particle.AcidParticle;
 import ru.bkmz.drizzle.graphics.animation.AnimatedSprite;
@@ -12,14 +10,8 @@ import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.util.Commons;
 import ru.bkmz.drizzle.util.ImageLoader;
 import ru.bkmz.drizzle.util.MediaLoader;
-import ru.bkmz.drizzle.util.Sound;
 
-import javax.sound.sampled.*;
 import java.io.File;
-import java.io.IOException;
-import java.util.Objects;
-
-import static ru.bkmz.drizzle.level.GameData.ACID_Volume;
 
 public class Acid extends Mob {
 
@@ -39,9 +31,6 @@ public class Acid extends Mob {
     private static final Step[] ANIMATION_STEPS = {new Step(0, 0), new Step(0, 1), new Step(0, 2),
             new Step(0, 3), new Step(0, 0)};
     private static final int PARTICLE_COUNT = 5;
-    private static final String MEDIA = MediaLoader.INSTANCE.getMedia("res/media/Acid");
-    static Sound sound = new Sound(new File(MEDIA));
-    static float volume2;
 
     private Acid(double x, double y, double dx, double dy, Level level) {
 
@@ -56,7 +45,6 @@ public class Acid extends Mob {
 
     public Acid(double x, double y, Level level) {
         this(x, y, SPEED_X_DEFAULT, SPEED_Y_DEFAULT, level);
-
     }
 
     @Override
@@ -66,8 +54,6 @@ public class Acid extends Mob {
 
         if (this.y + this.height >= Commons.SCENE_GROUND) {
             this.y = Commons.SCENE_GROUND - this.height;
-            Sound sound2 = new Sound(new File(MEDIA));
-            sound2.play2(volume2);
             kill();
             spawnParticles(0);
         }
@@ -99,15 +85,5 @@ public class Acid extends Mob {
         });
     }
 
-    public static void acidVolumeS(float volume) {
-        sound.setVolume(volume);
-        volume2 = volume;
-        sound.play();
-    }
-
-    public static void acidVolume(float volume) {
-        sound.setVolume(volume);
-        volume2 = volume;
-    }
 }
 
