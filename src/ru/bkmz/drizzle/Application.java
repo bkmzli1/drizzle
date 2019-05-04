@@ -25,7 +25,7 @@ import java.util.Objects;
 
 import static ru.bkmz.drizzle.level.GameData.*;
 
-public class Application extends javafx.application.Application {
+public class Application extends javafx.application.Application  {
     private static final String VERSION = "v3.8";
     private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
     private static final String TITLE = "drizzle";
@@ -46,7 +46,7 @@ public class Application extends javafx.application.Application {
     private Pane paneSettings;
     private Pane panePause;
 
-    private static  String MEDIA = MediaLoader.INSTANCE.getMedia("media/sine.mp3");
+    private static  String MEDIA = "media/sine.mp3";
     public static String ERROR = "";
 
     public static void main(String... args) {
@@ -102,12 +102,6 @@ public class Application extends javafx.application.Application {
         ImageLoader.INSTANCE.load("gui/icons/experience");
         ImageLoader.INSTANCE.load("gui/icons/frame");
         ImageLoader.INSTANCE.load("gui/icons/health");
-
-
-        MediaLoader.INSTANCE.preferExternalSources(true);
-        MediaLoader.INSTANCE.setCommonSuffix(".mp3");
-        MediaLoader.INSTANCE.load("media/sine.mp3");
-        MediaLoader.INSTANCE.load("media/Acid.wav");
 
         this.paneMenu = new MenuPane();
         this.paneShop = new ShopPane();
