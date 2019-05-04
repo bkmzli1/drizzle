@@ -23,7 +23,6 @@ public class Acid extends Mob {
     private static final double SPEED_X_DEFAULT = 0;
     private static final double SPEED_Y_DEFAULT = 10;
     private static final Image IMAGE = ImageLoader.INSTANCE.getImage("entity/acid");
-    private static  String MEDIA = MediaLoader.INSTANCE.getMedia("media/Acid.mp3");
     private static final int IMAGE_ROWS = 1;
     private static final int IMAGE_COLS = 4;
     private static final double SPRITE_X_OFFSET = -1;
