@@ -6,12 +6,15 @@ import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.entity.particle.AcidParticle;
 import ru.bkmz.drizzle.graphics.animation.AnimatedSprite;
 import ru.bkmz.drizzle.graphics.animation.Step;
+import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.util.Commons;
 import ru.bkmz.drizzle.util.ImageLoader;
 import ru.bkmz.drizzle.util.MediaLoader;
 
+import javax.sound.sampled.*;
 import java.io.File;
+import java.io.IOException;
 
 public class Acid extends Mob {
 
@@ -20,12 +23,13 @@ public class Acid extends Mob {
     private static final double SPEED_X_DEFAULT = 0;
     private static final double SPEED_Y_DEFAULT = 10;
     private static final Image IMAGE = ImageLoader.INSTANCE.getImage("entity/acid");
-
+    private static  String MEDIA = MediaLoader.INSTANCE.getMedia("media/Acid.mp3");
     private static final int IMAGE_ROWS = 1;
     private static final int IMAGE_COLS = 4;
     private static final double SPRITE_X_OFFSET = -1;
     private static final double SPRITE_Y_OFFSET = -14;
     private static final int ANIMATION_DELTA = 10;
+
 
 
     private static final Step[] ANIMATION_STEPS = {new Step(0, 0), new Step(0, 1), new Step(0, 2),
@@ -84,6 +88,5 @@ public class Acid extends Mob {
             }
         });
     }
-
 }
 

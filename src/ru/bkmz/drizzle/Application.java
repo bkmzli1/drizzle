@@ -6,12 +6,11 @@ import javafx.event.Event;
 import javafx.event.EventType;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import ru.bkmz.drizzle.entity.mob.Acid;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.experimental.*;
 import ru.bkmz.drizzle.input.Keyboard;
@@ -46,7 +45,9 @@ public class Application extends javafx.application.Application {
     private Pane paneHelp;
     private Pane paneSettings;
     private Pane panePause;
-    private static final String MEDIA = MediaLoader.INSTANCE.getMedia("res/media/sine.mp3");
+
+    private static  String MEDIA = MediaLoader.INSTANCE.getMedia("media/sine.mp3");
+    public static String ERROR = "";
 
     public static void main(String... args) {
 
@@ -102,12 +103,11 @@ public class Application extends javafx.application.Application {
         ImageLoader.INSTANCE.load("gui/icons/frame");
         ImageLoader.INSTANCE.load("gui/icons/health");
 
-        MediaLoader.INSTANCE.setCommonPrefix("");
-        MediaLoader.INSTANCE.setCommonSuffix(".mp3");
 
-        MediaLoader.INSTANCE.load("res/media/sine");
-        MediaLoader.INSTANCE.setCommonSuffix(".wav");
-        MediaLoader.INSTANCE.load("res/media/Acid");
+        MediaLoader.INSTANCE.preferExternalSources(true);
+        MediaLoader.INSTANCE.setCommonSuffix(".mp3");
+        MediaLoader.INSTANCE.load("media/sine.mp3");
+        MediaLoader.INSTANCE.load("media/Acid.wav");
 
         this.paneMenu = new MenuPane();
         this.paneShop = new ShopPane();
@@ -126,7 +126,17 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) {
+        if (!ERROR.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
+            alert.setTitle("ERROR");
+            alert.setHeaderText(null);
+            alert.setContentText(ERROR);
+
+            alert.showAndWait();
+            System.exit(2);
+
+        }
         this.keyboard.addEventSource(stage);
         Scene scene = new Scene(this.root, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         stage.setScene(scene);
@@ -191,7 +201,6 @@ public class Application extends javafx.application.Application {
             }
             event.consume();
         });
-
         stage.setTitle((DEBUG_MODE ? TITLE_DEBUG_PREFIX + " " : "") + TITLE + " " + VERSION);
         stage.setResizable(false);
         stage.show();
@@ -199,16 +208,14 @@ public class Application extends javafx.application.Application {
             Platform.exit();
             System.exit(0);
         });
-        oracleVid.setCycleCount(MediaPlayer.INDEFINITE);
-        float valveF = RAIN_Volume.getValue() / 10f;
-        oracleVid.setVolume(valveF);
-        oracleVid.play();
-        float VolumeF = ACID_Volume.getValue()/10f;
 
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        float volume=RAIN_Volume.getValue()/10f;
+        mediaPlayer.setVolume(volume);
+        mediaPlayer.play();
         stage.fireEvent(new StateEvent(StateEvent.MENU));
 
 
-       /*
         if (consoleOn) {
             new Thread(new Runnable() {
                 @Override
@@ -218,13 +225,14 @@ public class Application extends javafx.application.Application {
             }).start();
             consoleOn = false;
         }
-        */
+
 
 
     }
-    public static final MediaPlayer oracleVid = new MediaPlayer(
+    public static MediaPlayer mediaPlayer = new MediaPlayer(
             new Media(new File(MEDIA).toURI().toString())
 
     );
+
 
 }

@@ -203,11 +203,10 @@ public class SetingsPane extends BorderPane {
             float VolumeF = Volume/10f;
             if (pd.getName().equals(RAIN_Volume.getName())) {
                 System.out.println("Application");
-                Application.oracleVid.setVolume(VolumeF);
+                Application.mediaPlayer.setVolume(VolumeF);
                 pd.setVolume(Volume);
             } else if (pd.getName().equals(ACID_Volume.getName())) {
                 System.out.println("Acid");
-
                 pd.setVolume(Volume);
             }
             save();
