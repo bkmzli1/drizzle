@@ -117,7 +117,7 @@ public class Application extends javafx.application.Application  {
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         float volume=RAIN_Volume.getValue()/10f;
         mediaPlayer.setVolume(volume);
-        mediaPlayer.play();
+
 
         Acid.sound = new Sound(new File("res/media/Acid.wav"));
         volume=ACID_Volume.getValue()/10f;
@@ -226,7 +226,7 @@ public class Application extends javafx.application.Application  {
 
 
         stage.fireEvent(new StateEvent(StateEvent.MENU));
-
+        mediaPlayer.play();
         if (consoleOn) {
             new Thread(new Runnable() {
                 @Override
