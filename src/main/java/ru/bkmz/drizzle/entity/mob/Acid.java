@@ -2,6 +2,7 @@ package ru.bkmz.drizzle.entity.mob;
 
 import javafx.application.Platform;
 import javafx.scene.image.Image;
+import javafx.scene.media.MediaPlayer;
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.entity.particle.AcidParticle;
 import ru.bkmz.drizzle.graphics.animation.AnimatedSprite;
@@ -10,11 +11,9 @@ import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.util.Commons;
 import ru.bkmz.drizzle.util.ImageLoader;
-import ru.bkmz.drizzle.util.MediaLoader;
+import ru.bkmz.drizzle.util.Sound;
 
-import javax.sound.sampled.*;
 import java.io.File;
-import java.io.IOException;
 
 public class Acid extends Mob {
 
@@ -28,8 +27,7 @@ public class Acid extends Mob {
     private static final double SPRITE_X_OFFSET = -1;
     private static final double SPRITE_Y_OFFSET = -14;
     private static final int ANIMATION_DELTA = 10;
-
-
+    public static Sound sound;
 
     private static final Step[] ANIMATION_STEPS = {new Step(0, 0), new Step(0, 1), new Step(0, 2),
             new Step(0, 3), new Step(0, 0)};
@@ -57,6 +55,7 @@ public class Acid extends Mob {
 
         if (this.y + this.height >= Commons.SCENE_GROUND) {
             this.y = Commons.SCENE_GROUND - this.height;
+            Sound.playSound("res/media/Acid.wav", GameData.ACID_Volume.getValue());
             kill();
             spawnParticles(0);
         }

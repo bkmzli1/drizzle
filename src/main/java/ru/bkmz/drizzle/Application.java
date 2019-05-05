@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import ru.bkmz.drizzle.entity.mob.Acid;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.experimental.*;
 import ru.bkmz.drizzle.input.Keyboard;
@@ -18,7 +19,7 @@ import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.util.Commons;
 import ru.bkmz.drizzle.util.FailCopi;
 import ru.bkmz.drizzle.util.ImageLoader;
-import ru.bkmz.drizzle.util.MediaLoader;
+import ru.bkmz.drizzle.util.Sound;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +28,7 @@ import java.util.Objects;
 import static ru.bkmz.drizzle.level.GameData.*;
 
 public class Application extends javafx.application.Application  {
-    private static final String VERSION = "v3.8.1";
+    private static final String VERSION = "v3.8.2";
     private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
     private static final String TITLE = "drizzle";
     private static final String ARG_DEBUG = "debug";
@@ -49,6 +50,7 @@ public class Application extends javafx.application.Application  {
 
 
     public static String ERROR = "";
+    public static File file = new File("configData.conf");
 
     public static MediaPlayer mediaPlayer;
     public static void main(String... args) {
@@ -106,6 +108,21 @@ public class Application extends javafx.application.Application  {
         ImageLoader.INSTANCE.load("gui/icons/health");
 
         FailCopi.failCopi("media/","sine.mp3");
+        FailCopi.failCopi("media/","Acid.wav");
+
+        mediaPlayer = new MediaPlayer(
+                new Media(new File("res/media/sine.mp3").toURI().toString())
+
+        );
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        float volume=RAIN_Volume.getValue()/10f;
+        mediaPlayer.setVolume(volume);
+        mediaPlayer.play();
+
+        Acid.sound = new Sound(new File("res/media/Acid.wav"));
+        volume=ACID_Volume.getValue()/10f;
+
+        Acid.sound.setVolume(volume);
 
         this.paneMenu = new MenuPane();
         this.paneShop = new ShopPane();
@@ -206,22 +223,21 @@ public class Application extends javafx.application.Application  {
             Platform.exit();
             System.exit(0);
         });
-       mediaPlayer = new MediaPlayer(
-                new Media(new File("res/media/sine.mp3").toURI().toString())
 
-        );
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        float volume=RAIN_Volume.getValue()/10f;
-        mediaPlayer.setVolume(volume);
-        mediaPlayer.play();
+
         stage.fireEvent(new StateEvent(StateEvent.MENU));
-
 
         if (consoleOn) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    Comands.comands();
+
+                    if (file.exists()) {
+                        System.out.println("Консоль on");
+                        Comands.comands();
+                    }else {
+                        System.out.println("Консоль off");
+                    }
                 }
             }).start();
             consoleOn = false;

@@ -116,10 +116,10 @@ public class SetingsPane extends BorderPane {
 
 
         addEntryTwo(RAIN_Volume.getName(), hBox1, rainVolume, RAIN_Volume);
-        //addEntryTwo(ACID_Volume.getName(), hBox2, acidVolume, ACID_Volume);
+        addEntryTwo(ACID_Volume.getName(), hBox2, acidVolume, ACID_Volume);
         addEntryOne("Сложность:", AcidSpawner_rate, AcidSpawner_variation, AcidSpawner_count, hBox3);
         vBox.getChildren().add(hBox1);
-        //vBox.getChildren().add(hBox2);
+        vBox.getChildren().add(hBox2);
         vBox.getChildren().add(hBox3);
     }
 
@@ -198,16 +198,18 @@ public class SetingsPane extends BorderPane {
 
     }
 
-    private void eventButtons(GameData pd, int Volume) {
-        if (0 <= Volume && Volume <= 10) {
-            float VolumeF = Volume/10f;
+    private void eventButtons(GameData pd, int volume) {
+        if (0 <= volume && volume <= 10) {
+            float volumeF = volume/10f;
             if (pd.getName().equals(RAIN_Volume.getName())) {
                 System.out.println("Application");
-                Application.mediaPlayer.setVolume(VolumeF);
-                pd.setVolume(Volume);
+                Application.mediaPlayer.setVolume(volumeF);
+                pd.setVolume(volume);
             } else if (pd.getName().equals(ACID_Volume.getName())) {
                 System.out.println("Acid");
-                pd.setVolume(Volume);
+                Acid.sound.setVolume(volumeF);
+                Acid.sound.play();
+                pd.setVolume(volume);
             }
             save();
             this.refresh();
