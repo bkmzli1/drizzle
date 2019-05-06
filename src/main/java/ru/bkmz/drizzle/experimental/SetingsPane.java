@@ -39,8 +39,12 @@ public class SetingsPane extends BorderPane {
             AcidSpawner_rate.setVolume(10);
             AcidSpawner_variation.setVolume(10);
             AcidSpawner_count.setVolume(1);
+            SCENE_WIDTH.setVolume(1000);
+            SCENE_HEIGHT.setVolume(700);
+            SCREEN.setVolume(0);
             save();
             refresh();
+            fireEvent(new StateEvent(StateEvent.SCREEN));
         });
         reset.setFont(Font.font("", FontWeight.BOLD, 30));
         reset.setFill(Commons.GRADIENT2);
@@ -138,7 +142,7 @@ public class SetingsPane extends BorderPane {
             eventButtons(pd, pd.getValue() - 1);
             fireEvent(new StateEvent(eventType));
             SCENE_WIDTH.setVolume(1000);
-            SCENE_HEIGHT.setVolume(900);
+            SCENE_HEIGHT.setVolume(700);
             System.out.println("SCENE_WIDTH=" + SCENE_WIDTH.getValue());
             System.out.println("SCENE_HEIGHT=" + SCENE_HEIGHT.getValue());
             save();
