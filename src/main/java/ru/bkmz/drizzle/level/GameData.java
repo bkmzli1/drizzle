@@ -24,7 +24,7 @@ public enum GameData {
     UPGRADE_DOUBLEXP(0, 1, "Двойной навык XP"),
     UPGRADE_SHIELDSPAWN(0, 1, "Щит отродясь мастерства"),
 
-    ACID_Volume(0, 10, "Громкость капель"),
+    Effect_Volume(0, 10, "Громкость эфектов"),
     RAIN_Volume(0, 10, "Громкость дождя"),
     AcidSpawner_rate(10, 10, "Скорость"),
     AcidSpawner_variation(10, 10, "отклонение"),

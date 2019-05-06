@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
+import ru.bkmz.drizzle.util.Sound;
 
 import java.util.Objects;
 
@@ -29,6 +30,8 @@ public class PlayerProperties {
     private int experience = 0;
     private int experienceMultiplier = EXP_RATE;
     private Skill selectedSkill = null;
+
+    public static Sound soundShield,soundEnergy,soundStar;
 
     public void setGodmod(boolean godmod) {
         this.godmod = godmod;
@@ -66,7 +69,8 @@ public class PlayerProperties {
 
     public void addEnergy(int multiplier) {
         GameData.STAT_COUNT_NODES.increment();
-
+        soundEnergy.setVolume(GameData.Effect_Volume.getValue()/10f);
+        soundEnergy.play();
         if (!skillActive) {
             if (Objects.nonNull(selectedSkill)) {
                 if (energyProperty.intValue() < 100) {
@@ -100,7 +104,8 @@ public class PlayerProperties {
 
     public void addShield() {
         GameData.STAT_COUNT_SHIELD.increment();
-
+        soundShield.setVolume(GameData.Effect_Volume.getValue()/10f);
+        soundShield.play();
         if (armorProperty.intValue() < healthProperty.intValue()) {
             armorProperty.set(armorProperty.intValue() + 1);
         }
@@ -108,7 +113,6 @@ public class PlayerProperties {
 
     public void addShield(int multiplier) {
         GameData.STAT_COUNT_SHIELD.increment();
-
         if (armorProperty.intValue() < healthProperty.intValue()) {
             armorProperty.set(armorProperty.intValue() + multiplier);
         }

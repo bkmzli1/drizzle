@@ -34,7 +34,7 @@ public class SetingsPane extends BorderPane {
         Text reset = new Text("Сбросс настроек");
         reset.setOnMouseClicked(event -> {
             eventButtons(RAIN_Volume, 0);
-            eventButtons(ACID_Volume, 0);
+            eventButtons(Effect_Volume, 0);
             AcidSpawner_rate.setVolume(10);
             AcidSpawner_variation.setVolume(10);
             AcidSpawner_count.setVolume(1);
@@ -105,7 +105,7 @@ public class SetingsPane extends BorderPane {
 
         addEntryScreen(SCREEN, screen, HScreen, StateEvent.SCREEN);
         addEntryTwo(HRainVolume, rainVolume, RAIN_Volume);
-        addEntryTwo(HAcidVolume, acidVolume, ACID_Volume);
+        addEntryTwo(HAcidVolume, acidVolume, Effect_Volume);
         addEntryOne("Сложность:", AcidSpawner_rate, AcidSpawner_variation, AcidSpawner_count, HDifficulty);
 
         vBox.getChildren().add(HScreen);
@@ -243,7 +243,7 @@ public class SetingsPane extends BorderPane {
                 System.out.println("Application");
                 Application.mediaPlayer.setVolume(valueF);
                 pd.setVolume(value);
-            } else if (pd.getName().equals(ACID_Volume.getName())) {
+            } else if (pd.getName().equals(Effect_Volume.getName())) {
                 System.out.println("Acid");
                 Acid.sound.setVolume(valueF);
                 Acid.sound.play();

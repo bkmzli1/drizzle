@@ -16,7 +16,7 @@ import ru.bkmz.drizzle.entity.mob.Acid;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.experimental.*;
 import ru.bkmz.drizzle.input.Keyboard;
-import ru.bkmz.drizzle.level.GameData;
+import ru.bkmz.drizzle.level.player.PlayerProperties;
 import ru.bkmz.drizzle.util.Commons;
 import ru.bkmz.drizzle.util.CopyFiles;
 import ru.bkmz.drizzle.util.ImageLoader;
@@ -29,7 +29,7 @@ import java.util.Objects;
 import static ru.bkmz.drizzle.level.GameData.*;
 
 public class Application extends javafx.application.Application {
-    private static final String VERSION = "v3.8.3";
+    private static final String VERSION = "v3.8.4";
     private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
     private static final String TITLE = "drizzle";
     private static final String ARG_DEBUG = "debug";
@@ -102,7 +102,9 @@ public class Application extends javafx.application.Application {
 
         CopyFiles.failCopi("media/", "sine.mp3");
         CopyFiles.failCopi("media/", "Acid.wav");
-
+        CopyFiles.failCopi("media/", "electric.wav");
+        CopyFiles.failCopi("media/", "Shield.wav");
+        CopyFiles.failCopi("media/", "star.wav");
         mediaPlayer = new MediaPlayer(
                 new Media(new File("res/media/sine.mp3").toURI().toString())
 
@@ -113,9 +115,16 @@ public class Application extends javafx.application.Application {
 
 
         Acid.sound = new Sound(new File("res/media/Acid.wav"));
-        volume = ACID_Volume.getValue() / 10f;
+        Acid.sound.setVolume(Effect_Volume.getValue() / 10f);
 
-        Acid.sound.setVolume(volume);
+        PlayerProperties.soundEnergy = new Sound(new File("res/media/electric.wav"));
+        PlayerProperties.soundEnergy.setVolume(Effect_Volume.getValue() / 10f);
+
+        PlayerProperties.soundShield = new Sound(new File("res/media/Shield.wav"));
+        PlayerProperties.soundShield.setVolume(Effect_Volume.getValue() / 10f);
+
+        PlayerProperties.soundStar = new Sound(new File("res/media/star.wav"));
+        PlayerProperties.soundStar.setVolume(Effect_Volume.getValue() / 10f);
 
         this.paneMenu = new MenuPane();
         this.paneShop = new ShopPane();
@@ -231,6 +240,7 @@ public class Application extends javafx.application.Application {
                 public void run() {
 
                     if (file.exists()) {
+                        DEBUG_MODE = true;
                         System.out.println("Консоль on");
                         Comands.comands();
                     } else {

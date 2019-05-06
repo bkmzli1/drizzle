@@ -11,7 +11,7 @@ public class Commons {
     public static double SCENE_WIDTH = GameData.SCENE_WIDTH.getValue();
     public static double SCENE_HEIGHT = GameData.SCENE_HEIGHT.getValue();
 
-    public static double SCENE_GROUND = SCENE_HEIGHT / 40 * 33;
+    public static double SCENE_GROUND = SCENE_HEIGHT / 40 * 36;
 
 
     public static final LinearGradient GRADIENT = new LinearGradient(0, 0, 1, 1, true,
