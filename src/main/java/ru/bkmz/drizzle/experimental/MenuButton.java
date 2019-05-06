@@ -11,6 +11,8 @@ import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
+import static ru.bkmz.drizzle.util.Sound.playEffectClik;
+
 class MenuButton extends HBox {
 
 
@@ -25,6 +27,7 @@ class MenuButton extends HBox {
         });
 
         this.setOnMouseEntered(event -> {
+            playEffectClik();
             imageView.setOpacity(0.8);
             glow.setLevel(1000);
             imageView.setEffect(glow);
@@ -57,6 +60,7 @@ class EventButton extends HBox {
             fireEvent(new StateEvent(eventType));
         });
         this.setOnMouseEntered(event -> {
+            playEffectClik();
             imageView.setOpacity(0.8);
             Glow glow = new Glow(1000);
             imageView.setEffect(glow);

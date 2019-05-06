@@ -13,6 +13,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import static ru.bkmz.drizzle.util.Sound.playEffectClik;
+
 public class PausePane extends BorderPane {
 
     public PausePane() {
@@ -28,6 +30,7 @@ public class PausePane extends BorderPane {
         exit.setUnderline(true);
         exit.setOpacity(0.5);
         exit.setOnMouseEntered(event -> {
+            playEffectClik();
             exit.setOpacity(1);
             Glow glow = new Glow(1000);
             exit.setEffect(glow);

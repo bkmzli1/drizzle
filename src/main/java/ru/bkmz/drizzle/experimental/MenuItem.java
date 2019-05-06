@@ -11,6 +11,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import static ru.bkmz.drizzle.util.Sound.playEffectClik;
+
 class MenuItem extends HBox {
 
     private static final Font FONT_LAYOUT_ITEM = Font.font("", FontWeight.BOLD, 18);
@@ -27,6 +29,7 @@ class MenuItem extends HBox {
         });
 
         labelText.setOnMouseEntered(event -> {
+            playEffectClik();
             labelText.setFill(color2);
             Glow glow = new Glow(1000);
             labelText.setEffect(glow);

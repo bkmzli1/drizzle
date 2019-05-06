@@ -21,6 +21,7 @@ import ru.bkmz.drizzle.util.Commons;
 import java.awt.*;
 
 import static ru.bkmz.drizzle.level.GameData.*;
+import static ru.bkmz.drizzle.util.Sound.playEffectClik;
 
 public class SetingsPane extends BorderPane {
     private VBox vBox;
@@ -190,6 +191,7 @@ public class SetingsPane extends BorderPane {
         });
 
         difficulty.setOnMouseEntered(event -> {
+            playEffectClik();
             difficulty.setFill(color2);
             Glow glow = new Glow(1000);
             difficulty.setEffect(glow);

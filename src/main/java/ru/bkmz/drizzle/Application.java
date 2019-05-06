@@ -105,6 +105,9 @@ public class Application extends javafx.application.Application {
         CopyFiles.failCopi("media/", "electric.wav");
         CopyFiles.failCopi("media/", "Shield.wav");
         CopyFiles.failCopi("media/", "star.wav");
+        CopyFiles.failCopi("media/", "Hard_kick_drum.wav");
+
+
         mediaPlayer = new MediaPlayer(
                 new Media(new File("res/media/sine.mp3").toURI().toString())
 
@@ -125,6 +128,9 @@ public class Application extends javafx.application.Application {
 
         PlayerProperties.soundStar = new Sound(new File("res/media/star.wav"));
         PlayerProperties.soundStar.setVolume(Effect_Volume.getValue() / 10f);
+
+        Sound.sound = new Sound(new File("res/media/Hard_kick_drum.wav"));
+        Sound.sound.setVolume(Effect_Volume.getValue() / 10f);
 
         this.paneMenu = new MenuPane();
         this.paneShop = new ShopPane();

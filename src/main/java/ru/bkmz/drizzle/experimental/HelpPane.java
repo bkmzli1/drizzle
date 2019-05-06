@@ -22,6 +22,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+import static ru.bkmz.drizzle.util.Sound.playEffectClik;
+
 public class HelpPane extends BorderPane {
     int sizeTxt = 20;
     Color color =  Color.rgb(0,225,225);
@@ -95,6 +97,7 @@ public class HelpPane extends BorderPane {
             }
         });
         creatorsGit.setOnMouseEntered(event -> {
+            playEffectClik();
             Glow glow = new Glow(1000);
             creatorsGit.setEffect(glow);
         });

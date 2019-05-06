@@ -15,6 +15,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import static ru.bkmz.drizzle.util.Sound.playEffectClik;
+
 public class ShopPane extends BorderPane {
 
     private VBox vbox1, vbox2, vbox3, vbox4;
@@ -49,6 +51,7 @@ public class ShopPane extends BorderPane {
         });
 
         t1.setOnMouseEntered(event -> {
+            playEffectClik();
             t1.setOpacity(1);
             glow.setLevel(1);
             t1.setEffect(glow);
@@ -90,6 +93,7 @@ public class ShopPane extends BorderPane {
         });
 
         t1.setOnMouseEntered(event -> {
+            playEffectClik();
             t1.setOpacity(1);
             glow.setLevel(0.5);
             t1.setEffect(glow);

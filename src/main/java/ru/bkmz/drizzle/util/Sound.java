@@ -1,5 +1,7 @@
 package ru.bkmz.drizzle.util;
 
+import ru.bkmz.drizzle.level.GameData;
+
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +13,7 @@ public class Sound implements AutoCloseable {
     private int i=0;
     private FloatControl volumeControl = null;
     private boolean playing = false;
-
+    public static Sound sound;
     public Sound(File f) {
         try {
             stream = AudioSystem.getAudioInputStream(f);
@@ -128,6 +130,10 @@ public class Sound implements AutoCloseable {
                 }
             }
         }
+    }
+    public static void playEffectClik(){
+        sound.setVolume(GameData.Effect_Volume.getValue()/10f);
+        sound.play();
     }
 }
 
