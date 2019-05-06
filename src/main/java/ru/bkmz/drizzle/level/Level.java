@@ -210,7 +210,7 @@ public class Level {
         this.played = true;
 
         this.properties = new PlayerProperties();
-        this.overlay = new Overlay(0, 0, this.properties);
+        this.overlay = new Overlay(0, 20, this.properties);
 
         this.mobs.add(new Player((Commons.SCENE_WIDTH - Player.getWIDTH()) / 2, Commons.SCENE_GROUND,
                                  this, this.keyboard, this.properties));

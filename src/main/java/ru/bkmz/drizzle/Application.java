@@ -11,13 +11,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import ru.bkmz.drizzle.entity.mob.Acid;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.experimental.*;
 import ru.bkmz.drizzle.input.Keyboard;
 import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.util.Commons;
-import ru.bkmz.drizzle.util.FailCopi;
+import ru.bkmz.drizzle.util.CopyFiles;
 import ru.bkmz.drizzle.util.ImageLoader;
 import ru.bkmz.drizzle.util.Sound;
 
@@ -27,16 +28,20 @@ import java.util.Objects;
 
 import static ru.bkmz.drizzle.level.GameData.*;
 
-public class Application extends javafx.application.Application  {
-    private static final String VERSION = "v3.8.2";
+public class Application extends javafx.application.Application {
+    private static final String VERSION = "v3.8.3";
     private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
     private static final String TITLE = "drizzle";
     private static final String ARG_DEBUG = "debug";
+
+    private static File file = new File(config_file);
+
     public static boolean DEBUG_MODE = isDebugMode();
     private boolean consoleOn = true;
+
     private Group root;
     private Group users;
-
+    public Scene scene;
     private Keyboard keyboard;
 
     private Games games;
@@ -49,22 +54,10 @@ public class Application extends javafx.application.Application  {
     private Pane panePause;
 
 
-    public static String ERROR = "";
-    public static File file = new File("configData.conf");
-
     public static MediaPlayer mediaPlayer;
+
     public static void main(String... args) {
 
-        File config_file = new File(GameData.config_file);
-        if (config_file.exists()) {
-            try {
-                writeC();
-                readC();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-
-        }
         for (String arg : args) {
             if (arg.equals(ARG_DEBUG)) {
                 DEBUG_MODE = true;
@@ -107,20 +100,20 @@ public class Application extends javafx.application.Application  {
         ImageLoader.INSTANCE.load("gui/icons/frame");
         ImageLoader.INSTANCE.load("gui/icons/health");
 
-        FailCopi.failCopi("media/","sine.mp3");
-        FailCopi.failCopi("media/","Acid.wav");
+        CopyFiles.failCopi("media/", "sine.mp3");
+        CopyFiles.failCopi("media/", "Acid.wav");
 
         mediaPlayer = new MediaPlayer(
                 new Media(new File("res/media/sine.mp3").toURI().toString())
 
         );
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        float volume=RAIN_Volume.getValue()/10f;
+        float volume = RAIN_Volume.getValue() / 10f;
         mediaPlayer.setVolume(volume);
 
 
         Acid.sound = new Sound(new File("res/media/Acid.wav"));
-        volume=ACID_Volume.getValue()/10f;
+        volume = ACID_Volume.getValue() / 10f;
 
         Acid.sound.setVolume(volume);
 
@@ -141,19 +134,12 @@ public class Application extends javafx.application.Application  {
 
     @Override
     public void start(Stage stage) {
-        if (!ERROR.equals("")) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-            alert.setTitle("ERROR");
-            alert.setHeaderText(null);
-            alert.setContentText(ERROR);
-
-            alert.showAndWait();
-            System.exit(2);
-
-        }
+        System.out.println("SCENE_WIDTH=" + SCENE_WIDTH.getValue());
+        System.out.println("SCENE_HEIGHT=" + SCENE_HEIGHT.getValue());
         this.keyboard.addEventSource(stage);
-        Scene scene = new Scene(this.root, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
+        stage.initStyle(StageStyle.TRANSPARENT);
+
+        scene = new Scene(this.root, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         stage.setScene(scene);
         stage.sizeToScene();
 
@@ -207,6 +193,14 @@ public class Application extends javafx.application.Application  {
                 switchPane(this.users, this.paneMenu);
                 this.games.close();
 
+            } else if (eventType == StateEvent.SCREEN) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("ДЛЯ ИЗМЕНЕНИЯ ДАННОЙ НАСТРОЙКИ ПЕРЕЗАГРУЗИТЕ ИГРУ");
+                alert.showAndWait();
+
             } else if (eventType == StateEvent.COLLECTION) {
                 try {
                     cleaning();
@@ -223,7 +217,11 @@ public class Application extends javafx.application.Application  {
             Platform.exit();
             System.exit(0);
         });
-
+        if (SCREEN.getValue() == 0) {
+            stage.setMaximized(false);
+        } else {
+            stage.setMaximized(true);
+        }
 
         stage.fireEvent(new StateEvent(StateEvent.MENU));
         mediaPlayer.play();
@@ -235,7 +233,7 @@ public class Application extends javafx.application.Application  {
                     if (file.exists()) {
                         System.out.println("Консоль on");
                         Comands.comands();
-                    }else {
+                    } else {
                         System.out.println("Консоль off");
                     }
                 }
@@ -244,9 +242,7 @@ public class Application extends javafx.application.Application  {
         }
 
 
-
     }
-
 
 
 }

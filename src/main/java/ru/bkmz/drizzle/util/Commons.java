@@ -4,20 +4,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
+import ru.bkmz.drizzle.level.GameData;
 
 public class Commons {
 
-    public static double SCENE_WIDTH = 1000;
-    public static double SCENE_HEIGHT = 700;
-    public static double SCENE_WIDTH2 = 1440;
-    public static double SCENE_HEIGHT2 = 900;
-    public static double SCENE_GROUND = SCENE_HEIGHT / 40 * 33;
+    public static double SCENE_WIDTH = GameData.SCENE_WIDTH.getValue();
+    public static double SCENE_HEIGHT = GameData.SCENE_HEIGHT.getValue();
 
-    public static void setSceneWidth(int WIDTH, int HEIGHT) {
-        SCENE_WIDTH = WIDTH;
-        SCENE_HEIGHT = HEIGHT;
-        SCENE_GROUND = SCENE_HEIGHT / 40 * 33;
-    }
+    public static double SCENE_GROUND = SCENE_HEIGHT / 40 * 33;
 
 
     public static final LinearGradient GRADIENT = new LinearGradient(0, 0, 1, 1, true,

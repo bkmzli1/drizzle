@@ -28,7 +28,12 @@ public enum GameData {
     RAIN_Volume(0, 10, "Громкость дождя"),
     AcidSpawner_rate(10, 10, "Скорость"),
     AcidSpawner_variation(10, 10, "отклонение"),
-    AcidSpawner_count(1, 3, "повтор");
+    AcidSpawner_count(1, 3, "повтор"),
+
+    SCREEN(0,1,"экран"),
+    SCENE_WIDTH(1000,99999,"WIDTH"),
+    SCENE_HEIGHT(700,99999,"HEIGHT")
+    ;
 
     public static Properties properties = new Properties();
     private static boolean DEBUG_MODE;
