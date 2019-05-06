@@ -215,7 +215,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="52" />
     <option name="y" value="-16" />
     <option name="width" value="734" />
@@ -363,7 +363,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RunManager" selected="Gradle.drizzle4 [jar]">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.bkmz.drizzle.Application" />
       <module name="drizzle4.main" />
