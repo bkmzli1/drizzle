@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.util.Commons;
 
@@ -34,7 +35,7 @@ public class RainParticle extends Particle {
 
     @Override
     public void tick() {
-        this.x += this.dx;
+        this.x += this.dx+ GameData.PLAYER_LEVEL.getValue()/10f;
         this.y += this.dy;
 
         if (Objects.nonNull(this.level.getPlayer())) {

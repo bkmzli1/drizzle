@@ -109,6 +109,8 @@ public class Level {
         this.keyboard = keyboard;
 
         this.spawners.add(new RainSpawner(0, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, 5));
+        this.spawners.add(new RainSpawner(-1000, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, 5));
+        this.spawners.add(new RainSpawner(-2000, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, 5));
     }
 
     public void add(Entity e) {
@@ -216,6 +218,8 @@ public class Level {
                                  this, this.keyboard, this.properties));
 
         this.spawners.add(new AcidSpawner(0, -50, Commons.SCENE_WIDTH, 0, this, AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
+        this.spawners.add(new AcidSpawner(-1000, -50, Commons.SCENE_WIDTH, 0, this, AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
+        this.spawners.add(new AcidSpawner(-2000, -50, Commons.SCENE_WIDTH, 0, this, AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
         this.spawners.add(new ArmorSpawner(0, -50, Commons.SCENE_WIDTH, 0, this,
                                            Timescale.TICKS_PER_MINUTE >> 1,
                                            10 * Timescale.TICKS_PER_SECOND, 1));

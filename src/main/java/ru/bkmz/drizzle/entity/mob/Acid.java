@@ -12,6 +12,7 @@ import ru.bkmz.drizzle.util.Commons;
 import ru.bkmz.drizzle.util.ImageLoader;
 import ru.bkmz.drizzle.util.Sound;
 
+
 public class Acid extends Mob {
 
     private static final double WIDTH = 10;
@@ -31,7 +32,6 @@ public class Acid extends Mob {
     private static final int PARTICLE_COUNT = 5;
 
     private Acid(double x, double y, double dx, double dy, Level level) {
-
         super(x, y, WIDTH, HEIGHT,
                 new AnimatedSprite(IMAGE, IMAGE_ROWS, IMAGE_COLS, ANIMATION_DELTA, ANIMATION_STEPS),
                 SPRITE_X_OFFSET, SPRITE_Y_OFFSET, level);
@@ -42,7 +42,7 @@ public class Acid extends Mob {
     }
 
     public Acid(double x, double y, Level level) {
-        this(x, y, SPEED_X_DEFAULT, SPEED_Y_DEFAULT, level);
+        this(x, y, SPEED_X_DEFAULT+GameData.PLAYER_LEVEL.getValue()/2f, SPEED_Y_DEFAULT, level);
     }
 
     @Override
@@ -83,5 +83,10 @@ public class Acid extends Mob {
             }
         });
     }
-}
 
+
+
+
+
+
+}

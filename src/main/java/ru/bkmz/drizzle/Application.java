@@ -29,7 +29,7 @@ import java.util.Objects;
 import static ru.bkmz.drizzle.level.GameData.*;
 
 public class Application extends javafx.application.Application {
-    private static final String VERSION = "v3.8.4";
+    private static final String VERSION = "v3.8.5";
     private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
     private static final String TITLE = "drizzle";
     private static final String ARG_DEBUG = "debug";

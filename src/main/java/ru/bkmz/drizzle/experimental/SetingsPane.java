@@ -252,7 +252,6 @@ public class SetingsPane extends BorderPane {
             } else if (pd.getName().equals(Effect_Volume.getName())) {
                 System.out.println("Acid");
                 Acid.sound.setVolume(valueF);
-                Acid.sound.play();
                 pd.setVolume(value);
             } else if (pd.getName().equals(SCREEN.getName())) {
                 System.out.println("Screen");
