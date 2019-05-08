@@ -46,14 +46,14 @@ public class AcidParticle extends Particle {
             this.dx = Math.min(0, this.dx + SPEED_X_INCREMENT);
         }
 
-        if (this.x < 0) {
+       /* if (this.x < 0) {
             this.x = 0;
             this.dx *= -1;
         } else if (this.x + this.width > Commons.SCENE_WIDTH) {
             this.x = Commons.SCENE_WIDTH - this.width;
             this.dx *= -1;
         }
-
+*/
         if (this.y + this.height > Commons.SCENE_GROUND) {
             this.y = Commons.SCENE_GROUND - this.height;
             this.despawnActive = true;

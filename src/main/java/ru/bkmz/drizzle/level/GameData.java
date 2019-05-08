@@ -1,5 +1,6 @@
 package ru.bkmz.drizzle.level;
 
+import java.awt.*;
 import java.io.*;
 import java.util.Properties;
 
@@ -31,11 +32,10 @@ public enum GameData {
     AcidSpawner_count(1, 3, "повтор"),
 
     SCREEN(0,1,"экран"),
-    SCENE_WIDTH(1000,99999,"WIDTH"),
-    SCENE_HEIGHT(700,99999,"HEIGHT"),
+    SCENE_WIDTH(Toolkit.getDefaultToolkit().getScreenSize().width - 440,99999,"WIDTH"),
+    SCENE_HEIGHT(Toolkit.getDefaultToolkit().getScreenSize().height - 200,99999,"HEIGHT"),
     BACKGROUND(1,7,"Фон")
     ;
-
     public static Properties properties = new Properties();
     private static boolean DEBUG_MODE;
 
