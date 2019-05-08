@@ -29,7 +29,7 @@ public class Level {
     private final List<Entity> mobs = new ArrayList<>();
     private final List<Entity> particles = new ArrayList<>();
     private final List<Spawner> spawners = new ArrayList<>();
-    private final Image background = ImageLoader.INSTANCE.getImage("background/background");
+    private final Image background = ImageLoader.INSTANCE.getImage("background/background"+ BACKGROUND.getValue());
     private final Keyboard keyboard;
     private final LevelController levelController = new LevelController(this);
 

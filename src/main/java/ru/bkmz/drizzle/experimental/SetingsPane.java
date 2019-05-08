@@ -25,9 +25,8 @@ import static ru.bkmz.drizzle.util.Sound.playEffectClik;
 
 public class SetingsPane extends BorderPane {
     private VBox vBox;
-    private HBox HRainVolume, HAcidVolume, HDifficulty, HScreen;
+    private HBox HRainVolume, HAcidVolume, HDifficulty, HScreen, Hbackground;
 
-    private static Text rainVolume = new Text(), acidVolume = new Text(), difficulty = new Text(), screen = new Text();
     private Color color1 = Color.rgb(0, 145, 225), color2 = Color.rgb(0, 225, 225);
 
 
@@ -95,6 +94,9 @@ public class SetingsPane extends BorderPane {
         HScreen = new HBox(10);
         HScreen.setAlignment(Pos.CENTER);
 
+        Hbackground = new HBox(10);
+        Hbackground.setAlignment(Pos.CENTER);
+
         vBox = new VBox(10);
         vBox.setAlignment(Pos.CENTER);
 
@@ -105,24 +107,25 @@ public class SetingsPane extends BorderPane {
     public void refresh() {
         vBox.getChildren().clear();
 
-        difficulty.setFill(Color.CORNFLOWERBLUE);
-        difficulty.setFont(Font.font("", FontWeight.BOLD, 20));
 
-        addEntryScreen(SCREEN, screen, HScreen, StateEvent.SCREEN);
-        addEntryTwo(HRainVolume, rainVolume, RAIN_Volume);
-        addEntryTwo(HAcidVolume, acidVolume, Effect_Volume);
+
+        addEntryScreen(SCREEN, HScreen, StateEvent.SCREEN);
+        addEntryTwo(Hbackground,  BACKGROUND);
+        addEntryTwo(HRainVolume,  RAIN_Volume);
+        addEntryTwo(HAcidVolume,  Effect_Volume);
         addEntryOne("Сложность:", AcidSpawner_rate, AcidSpawner_variation, AcidSpawner_count, HDifficulty);
 
         vBox.getChildren().add(HScreen);
+        vBox.getChildren().add(Hbackground);
         vBox.getChildren().add(HRainVolume);
         vBox.getChildren().add(HAcidVolume);
         vBox.getChildren().add(HDifficulty);
     }
 
-    private void addEntryScreen(GameData pd, Text setT, HBox hBox, EventType<StateEvent> eventType) {
+    private void addEntryScreen(GameData pd, HBox hBox, EventType<StateEvent> eventType) {
         hBox.getChildren().clear();
         Text name = new Text(pd.getName());
-
+        Text setT = new Text();
         setT.setFill(Color.CORNFLOWERBLUE);
         setT.setFont(Font.font("", FontWeight.BOLD, 20));
         if (pd.getValue() == 0) {
@@ -167,6 +170,9 @@ public class SetingsPane extends BorderPane {
     private void addEntryOne(String names, GameData rate, GameData variation, GameData count, HBox hBox) {
         hBox.getChildren().clear();
         Text name = new Text(names);
+        Text difficulty  = new Text();
+        difficulty.setFill(Color.CORNFLOWERBLUE);
+        difficulty.setFont(Font.font("", FontWeight.BOLD, 20));
         name.setFill(Color.CORNFLOWERBLUE);
         name.setFont(Font.font("", FontWeight.BOLD, 20));
         if (count.getValue() == 1) {
@@ -212,10 +218,10 @@ public class SetingsPane extends BorderPane {
 
     }
 
-    private void addEntryTwo(HBox hBox, Text setT, GameData pd) {
+    private void addEntryTwo(HBox hBox,  GameData pd) {
         hBox.getChildren().clear();
         Text name = new Text(pd.getName());
-
+        Text setT = new Text();
         setT.setFill(Color.CORNFLOWERBLUE);
         setT.setFont(Font.font("", FontWeight.BOLD, 20));
         setT.setText(pd.getValue() + "");
@@ -257,9 +263,14 @@ public class SetingsPane extends BorderPane {
                 System.out.println("Screen");
                 pd.setVolume(value);
             }
-            save();
-            this.refresh();
+
         }
+        if (pd.getName().equals(BACKGROUND.getName())) {
+            pd.setVolume(value);
+            fireEvent(new StateEvent(StateEvent.BACKGROUND));
+        }
+        save();
+        this.refresh();
     }
 
 

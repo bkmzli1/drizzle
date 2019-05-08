@@ -2,23 +2,66 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="635cf8c3-f9d7-4a9b-8b59-ecc54b11be36" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/scripts/drizzle4.bat" beforeDir="false" afterPath="$PROJECT_DIR$/build/scripts/drizzle4.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playdata.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Comands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Comands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Games.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Games.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/item/Energy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/item/Energy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/item/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/item/Shield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/item/Shield.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/item/Star.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/item/Star.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/mob/Acid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/mob/Acid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/mob/Mob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/mob/Mob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/mob/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/mob/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/particle/AcidParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/particle/AcidParticle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/particle/Particle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/particle/Particle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/particle/RainParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/particle/RainParticle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/particle/ShockParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/particle/ShockParticle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/AcidSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/AcidSpawner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/ArmorSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/ArmorSpawner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/EnergySpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/EnergySpawner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/RainSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/RainSpawner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/Spawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/Spawner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/StarSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/StarSpawner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/event/StateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/event/StateEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/HelpPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/HelpPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/MenuButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/MenuItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/MenuPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/MenuPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/PausePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/PausePane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/SetingsPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/SetingsPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/ShopPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/ShopPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/StatPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/StatPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/graphics/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/graphics/Drawable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/graphics/Overlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/graphics/Overlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/graphics/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/graphics/Sprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/graphics/animation/AnimatedSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/graphics/animation/AnimatedSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/graphics/animation/Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/graphics/animation/Step.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/input/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/input/Keyboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/GameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/GameData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/Timescale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/Timescale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/player/PlayerProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/player/PlayerProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/player/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/player/Skill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/Commons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/Commons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/CopyFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/CopyFiles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/FrameCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/FrameCounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/ImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/QuadConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/QuadConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/background/background.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/background/background1.png" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -83,11 +126,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Comands.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/SetingsPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="30" />
+            <state relative-caret-position="559">
+              <caret line="112" column="31" lean-forward="true" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/GameData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="426">
+              <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -95,20 +147,48 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
+            <state relative-caret-position="-2910">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/ImageLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1329#1330#0" expanded="true" />
+                <element signature="e#1378#1379#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/Level.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+            <state relative-caret-position="153">
+              <caret line="31" column="113" selection-start-line="31" selection-start-column="113" selection-end-line="31" selection-end-column="113" />
+              <folding>
+                <element signature="e#1619#1620#0" expanded="true" />
+                <element signature="e#1661#1662#0" expanded="true" />
+                <element signature="e#1859#1860#0" expanded="true" />
+                <element signature="e#1902#1903#0" expanded="true" />
+                <element signature="e#2200#2201#0" expanded="true" />
+                <element signature="e#2264#2265#0" expanded="true" />
+                <element signature="e#2302#2303#0" expanded="true" />
+                <element signature="e#2366#2367#0" expanded="true" />
+                <element signature="e#5192#5193#0" expanded="true" />
+                <element signature="e#5235#5236#0" expanded="true" />
+                <element signature="e#5272#5273#0" expanded="true" />
+                <element signature="e#5323#5324#0" expanded="true" />
+                <element signature="e#5356#5357#0" expanded="true" />
+                <element signature="e#5436#5437#0" expanded="true" />
+                <element signature="e#5489#5490#0" expanded="true" />
+                <element signature="e#5527#5528#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,11 +211,9 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/song.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/FailCopi.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/CopyFiles.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/event/StateEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/Commons.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/Spawner.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/StatPane.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/GameData.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/player/PlayerProperties.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/item/Star.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/Sound.java" />
@@ -144,7 +222,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/PausePane.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/ShopPane.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/MenuItem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/SetingsPane.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/FrameCounter.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/particle/AcidParticle.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/ImageLoader.java" />
@@ -155,11 +232,14 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/graphics/animation/AnimatedSprite.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/mob/Acid.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/RainSpawner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/Level.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Comands.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/particle/RainParticle.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Application.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/event/StateEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/GameData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/Level.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/SetingsPane.java" />
       </list>
     </option>
   </component>
@@ -181,8 +261,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -201,10 +279,94 @@
               <item name="build" type="462c0819:PsiDirectoryNode" />
               <item name="libs" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="gradle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="event" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="experimental" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="level" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="background" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -241,7 +403,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.drizzle4 [jar]">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.bkmz.drizzle.Application" />
       <module name="drizzle4.main" />
@@ -302,12 +464,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42028000" />
+    <option name="totallyTimeSpent" value="44233000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49814126" visible="true" weight="0.24713467" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49814126" visible="true" weight="0.14541547" />
       <window_info id="Structure" order="1" sideWeight="0.5018587" side_tool="true" weight="0.24713467" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -317,7 +480,7 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27590847" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27590847" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39973083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -353,6 +516,22 @@
         <option value="3" />
         <option value="1" />
       </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
     </option>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -427,8 +606,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/StatPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="72" column="51" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
+        <state relative-caret-position="187">
+          <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -475,13 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/event/StateEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/MenuItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
@@ -491,8 +663,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/ShopPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+        <state relative-caret-position="68">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -554,24 +726,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/Commons.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/graphics/Overlay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-442">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/SetingsPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="253" column="45" selection-start-line="253" selection-start-column="45" selection-end-line="253" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -624,7 +782,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Games.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
           <folding>
             <element signature="e#2294#2295#0" expanded="true" />
             <element signature="e#2342#2343#0" expanded="true" />
@@ -643,13 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/ImageLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="75" column="17" selection-start-line="75" selection-start-column="17" selection-end-line="75" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/canvas/GraphicsContext.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
@@ -664,20 +815,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/mob/RotateImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" column="30" lean-forward="true" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/GameData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/mob/RotateImage.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/particle/ShockParticle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -713,13 +851,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/Level.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="110" column="69" selection-start-line="110" selection-start-column="69" selection-end-line="110" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -764,20 +895,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/event/StateEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="28" column="4" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/Commons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="50" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/ImageLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding>
+            <element signature="e#1329#1330#0" expanded="true" />
+            <element signature="e#1378#1379#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/Level.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="31" column="113" selection-start-line="31" selection-start-column="113" selection-end-line="31" selection-end-column="113" />
+          <folding>
+            <element signature="e#1619#1620#0" expanded="true" />
+            <element signature="e#1661#1662#0" expanded="true" />
+            <element signature="e#1859#1860#0" expanded="true" />
+            <element signature="e#1902#1903#0" expanded="true" />
+            <element signature="e#2200#2201#0" expanded="true" />
+            <element signature="e#2264#2265#0" expanded="true" />
+            <element signature="e#2302#2303#0" expanded="true" />
+            <element signature="e#2366#2367#0" expanded="true" />
+            <element signature="e#5192#5193#0" expanded="true" />
+            <element signature="e#5235#5236#0" expanded="true" />
+            <element signature="e#5272#5273#0" expanded="true" />
+            <element signature="e#5323#5324#0" expanded="true" />
+            <element signature="e#5356#5357#0" expanded="true" />
+            <element signature="e#5436#5437#0" expanded="true" />
+            <element signature="e#5489#5490#0" expanded="true" />
+            <element signature="e#5527#5528#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/level/GameData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2910">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/SetingsPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="112" column="31" lean-forward="true" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="31" />
         </state>
       </provider>
     </entry>

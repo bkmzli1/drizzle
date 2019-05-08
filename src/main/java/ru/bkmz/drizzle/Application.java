@@ -79,10 +79,18 @@ public class Application extends javafx.application.Application {
         load();
         DEBUG_MODE = isDebugMode();
         ImageLoader.INSTANCE.setCommonPrefix("");
-        ImageLoader.INSTANCE.setCommonSuffix(".png");
         ImageLoader.INSTANCE.preferExternalSources(true);
 
-        ImageLoader.INSTANCE.load("background/background");
+        ImageLoader.INSTANCE.setCommonSuffix(".jpg");
+        ImageLoader.INSTANCE.load("background/background2");
+        ImageLoader.INSTANCE.load("background/background3");
+        ImageLoader.INSTANCE.load("background/background4");
+        ImageLoader.INSTANCE.load("background/background5");
+        ImageLoader.INSTANCE.load("background/background6");
+        ImageLoader.INSTANCE.load("background/background7");
+
+        ImageLoader.INSTANCE.setCommonSuffix(".png");
+        ImageLoader.INSTANCE.load("background/background1");
         ImageLoader.INSTANCE.load("entity/acid");
         ImageLoader.INSTANCE.load("entity/armor");
         ImageLoader.INSTANCE.load("entity/energy");
@@ -209,13 +217,9 @@ public class Application extends javafx.application.Application {
                 this.games.close();
 
             } else if (eventType == StateEvent.SCREEN) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-                alert.setTitle("Information");
-                alert.setHeaderText(null);
-                alert.setContentText("ДЛЯ ИЗМЕНЕНИЯ ДАННОЙ НАСТРОЙКИ ПЕРЕЗАГРУЗИТЕ ИГРУ");
-                alert.showAndWait();
-
+                reboot();
+            } else if (eventType == StateEvent.BACKGROUND) {
+                reboot();
             } else if (eventType == StateEvent.COLLECTION) {
                 try {
                     cleaning();
@@ -260,5 +264,13 @@ public class Application extends javafx.application.Application {
 
     }
 
+    void reboot() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText("ДЛЯ ИЗМЕНЕНИЯ ДАННОЙ НАСТРОЙКИ ПЕРЕЗАГРУЗИТЕ ИГРУ");
+        alert.showAndWait();
+    }
 
 }

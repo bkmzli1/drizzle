@@ -32,7 +32,8 @@ public enum GameData {
 
     SCREEN(0,1,"экран"),
     SCENE_WIDTH(1000,99999,"WIDTH"),
-    SCENE_HEIGHT(700,99999,"HEIGHT")
+    SCENE_HEIGHT(700,99999,"HEIGHT"),
+    BACKGROUND(1,7,"Фон")
     ;
 
     public static Properties properties = new Properties();
