@@ -38,8 +38,8 @@ public class SetingsPane extends BorderPane {
             AcidSpawner_rate.setVolume(10);
             AcidSpawner_variation.setVolume(10);
             AcidSpawner_count.setVolume(1);
-            SCENE_WIDTH.setVolume(1000);
-            SCENE_HEIGHT.setVolume(700);
+            SCENE_WIDTH.setVolume(Toolkit.getDefaultToolkit().getScreenSize().width - 440);
+            SCENE_HEIGHT.setVolume(Toolkit.getDefaultToolkit().getScreenSize().height - 200);
             SCREEN.setVolume(0);
             save();
             refresh();
