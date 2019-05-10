@@ -29,7 +29,7 @@ import java.util.Objects;
 import static ru.bkmz.drizzle.level.GameData.*;
 
 public class Application extends javafx.application.Application {
-    private static final String VERSION = "v3.8.6";
+    private static final String VERSION = "v3.8.8";
     private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
     private static final String TITLE = "drizzle";
     private static final String ARG_DEBUG = "debug";
@@ -37,7 +37,6 @@ public class Application extends javafx.application.Application {
     private static File file = new File(config_file);
 
     public static boolean DEBUG_MODE = isDebugMode();
-    private boolean consoleOn = true;
 
     private Group root;
     private Group users;
@@ -57,18 +56,33 @@ public class Application extends javafx.application.Application {
     public static MediaPlayer mediaPlayer;
 
     public static void main(String... args) {
+        //включение режима отладки
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
 
+                if (file.exists()) {
+                    DEBUG_MODE = true;
+                    System.out.println("Консоль on");
+                    Comands.comands();
+                } else {
+                    System.out.println("Консоль off");
+                }
+            }
+        }).start();
         for (String arg : args) {
             if (arg.equals(ARG_DEBUG)) {
                 DEBUG_MODE = true;
             }
         }
+        //старт игры
         LauncherImpl.launchApplication(Application.class, args);
     }
 
+    //создание окон
     private static void switchPane(Group parent, Pane pane) {
-        parent.getChildren().clear();
 
+        parent.getChildren().clear();
         if (Objects.nonNull(pane)) {
             parent.getChildren().add(pane);
         }
@@ -76,9 +90,12 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void init() {
-        load();
-        DEBUG_MODE = isDebugMode();
-        ImageLoader.INSTANCE.setCommonPrefix("");
+        load();//загрузка GameData
+        /*
+         * preferExternalSources тип загрузки
+         * setCommonSuffix формат
+         * load загрузка
+         * */
         ImageLoader.INSTANCE.preferExternalSources(true);
 
         ImageLoader.INSTANCE.setCommonSuffix(".jpg");
@@ -107,7 +124,7 @@ public class Application extends javafx.application.Application {
         ImageLoader.INSTANCE.load("gui/icons/experience");
         ImageLoader.INSTANCE.load("gui/icons/frame");
         ImageLoader.INSTANCE.load("gui/icons/health");
-
+        //копирование файлов из jar
         CopyFiles.failCopi("media/", "sine.mp3");
         CopyFiles.failCopi("media/", "Acid.wav");
         CopyFiles.failCopi("media/", "electric.wav");
@@ -115,14 +132,13 @@ public class Application extends javafx.application.Application {
         CopyFiles.failCopi("media/", "star.wav");
         CopyFiles.failCopi("media/", "Hard_kick_drum.wav");
 
-
+        //определение музыки
         mediaPlayer = new MediaPlayer(
                 new Media(new File("res/media/sine.mp3").toURI().toString())
 
         );
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        float volume = RAIN_Volume.getValue() / 10f;
-        mediaPlayer.setVolume(volume);
+        mediaPlayer.setVolume(RAIN_Volume.getValue() / 10f);
 
 
         Acid.sound = new Sound(new File("res/media/Acid.wav"));
@@ -140,6 +156,7 @@ public class Application extends javafx.application.Application {
         Sound.sound = new Sound(new File("res/media/Hard_kick_drum.wav"));
         Sound.sound.setVolume(Effect_Volume.getValue() / 10f);
 
+        //определение окона
         this.paneMenu = new MenuPane();
         this.paneShop = new ShopPane();
         this.paneStat = new StatPane();
@@ -157,15 +174,14 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) {
-        System.out.println("SCENE_WIDTH=" + SCENE_WIDTH.getValue());
-        System.out.println("SCENE_HEIGHT=" + SCENE_HEIGHT.getValue());
-        this.keyboard.addEventSource(stage);
-        stage.initStyle(StageStyle.TRANSPARENT);
 
-        scene = new Scene(this.root, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
-        stage.setScene(scene);
-        stage.sizeToScene();
+        this.keyboard.addEventSource(stage);//добовление ивентоов
+        stage.initStyle(StageStyle.TRANSPARENT);//тип окна
 
+        scene = new Scene(this.root, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);//определение окна
+        stage.setScene(scene);//создание окна
+        //stage.sizeToScene();
+        //оброботка ивентов
         stage.addEventHandler(StateEvent.STATE, event -> {
             final EventType<? extends Event> eventType = event.getEventType();
 
@@ -229,41 +245,20 @@ public class Application extends javafx.application.Application {
             }
             event.consume();
         });
-        stage.setTitle((DEBUG_MODE ? TITLE_DEBUG_PREFIX + " " : "") + TITLE + " " + VERSION);
-        stage.setResizable(false);
-        stage.show();
-        stage.setOnCloseRequest(event -> {
-            Platform.exit();
-            System.exit(0);
-        });
+        stage.setTitle((DEBUG_MODE ? TITLE_DEBUG_PREFIX + " " : "") + TITLE + " " + VERSION);//Определяет заголовок
+        stage.setResizable(false);// запрет на изменение окна
+        stage.show();//сборка окна
+        //режим окна
         if (SCREEN.getValue() == 0) {
             stage.setMaximized(false);
         } else {
             stage.setMaximized(true);
         }
-
-        stage.fireEvent(new StateEvent(StateEvent.MENU));
-        mediaPlayer.play();
-        if (consoleOn) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-
-                    if (file.exists()) {
-                        DEBUG_MODE = true;
-                        System.out.println("Консоль on");
-                        Comands.comands();
-                    } else {
-                        System.out.println("Консоль off");
-                    }
-                }
-            }).start();
-            consoleOn = false;
-        }
-
-
+        stage.fireEvent(new StateEvent(StateEvent.MENU));//открытие меню
+        mediaPlayer.play();//запуск фоновой музыки
     }
 
+    //оповещение что нужна перезагрузка
     void reboot() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 

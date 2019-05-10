@@ -2,6 +2,7 @@ package ru.bkmz.drizzle.entity.item;
 
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.graphics.Sprite;
+import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.util.Commons;
 
@@ -20,7 +21,7 @@ public abstract class Item extends Entity {
 
     protected Item(double x, double y, double width, double height, Sprite sprite, double offsetX,
                    double offsetY, Level level) {
-        this(x, y, width, height, sprite, offsetX, offsetY, DEFAULT_SPEED_X, DEFAULT_SPEED_Y,
+        this(x, y, width, height, sprite, offsetX, offsetY, DEFAULT_SPEED_X+ GameData.PLAYER_LEVEL.getValue()/2f, DEFAULT_SPEED_Y,
                 level);
     }
 

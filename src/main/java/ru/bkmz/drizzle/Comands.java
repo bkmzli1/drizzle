@@ -7,6 +7,7 @@ import ru.bkmz.drizzle.level.Level;
 import java.util.Scanner;
 
 class Comands extends Entity {
+
     Comands(double x, double y, double width, double height, Level level) {
         super(x, y, width, height, level);
     }

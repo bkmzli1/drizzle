@@ -38,9 +38,11 @@ public class SetingsPane extends BorderPane {
             AcidSpawner_rate.setVolume(10);
             AcidSpawner_variation.setVolume(10);
             AcidSpawner_count.setVolume(1);
-            SCENE_WIDTH.setVolume(Toolkit.getDefaultToolkit().getScreenSize().width - 440);
-            SCENE_HEIGHT.setVolume(Toolkit.getDefaultToolkit().getScreenSize().height - 200);
+            SCENE_WIDTH.setVolume((int)(Toolkit.getDefaultToolkit().getScreenSize().height/1.2f));
+            SCENE_HEIGHT.setVolume((int)(Toolkit.getDefaultToolkit().getScreenSize().height/1.2f));
             SCREEN.setVolume(0);
+            System.out.println("SCENE_WIDTH=" + SCENE_WIDTH.getValue());
+            System.out.println("SCENE_HEIGHT=" + SCENE_HEIGHT.getValue());
             save();
             refresh();
             fireEvent(new StateEvent(StateEvent.SCREEN));
@@ -144,8 +146,8 @@ public class SetingsPane extends BorderPane {
         eventButtonL.setOnMouseClicked(event -> {
             eventButtons(pd, pd.getValue() - 1);
             fireEvent(new StateEvent(eventType));
-            SCENE_WIDTH.setVolume(1000);
-            SCENE_HEIGHT.setVolume(700);
+            SCENE_WIDTH.setVolume((int)(Toolkit.getDefaultToolkit().getScreenSize().width/1.2f) );
+            SCENE_HEIGHT.setVolume((int)(Toolkit.getDefaultToolkit().getScreenSize().height/1.2f));
             System.out.println("SCENE_WIDTH=" + SCENE_WIDTH.getValue());
             System.out.println("SCENE_HEIGHT=" + SCENE_HEIGHT.getValue());
             save();

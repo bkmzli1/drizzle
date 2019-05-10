@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.Properties;
 
 public enum GameData {
-
+    //данные игры
     STAT_COUNT_EXPERIENCE(0, Integer.MAX_VALUE, "опыт"),
     STAT_COUNT_DAMAGE(0, Integer.MAX_VALUE, "урон"),
     STAT_COUNT_SHIELD(0, Integer.MAX_VALUE, "собрано щитов"),
@@ -31,14 +31,12 @@ public enum GameData {
     AcidSpawner_variation(10, 10, "отклонение"),
     AcidSpawner_count(1, 3, "повтор"),
 
-    SCREEN(0,1,"экран"),
-    SCENE_WIDTH(Toolkit.getDefaultToolkit().getScreenSize().width - 440,99999,"WIDTH"),
-    SCENE_HEIGHT(Toolkit.getDefaultToolkit().getScreenSize().height - 200,99999,"HEIGHT"),
-    BACKGROUND(1,7,"Фон")
-    ;
-    public static Properties properties = new Properties();
+    SCREEN(0, 1, "экран"),
+    SCENE_WIDTH((int)(Toolkit.getDefaultToolkit().getScreenSize().width/1.2f) , 99999, "WIDTH"),
+    SCENE_HEIGHT((int)(Toolkit.getDefaultToolkit().getScreenSize().height/1.2f) , 99999, "HEIGHT"),
+    BACKGROUND(1, 7, "Фон");
+    public static Properties properties = new Properties();//Создает пустой список свойств без значений по умолчанию.
     private static boolean DEBUG_MODE;
-
 
     public static boolean isDebugMode() {
         return DEBUG_MODE;
@@ -53,6 +51,8 @@ public enum GameData {
 
     private int value;
 
+
+    //вывод определённых данных
     public static GameData[] getStatistics() {
         return new GameData[]{STAT_COUNT_EXPERIENCE, STAT_COUNT_DAMAGE, STAT_COUNT_SHIELD,
                 STAT_COUNT_NODES, STAT_COUNT_STARS, STAT_COUNT_JUMP, STAT_COUNT_SKILLACTIVATION};
@@ -67,6 +67,7 @@ public enum GameData {
                 UPGRADE_DOUBLEXP, UPGRADE_SHIELDSPAWN};
     }
 
+    //загруза
     public static void load() {
         try {
             read(SER_FILE);
@@ -80,7 +81,7 @@ public enum GameData {
             }
         }
     }
-
+    //сохронение
     public static void save() {
         try {
             write(SER_FILE);
@@ -88,6 +89,7 @@ public enum GameData {
             e.printStackTrace();
         }
     }
+    //чтение и запись в GameData
     private static void read(String file) throws ClassNotFoundException, IOException {
         FileInputStream fiStream = new FileInputStream(new File(file));
         ObjectInputStream oiStream = new ObjectInputStream(fiStream);
@@ -106,7 +108,7 @@ public enum GameData {
         oiStream.close();
         fiStream.close();
     }
-
+    //запись в фаил GameData
     private static void write(String file) throws IOException {
         FileOutputStream foStream = new FileOutputStream(new File(file), false);
         ObjectOutputStream ooStream = new ObjectOutputStream(foStream);
@@ -120,7 +122,7 @@ public enum GameData {
         foStream.close();
     }
 
-
+    //создание GameData
     GameData(int defaultValue, int max, String name) {
         this.value = defaultValue;
         this.max = max;
@@ -128,6 +130,7 @@ public enum GameData {
         this.name = name;
     }
 
+    //получение определённого параметра
     public String getName() {
         return this.name;
     }
@@ -143,15 +146,17 @@ public enum GameData {
     public int getValue() {
         return this.value;
     }
+
     public double getValueD() {
         return this.value;
     }
+    //прибовление к параметру
     public void increment() {
         if (this.value < this.max) {
             this.value++;
         }
     }
-
+    //прибовление определёного значения к параметру
     public void incrementBy(float value) {
         if (this.value + value > this.max) {
             this.value = this.max;
@@ -161,7 +166,7 @@ public enum GameData {
             this.value += value;
         }
     }
-
+    //изменение параметра
     public void setVolume(int value) {
         if (value > this.max) {
             this.value = this.max;
@@ -171,21 +176,7 @@ public enum GameData {
             this.value = value;
         }
     }
-
-    public static void readC() throws IOException {
-
-        InputStream inputStream = new FileInputStream(GameData.config_file);
-        properties.load(inputStream);
-
-        DEBUG_MODE = Boolean.parseBoolean(properties.getProperty("DEBUG_MODE"));
-
-    }
-
-    public static void writeC() throws IOException {
-        OutputStream fileOutputStream = new FileOutputStream(GameData.config_file);
-        properties.setProperty("DEBUG_MODE", "true");
-        properties.store(fileOutputStream, null);
-    }
+    //очистка GameData
     public static void cleaning() throws IOException {
 
         File file = new File(SER_FILE);

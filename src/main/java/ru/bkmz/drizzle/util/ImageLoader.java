@@ -22,9 +22,6 @@ public enum ImageLoader {
     private String suffix = "";
     private boolean enableExternalSources = false;
 
-    public void setCommonPrefix(String prefix) {
-        this.prefix = Objects.requireNonNull(prefix);
-    }
 
     public void setCommonSuffix(String suffix) {
         this.suffix = Objects.requireNonNull(suffix);

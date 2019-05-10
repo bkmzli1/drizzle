@@ -108,9 +108,7 @@ public class Level {
     public Level(Keyboard keyboard) {
         this.keyboard = keyboard;
 
-        this.spawners.add(new RainSpawner(0, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, 5));
-        this.spawners.add(new RainSpawner(-1000, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, 5));
-        this.spawners.add(new RainSpawner(-2000, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, 5));
+        this.spawners.add(new RainSpawner(-3000, -20, Commons.SCENE_WIDTH+3000, 0, this, 0, 0, 5));
     }
 
     public void add(Entity e) {
@@ -217,17 +215,15 @@ public class Level {
         this.mobs.add(new Player((Commons.SCENE_WIDTH - Player.getWIDTH()) / 2, Commons.SCENE_GROUND,
                                  this, this.keyboard, this.properties));
 
-        this.spawners.add(new AcidSpawner(0, -50, Commons.SCENE_WIDTH, 0, this, AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
-        this.spawners.add(new AcidSpawner(-1000, -50, Commons.SCENE_WIDTH, 0, this, AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
-        this.spawners.add(new AcidSpawner(-2000, -50, Commons.SCENE_WIDTH, 0, this, AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
-        this.spawners.add(new ArmorSpawner(0, -50, Commons.SCENE_WIDTH, 0, this,
-                                           Timescale.TICKS_PER_MINUTE >> 1,
-                                           10 * Timescale.TICKS_PER_SECOND, 1));
-        this.spawners
-                .add(new EnergySpawner(0, -50, Commons.SCENE_WIDTH, 0, this,
-                                       Timescale.TICKS_PER_SECOND, Timescale.TICKS_PER_SECOND, 1));
-        this.spawners.add(new StarSpawner(0, -50, Commons.SCENE_WIDTH, 0, this,
-                                          20 * Timescale.TICKS_PER_SECOND, 0, 1));
+        this.spawners.add(new AcidSpawner(-3000, -50, Commons.SCENE_WIDTH+3000, 0, this, AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
+
+
+        this.spawners.add(new ArmorSpawner(-3000, -50, Commons.SCENE_WIDTH+3000, 0, this, Timescale.TICKS_PER_MINUTE >> 1, 10 * Timescale.TICKS_PER_SECOND, 1));
+
+        this.spawners.add(new EnergySpawner(-3000, -50, Commons.SCENE_WIDTH+3000, 0, this, Timescale.TICKS_PER_SECOND, Timescale.TICKS_PER_SECOND, 1));
+
+
+        this.spawners.add(new StarSpawner(-3000, -50, Commons.SCENE_WIDTH+3000, 0, this, 20 * Timescale.TICKS_PER_SECOND, 0, 1));
 
         this.properties.getHealthProperty().addListener((Observable, OldValue, NewValue) -> {
             if (NewValue.intValue() <= 0) {

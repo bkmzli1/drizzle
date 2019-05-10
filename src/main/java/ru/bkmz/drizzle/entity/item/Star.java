@@ -7,7 +7,6 @@ import ru.bkmz.drizzle.util.ImageLoader;
 
 import javafx.scene.image.Image;
 
-import static ru.bkmz.drizzle.level.player.PlayerProperties.soundShield;
 import static ru.bkmz.drizzle.level.player.PlayerProperties.soundStar;
 
 public class Star extends Item {
