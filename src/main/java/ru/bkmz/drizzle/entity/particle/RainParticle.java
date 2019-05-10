@@ -35,7 +35,7 @@ public class RainParticle extends Particle {
 
     @Override
     public void tick() {
-        this.x += this.dx+ GameData.PLAYER_LEVEL.getValue()/10f;
+        this.x += this.dx + GameData.PLAYER_LEVEL.getValue() / 10f;
         this.y += this.dy;
 
         if (Objects.nonNull(this.level.getPlayer())) {

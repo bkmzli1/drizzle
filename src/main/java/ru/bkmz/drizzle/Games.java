@@ -54,6 +54,7 @@ class Games {
                     gc.fillText("getAverageFPS" + frameCounter.getAverageFPS(), 20, 680);
                     gc.fillText("getInstantFPS" + frameCounter.getInstantFPS(), 20, 660);
                 }
+
             }
         }.start();
 

@@ -29,7 +29,7 @@ public class Level {
     private final List<Entity> mobs = new ArrayList<>();
     private final List<Entity> particles = new ArrayList<>();
     private final List<Spawner> spawners = new ArrayList<>();
-    private final Image background = ImageLoader.INSTANCE.getImage("background/background"+ BACKGROUND.getValue());
+    private final Image background = ImageLoader.INSTANCE.getImage("background/background" + BACKGROUND.getValue());
     private final Keyboard keyboard;
     private final LevelController levelController = new LevelController(this);
 
@@ -107,8 +107,9 @@ public class Level {
 
     public Level(Keyboard keyboard) {
         this.keyboard = keyboard;
-
-        this.spawners.add(new RainSpawner(-3000, -20, Commons.SCENE_WIDTH+3000, 0, this, 0, 0, 5));
+        for (double x = 0, i = 0; i < 3; x = x - Commons.SCENE_WIDTH, i++) {
+            this.spawners.add(new RainSpawner(x, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, SCENE_WIDTH.getValue()/30));
+        }
     }
 
     public void add(Entity e) {
@@ -149,12 +150,12 @@ public class Level {
             if (Objects.nonNull(this.properties)) {
                 gc.fillText("Health\t\t: " + this.properties.getHealth(), 20, 270);
                 gc.fillText("Shield\t\t: " + this.properties.getArmorProperty().intValue(), 20,
-                            285);
+                        285);
                 gc.fillText("Energy\t\t: " + this.properties.getEnergyProperty().intValue(), 20,
-                            300);
+                        300);
                 gc.fillText("Level\t\t: " + this.properties.getLevelProperty().intValue(), 20, 315);
                 gc.fillText("Experience\t: " + this.properties.getExperienceProperty().intValue(),
-                            20, 330);
+                        20, 330);
             }
         }
     }
@@ -213,18 +214,19 @@ public class Level {
         this.overlay = new Overlay(0, 20, this.properties);
 
         this.mobs.add(new Player((Commons.SCENE_WIDTH - Player.getWIDTH()) / 2, Commons.SCENE_GROUND,
-                                 this, this.keyboard, this.properties));
-
-        this.spawners.add(new AcidSpawner(-3000, -50, Commons.SCENE_WIDTH+3000, 0, this, AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
-
-
-        this.spawners.add(new ArmorSpawner(-3000, -50, Commons.SCENE_WIDTH+3000, 0, this, Timescale.TICKS_PER_MINUTE >> 1, 10 * Timescale.TICKS_PER_SECOND, 1));
-
-        this.spawners.add(new EnergySpawner(-3000, -50, Commons.SCENE_WIDTH+3000, 0, this, Timescale.TICKS_PER_SECOND, Timescale.TICKS_PER_SECOND, 1));
+                this, this.keyboard, this.properties));
+        for (double x = 0, i = 0; i < 3; x = x - Commons.SCENE_WIDTH, i++) {
+            System.out.println("spawn");
+            this.spawners.add(new AcidSpawner(x, -50, Commons.SCENE_WIDTH, 0, this, AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
 
 
-        this.spawners.add(new StarSpawner(-3000, -50, Commons.SCENE_WIDTH+3000, 0, this, 20 * Timescale.TICKS_PER_SECOND, 0, 1));
+            this.spawners.add(new ArmorSpawner(x, -50, Commons.SCENE_WIDTH, 0, this, Timescale.TICKS_PER_MINUTE >> 1, 10 * Timescale.TICKS_PER_SECOND, 1));
 
+            this.spawners.add(new EnergySpawner(x, -50, Commons.SCENE_WIDTH, 0, this, Timescale.TICKS_PER_SECOND, Timescale.TICKS_PER_SECOND, 1));
+
+
+            this.spawners.add(new StarSpawner(x, -50, Commons.SCENE_WIDTH, 0, this, 20 * Timescale.TICKS_PER_SECOND, 0, 1));
+        }
         this.properties.getHealthProperty().addListener((Observable, OldValue, NewValue) -> {
             if (NewValue.intValue() <= 0) {
                 Platform.runLater(() -> {

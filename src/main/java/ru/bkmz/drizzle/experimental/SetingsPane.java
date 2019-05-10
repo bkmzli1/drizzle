@@ -191,11 +191,11 @@ public class SetingsPane extends BorderPane {
                 count.setVolume(2);
             } else if (count.getValue() == 2) {
                 rate.setVolume(1);
-                variation.setVolume(1);
+                variation.setVolume(10);
                 count.setVolume(3);
             } else if (count.getValue() == 3) {
                 rate.setVolume(10);
-                variation.setVolume(10);
+                variation.setVolume(1);
                 count.setVolume(1);
             }
             save();
