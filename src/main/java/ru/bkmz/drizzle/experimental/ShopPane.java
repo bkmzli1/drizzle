@@ -29,9 +29,9 @@ public class ShopPane extends BorderPane {
         Glow glow = new Glow(0);
         if (d.getValue() == d.getMax()) {
             if (GameData.PLAYER_SELECTEDSKILL.getValue() == id) {
-                t1.setFill(Color.LAWNGREEN);
+                t1.setFill(Commons.lawngreen);
             } else {
-                t1.setFill(Color.AQUAMARINE);
+                t1.setFill(Commons.aquamarine);
             }
         } else {
             t1.setFill(Color.DARKBLUE);
@@ -144,7 +144,7 @@ public class ShopPane extends BorderPane {
         text.setFont(Font.font("", FontWeight.BOLD, 20));
 
         HBox hbox = new HBox(new MenuButton(StateEvent.MENU), text);
-        hbox.setSpacing(700);
+        hbox.setSpacing(GameData.SCENE_WIDTH.getValue()-350);
         this.setTop(hbox);
 
         VBox vbox = new VBox(30);
@@ -189,7 +189,7 @@ public class ShopPane extends BorderPane {
         vbox2.getChildren().clear();
         vbox3.getChildren().clear();
 
-        text.setText("улучшения: " + GameData.PLAYER_POINTS.getValue());
+        text.setText("Количество очков: " + GameData.PLAYER_POINTS.getValue());
 
         addEntry(this, vbox1, vbox2, vbox3, GameData.PLAYER_HEALTH);
         addEntry(this, vbox1, vbox2, vbox3, GameData.UPGRADE_POWERRATE);

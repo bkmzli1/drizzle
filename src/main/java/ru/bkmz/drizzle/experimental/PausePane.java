@@ -53,7 +53,7 @@ public class PausePane extends BorderPane {
 
         Text text = new Text("Для востановление времени нажмите на ESC");
         text.setFont(Font.font("", FontWeight.BOLD, 15));
-        text.setFill(Color.rgb(0,225,225));
+        text.setFill(Commons.color2);
 
         vbox.getChildren().addAll(label, text);
 

@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import javafx.scene.image.Image;
+import ru.bkmz.drizzle.Application;
 
 public enum ImageLoader {
 
@@ -40,7 +41,11 @@ public enum ImageLoader {
     }
 
     public void load(String token) {
-        load(token, -1, -1, false, false);
+        try {
+            load(token, -1, -1, false, false);
+        }catch (Exception e){
+            Application.error += "ошибка загрузки: "+token+"\n";
+        }
     }
 
     public void load(String token, int width, int height) {

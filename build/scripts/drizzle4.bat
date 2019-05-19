@@ -63,7 +63,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\drizzle4-v3.8.2.jar
+set CLASSPATH=%APP_HOME%\lib\drizzle4-v3.8.9.jar
 
 @rem Execute drizzle4
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %DRIZZLE4_OPTS%  -classpath "%CLASSPATH%" ru.bkmz.drizzle.Application %CMD_LINE_ARGS%

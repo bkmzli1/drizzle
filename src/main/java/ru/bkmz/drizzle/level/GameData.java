@@ -26,14 +26,15 @@ public enum GameData {
     UPGRADE_SHIELDSPAWN(0, 1, "Щит отродясь мастерства"),
 
     Effect_Volume(0, 10, "Громкость эфектов"),
+    FPS(0, 2, "FPS"),
     RAIN_Volume(0, 10, "Громкость дождя"),
     AcidSpawner_rate(10, 10, "Скорость"),
     AcidSpawner_variation(10, 10, "отклонение"),
     AcidSpawner_count(1, 3, "повтор"),
 
     SCREEN(0, 1, "экран"),
-    SCENE_WIDTH((int)(Toolkit.getDefaultToolkit().getScreenSize().width/1.2f) , 99999, "WIDTH"),
-    SCENE_HEIGHT((int)(Toolkit.getDefaultToolkit().getScreenSize().height/1.2f) , 99999, "HEIGHT"),
+    SCENE_WIDTH((int)(Toolkit.getDefaultToolkit().getScreenSize().width/1.2f) , Integer.MAX_VALUE, "WIDTH"),
+    SCENE_HEIGHT((int)(Toolkit.getDefaultToolkit().getScreenSize().height/1.2f) , Integer.MAX_VALUE, "HEIGHT"),
     BACKGROUND(1, 7, "Фон");
     public static Properties properties = new Properties();//Создает пустой список свойств без значений по умолчанию.
     private static boolean DEBUG_MODE;

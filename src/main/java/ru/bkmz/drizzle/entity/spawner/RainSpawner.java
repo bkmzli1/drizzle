@@ -5,6 +5,7 @@ import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.entity.Entity;
 
+
 public final class RainSpawner extends Spawner {
 
     private static final int WIDTH = 1;

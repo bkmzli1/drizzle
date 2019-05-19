@@ -29,14 +29,14 @@ public class Level {
     private final List<Entity> mobs = new ArrayList<>();
     private final List<Entity> particles = new ArrayList<>();
     private final List<Spawner> spawners = new ArrayList<>();
-    private final Image background = ImageLoader.INSTANCE.getImage("background/background" + BACKGROUND.getValue());
+
     private final Keyboard keyboard;
     private final LevelController levelController = new LevelController(this);
-
     private PlayerProperties properties;
     private Overlay overlay;
     private boolean paused = false;
     private boolean played = false;
+
 
     public class LevelController {
 
@@ -44,6 +44,7 @@ public class Level {
 
         private boolean inScope = false;
         private boolean hasClosedFlag = false;
+
 
         private LevelController(Level level) {
             this.level = level;
@@ -108,7 +109,7 @@ public class Level {
     public Level(Keyboard keyboard) {
         this.keyboard = keyboard;
         for (double x = 0, i = 0; i < 3; x = x - Commons.SCENE_WIDTH, i++) {
-            this.spawners.add(new RainSpawner(x, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, SCENE_WIDTH.getValue()/30));
+            this.spawners.add(new RainSpawner(x, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, (SCENE_WIDTH.getValue() / 10) ));
         }
     }
 
@@ -123,7 +124,7 @@ public class Level {
     }
 
     private void draw(GraphicsContext gc) {
-        gc.drawImage(this.background, 0, 0, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
+        gc.drawImage(ImageLoader.INSTANCE.getImage("background/background" + BACKGROUND.getValue()), 0, 0, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
 
         for (Entity p : this.particles) {
             p.draw(gc);
@@ -216,7 +217,6 @@ public class Level {
         this.mobs.add(new Player((Commons.SCENE_WIDTH - Player.getWIDTH()) / 2, Commons.SCENE_GROUND,
                 this, this.keyboard, this.properties));
         for (double x = 0, i = 0; i < 3; x = x - Commons.SCENE_WIDTH, i++) {
-            System.out.println("spawn");
             this.spawners.add(new AcidSpawner(x, -50, Commons.SCENE_WIDTH, 0, this, AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
 
 
@@ -250,4 +250,6 @@ public class Level {
         this.spawners.subList(1, spawners.size()).clear();
         this.particles.removeIf(E -> !(E instanceof RainParticle));
     }
+
+
 }

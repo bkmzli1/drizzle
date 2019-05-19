@@ -26,10 +26,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
+
 import static ru.bkmz.drizzle.level.GameData.*;
 
 public class Application extends javafx.application.Application {
-    private static final String VERSION = "v3.8.8.1";
+    private static final String VERSION = "v3.8.10";
     private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
     private static final String TITLE = "drizzle";
     private static final String ARG_DEBUG = "debug";
@@ -51,11 +52,15 @@ public class Application extends javafx.application.Application {
     private Pane paneHelp;
     private Pane paneSettings;
     private Pane panePause;
+    static String[] argss;
 
-
+    public static String error = "";
     public static MediaPlayer mediaPlayer;
 
     public static void main(String... args) {
+        argss = args;
+
+
         //включение режима отладки
         new Thread(new Runnable() {
             @Override
@@ -70,11 +75,6 @@ public class Application extends javafx.application.Application {
                 }
             }
         }).start();
-        for (String arg : args) {
-            if (arg.equals(ARG_DEBUG)) {
-                DEBUG_MODE = true;
-            }
-        }
         //старт игры
         LauncherImpl.launchApplication(Application.class, args);
     }
@@ -133,29 +133,32 @@ public class Application extends javafx.application.Application {
         CopyFiles.failCopi("media/", "Hard_kick_drum.wav");
 
         //определение музыки
-        mediaPlayer = new MediaPlayer(
-                new Media(new File("res/media/sine.mp3").toURI().toString())
+        try {
+            mediaPlayer = new MediaPlayer(
+                    new Media(new File("res/media/sine.mp3").toURI().toString())
 
-        );
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.setVolume(RAIN_Volume.getValue() / 10f);
+            );
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+            mediaPlayer.setVolume(RAIN_Volume.getValue() / 10f);
 
 
-        Acid.sound = new Sound(new File("res/media/Acid.wav"));
-        Acid.sound.setVolume(Effect_Volume.getValue() / 10f);
+            Acid.sound = new Sound(new File("res/media/Acid.wav"));
+            Acid.sound.setVolume(Effect_Volume.getValue() / 10f);
 
-        PlayerProperties.soundEnergy = new Sound(new File("res/media/electric.wav"));
-        PlayerProperties.soundEnergy.setVolume(Effect_Volume.getValue() / 10f);
+            PlayerProperties.soundEnergy = new Sound(new File("res/media/electric.wav"));
+            PlayerProperties.soundEnergy.setVolume(Effect_Volume.getValue() / 10f);
 
-        PlayerProperties.soundShield = new Sound(new File("res/media/Shield.wav"));
-        PlayerProperties.soundShield.setVolume(Effect_Volume.getValue() / 10f);
+            PlayerProperties.soundShield = new Sound(new File("res/media/Shield.wav"));
+            PlayerProperties.soundShield.setVolume(Effect_Volume.getValue() / 10f);
 
-        PlayerProperties.soundStar = new Sound(new File("res/media/star.wav"));
-        PlayerProperties.soundStar.setVolume(Effect_Volume.getValue() / 10f);
+            PlayerProperties.soundStar = new Sound(new File("res/media/star.wav"));
+            PlayerProperties.soundStar.setVolume(Effect_Volume.getValue() / 10f);
 
-        Sound.sound = new Sound(new File("res/media/Hard_kick_drum.wav"));
-        Sound.sound.setVolume(Effect_Volume.getValue() / 10f);
-
+            Sound.sound = new Sound(new File("res/media/Hard_kick_drum.wav"));
+            Sound.sound.setVolume(Effect_Volume.getValue() / 10f);
+        } catch (Exception e) {
+            error += "код ошибки:" + 1;
+        }
         //определение окона
         this.paneMenu = new MenuPane();
         this.paneShop = new ShopPane();
@@ -233,9 +236,9 @@ public class Application extends javafx.application.Application {
                 this.games.close();
 
             } else if (eventType == StateEvent.SCREEN) {
-                reboot();
+                notification("УВЕДОМЛЕНИЕ", "ДЛЯ ИЗМЕНЕНИЯ НАСТРОЕК ПРЕЗАПУСТИТЕ ПРОГРАММУ");
             } else if (eventType == StateEvent.BACKGROUND) {
-                reboot();
+                //notification("УВЕДОМЛЕНИЕ", "ДЛЯ ИЗМЕНЕНИЯ НАСТРОЕК ПРЕЗАПУСТИТЕ ПРОГРАММУ");
             } else if (eventType == StateEvent.COLLECTION) {
                 try {
                     cleaning();
@@ -256,16 +259,18 @@ public class Application extends javafx.application.Application {
         }
         stage.fireEvent(new StateEvent(StateEvent.MENU));//открытие меню
         mediaPlayer.play();//запуск фоновой музыки
+        if (!error.equals("")) {
+            notification("error", error);
+        }
     }
 
     //оповещение что нужна перезагрузка
-    void reboot() {
+    void notification(String name, String info) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-        alert.setTitle("Information");
+        alert.setTitle(name);
         alert.setHeaderText(null);
-        alert.setContentText("ДЛЯ ИЗМЕНЕНИЯ ДАННОЙ НАСТРОЙКИ ПЕРЕЗАГРУЗИТЕ ИГРУ");
+        alert.setContentText(info);
         alert.showAndWait();
     }
-
 }
