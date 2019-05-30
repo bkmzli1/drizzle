@@ -4,13 +4,14 @@ import javafx.application.Platform;
 import javafx.scene.image.Image;
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.entity.particle.AcidParticle;
+import ru.bkmz.drizzle.experimental.SoundEffects;
 import ru.bkmz.drizzle.graphics.animation.AnimatedSprite;
 import ru.bkmz.drizzle.graphics.animation.Step;
 import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.util.Commons;
 import ru.bkmz.drizzle.util.ImageLoader;
-import ru.bkmz.drizzle.util.Sound;
+
 
 
 public class Acid extends Mob {
@@ -25,7 +26,7 @@ public class Acid extends Mob {
     private static final double SPRITE_X_OFFSET = -1;
     private static final double SPRITE_Y_OFFSET = -14;
     private static final int ANIMATION_DELTA = 10;
-    public static Sound sound;
+
 
     private static final Step[] ANIMATION_STEPS = {new Step(0, 0), new Step(0, 1), new Step(0, 2),
             new Step(0, 3), new Step(0, 0)};
@@ -52,7 +53,7 @@ public class Acid extends Mob {
 
         if (this.y + this.height >= Commons.SCENE_GROUND) {
             this.y = Commons.SCENE_GROUND - this.height;
-            Sound.playSound("res/media/Acid.wav", GameData.Effect_Volume.getValue());
+            SoundEffects.playNewRandom("Acid.wav",GameData.Effect_Volume);
             kill();
             spawnParticles(0);
         }
@@ -65,6 +66,7 @@ public class Acid extends Mob {
             if (this.level.getPlayerProperties().getHealth() > 0) {
                 spawnParticles(-1);
             }
+            SoundEffects.playNewRandom("Acid.wav",GameData.Effect_Volume);
             kill();
         }
         ((AnimatedSprite) this.sprite).tick();

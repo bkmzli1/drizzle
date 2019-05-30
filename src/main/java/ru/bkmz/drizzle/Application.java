@@ -8,19 +8,13 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import ru.bkmz.drizzle.entity.mob.Acid;
+
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.experimental.*;
 import ru.bkmz.drizzle.input.Keyboard;
-import ru.bkmz.drizzle.level.player.PlayerProperties;
-import ru.bkmz.drizzle.util.Commons;
-import ru.bkmz.drizzle.util.CopyFiles;
-import ru.bkmz.drizzle.util.ImageLoader;
-import ru.bkmz.drizzle.util.Sound;
+import ru.bkmz.drizzle.util.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,9 +22,11 @@ import java.util.Objects;
 
 
 import static ru.bkmz.drizzle.level.GameData.*;
+import static ru.bkmz.drizzle.util.Language.getLanguageMap;
+import static ru.bkmz.drizzle.util.Language.sqlite;
 
 public class Application extends javafx.application.Application {
-    private static final String VERSION = "v3.8.10";
+    private static final String VERSION = "v3.9.0";
     private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
     private static final String TITLE = "drizzle";
     private static final String ARG_DEBUG = "debug";
@@ -42,24 +38,24 @@ public class Application extends javafx.application.Application {
     private Group root;
     private Group users;
     public Scene scene;
-    private Keyboard keyboard;
+    private static Keyboard keyboard;
 
     private Games games;
 
-    private Pane paneMenu;
-    private Pane paneShop;
-    private Pane paneStat;
-    private Pane paneHelp;
-    private Pane paneSettings;
-    private Pane panePause;
-    static String[] argss;
+    private static Pane paneMenu;
+    private static Pane paneShop;
+    private static Pane paneStat;
+    private static Pane paneHelp;
+    private static Pane paneSettings;
+    private static Pane panePause;
+    private static Pane paneOnlain;
+
 
     public static String error = "";
-    public static MediaPlayer mediaPlayer;
+
+    private static Media media;
 
     public static void main(String... args) {
-        argss = args;
-
 
         //включение режима отладки
         new Thread(new Runnable() {
@@ -91,6 +87,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void init() {
         load();//загрузка GameData
+
         /*
          * preferExternalSources тип загрузки
          * setCommonSuffix формат
@@ -125,47 +122,19 @@ public class Application extends javafx.application.Application {
         ImageLoader.INSTANCE.load("gui/icons/frame");
         ImageLoader.INSTANCE.load("gui/icons/health");
         //копирование файлов из jar
+
         CopyFiles.failCopi("media/", "sine.mp3");
         CopyFiles.failCopi("media/", "Acid.wav");
         CopyFiles.failCopi("media/", "electric.wav");
         CopyFiles.failCopi("media/", "Shield.wav");
         CopyFiles.failCopi("media/", "star.wav");
         CopyFiles.failCopi("media/", "Hard_kick_drum.wav");
-
-        //определение музыки
-        try {
-            mediaPlayer = new MediaPlayer(
-                    new Media(new File("res/media/sine.mp3").toURI().toString())
-
-            );
-            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-            mediaPlayer.setVolume(RAIN_Volume.getValue() / 10f);
+        CopyFiles.failCopi("DD/", "language");
 
 
-            Acid.sound = new Sound(new File("res/media/Acid.wav"));
-            Acid.sound.setVolume(Effect_Volume.getValue() / 10f);
-
-            PlayerProperties.soundEnergy = new Sound(new File("res/media/electric.wav"));
-            PlayerProperties.soundEnergy.setVolume(Effect_Volume.getValue() / 10f);
-
-            PlayerProperties.soundShield = new Sound(new File("res/media/Shield.wav"));
-            PlayerProperties.soundShield.setVolume(Effect_Volume.getValue() / 10f);
-
-            PlayerProperties.soundStar = new Sound(new File("res/media/star.wav"));
-            PlayerProperties.soundStar.setVolume(Effect_Volume.getValue() / 10f);
-
-            Sound.sound = new Sound(new File("res/media/Hard_kick_drum.wav"));
-            Sound.sound.setVolume(Effect_Volume.getValue() / 10f);
-        } catch (Exception e) {
-            error += "код ошибки:" + 1;
-        }
         //определение окона
-        this.paneMenu = new MenuPane();
-        this.paneShop = new ShopPane();
-        this.paneStat = new StatPane();
-        this.paneHelp = new HelpPane();
-        this.paneSettings = new SetingsPane();
-        this.panePause = new PausePane();
+        sqlite(LANGUAGE.getValue());
+        pane();
 
         this.keyboard = new Keyboard();
         this.games = new Games(this.keyboard);
@@ -175,8 +144,20 @@ public class Application extends javafx.application.Application {
 
     }
 
+    public static void pane() {
+        paneMenu = new MenuPane();
+        paneShop = new ShopPane();
+        paneStat = new StatPane();
+        paneHelp = new HelpPane();
+        paneOnlain = new Online(keyboard);
+        paneSettings = new SetingsPane();
+        panePause = new PausePane();
+    }
+
+
     @Override
     public void start(Stage stage) {
+
 
         this.keyboard.addEventSource(stage);//добовление ивентоов
         stage.initStyle(StageStyle.TRANSPARENT);//тип окна
@@ -196,6 +177,9 @@ public class Application extends javafx.application.Application {
                 switchPane(this.users, null);
                 this.games.play();
 
+            } else if (eventType == StateEvent.ONLINE) {
+                switchPane(this.users, this.paneOnlain);
+
             } else if (eventType == StateEvent.SHOP) {
 
                 ((ShopPane) this.paneShop).refresh();
@@ -206,7 +190,7 @@ public class Application extends javafx.application.Application {
                 ((StatPane) this.paneStat).refresh();
                 switchPane(this.users, this.paneStat);
 
-            } else if (eventType == StateEvent.STINGS) {
+            } else if (eventType == StateEvent.SETTINGS) {
 
                 ((SetingsPane) this.paneSettings).refresh();
                 switchPane(this.users, this.paneSettings);
@@ -235,8 +219,13 @@ public class Application extends javafx.application.Application {
                 switchPane(this.users, this.paneMenu);
                 this.games.close();
 
+            } else if (eventType == StateEvent.MENU_SETTINGS) {
+
+                switchPane(this.users, this.paneSettings);
+                this.games.close();
+
             } else if (eventType == StateEvent.SCREEN) {
-                notification("УВЕДОМЛЕНИЕ", "ДЛЯ ИЗМЕНЕНИЯ НАСТРОЕК ПРЕЗАПУСТИТЕ ПРОГРАММУ");
+                notification(getLanguageMap("NOTIFICATION"), getLanguageMap("RESTART"));
             } else if (eventType == StateEvent.BACKGROUND) {
                 //notification("УВЕДОМЛЕНИЕ", "ДЛЯ ИЗМЕНЕНИЯ НАСТРОЕК ПРЕЗАПУСТИТЕ ПРОГРАММУ");
             } else if (eventType == StateEvent.COLLECTION) {
@@ -258,10 +247,14 @@ public class Application extends javafx.application.Application {
             stage.setMaximized(true);
         }
         stage.fireEvent(new StateEvent(StateEvent.MENU));//открытие меню
-        mediaPlayer.play();//запуск фоновой музыки
+        media = new Media(appdata + "res/media/sine.mp3");
+        media.volume(RAIN_Volume.getValue());
+        media.indefinite();
+        media.play();
         if (!error.equals("")) {
             notification("error", error);
         }
+
     }
 
     //оповещение что нужна перезагрузка
@@ -272,5 +265,16 @@ public class Application extends javafx.application.Application {
         alert.setHeaderText(null);
         alert.setContentText(info);
         alert.showAndWait();
+    }
+
+    public static void setVolume(int volume) {
+        media.volume(volume);
+        if (volume == 0) {
+            media.stop();
+        } else {
+            media.stop();
+            media.play();
+        }
+
     }
 }

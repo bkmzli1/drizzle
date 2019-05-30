@@ -8,12 +8,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
+
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-import static ru.bkmz.drizzle.util.Sound.playEffectClik;
+import static ru.bkmz.drizzle.util.Language.getLanguageMap;
+
 
 public class PausePane extends BorderPane {
 
@@ -21,7 +22,7 @@ public class PausePane extends BorderPane {
         this.setPrefSize(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         this.setPadding(new Insets(10, 10, 10, 10));
 
-        Text exit = new Text("ВЫХОД");
+        Text exit = new Text(getLanguageMap("exit"));
         exit.setOnMouseClicked(event -> {
             fireEvent(new StateEvent(StateEvent.STOP));
         });
@@ -30,7 +31,7 @@ public class PausePane extends BorderPane {
         exit.setUnderline(true);
         exit.setOpacity(0.5);
         exit.setOnMouseEntered(event -> {
-            playEffectClik();
+            SoundEffects.playNew("Hard_kick_drum.wav");
             exit.setOpacity(1);
             Glow glow = new Glow(1000);
             exit.setEffect(glow);
@@ -46,14 +47,14 @@ public class PausePane extends BorderPane {
         VBox vbox = new VBox(20);
         vbox.setAlignment(Pos.CENTER);
 
-        Text label = new Text("ВРЕМЯ КАПУТ");
+        Text label = new Text(getLanguageMap("TIME STOPPED"));
         label.setFont(Font.font("", FontWeight.BOLD, 30));
         label.setFill(Commons.GRADIENT2);
         label.setUnderline(true);
 
-        Text text = new Text("Для востановление времени нажмите на ESC");
+        Text text = new Text(getLanguageMap("ESC"));
         text.setFont(Font.font("", FontWeight.BOLD, 15));
-        text.setFill(Commons.color2);
+        text.setFill(Commons.colorTexOn);
 
         vbox.getChildren().addAll(label, text);
 

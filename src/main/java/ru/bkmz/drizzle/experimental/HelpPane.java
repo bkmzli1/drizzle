@@ -16,7 +16,7 @@ import javafx.scene.image.ImageView;
 
 import ru.bkmz.drizzle.util.ImageLoader;
 
-
+import static ru.bkmz.drizzle.util.Language.*;
 
 
 public class HelpPane extends BorderPane {
@@ -28,7 +28,7 @@ public class HelpPane extends BorderPane {
         t1.setFont(Font.font("", FontWeight.BOLD, 20));
 
         Text t2 = new Text(s2);
-        t2.setFill(Commons.color2);
+        t2.setFill(Commons.colorTexOn);
         t2.setFont(Font.font("", FontWeight.NORMAL, 20));
 
         v1.getChildren().add(t1);
@@ -38,7 +38,7 @@ public class HelpPane extends BorderPane {
     private void addEntry2(VBox v1, VBox v2, String s1, String s2) {
         ImageView imageView = new ImageView(ImageLoader.INSTANCE.getImage(s1));
         Text t2 = new Text(s2);
-        t2.setFill(Commons.color2);
+        t2.setFill(Commons.colorTexOn);
         t2.setFont(Font.font("", FontWeight.NORMAL, 20));
 
         v1.getChildren().add(imageView);
@@ -57,7 +57,7 @@ public class HelpPane extends BorderPane {
         vbox.setPadding(new Insets(10, 10, 10, 10));
         vbox.setAlignment(Pos.TOP_CENTER);
 
-        Text label = new Text("УПРОВЛЕНИЕ");
+        Text label = new Text(getLanguageMap("MANAGEMENT"));
         label.setFont(Font.font("", FontWeight.BOLD, 30));
         label.setFill(Commons.GRADIENT2);
         label.setUnderline(true);
@@ -71,14 +71,14 @@ public class HelpPane extends BorderPane {
         VBox vbox2 = new VBox(10);
         vbox2.setAlignment(Pos.CENTER_LEFT);
 
-        addEntry(vbox1, vbox2, "A", "ВЛЕВО");
-        addEntry(vbox1, vbox2, "D", "ВПРАВО");
-        addEntry(vbox1, vbox2, "SPACE", "ПРЫЖОК");
-        addEntry(vbox1, vbox2, "F", "СКИЛЛ");
+        addEntry(vbox1, vbox2, "A", getLanguageMap("LEFTWARD"));
+        addEntry(vbox1, vbox2, "D", getLanguageMap("RIGHTWARDS"));
+        addEntry(vbox1, vbox2, "SPACE", getLanguageMap("JUMP"));
+        addEntry(vbox1, vbox2, "F", getLanguageMap("skill"));
 
         hbox.getChildren().addAll(vbox1, vbox2);
 
-        Text label2 = new Text("ИНФОРМАЦЫЯ");
+        Text label2 = new Text(getLanguageId(15));
         label2.setFont(Font.font("", FontWeight.BOLD, 30));
         label2.setFill(Commons.GRADIENT2);
         label2.setUnderline(true);
@@ -92,10 +92,10 @@ public class HelpPane extends BorderPane {
         VBox vbox4 = new VBox(10);
         vbox4.setAlignment(Pos.CENTER_LEFT);
 
-        addEntry2(vbox3, vbox4, "entity/acid", "ЭТО КАПЛИ И ОТ НИХ НАДО УВОРАЧИВАТЬСЯ");
-        addEntry2(vbox3, vbox4, "entity/armor", "ЭТО БРОНЯ ОНА ДАЁТ ЗАЩИТУ ТОЛЬКО ПО ВЕРХ XP");
-        addEntry2(vbox3, vbox4, "entity/energy", "ЭТО ЭНЕРГИЯ ОНА ЗАРЯЖАЕТ СПОСОБНОСТИ");
-        addEntry2(vbox3, vbox4, "entity/star", "ЭТО ЗВЕЗДА И ОНА 10 EX");
+        addEntry2(vbox3, vbox4, "entity/acid", getLanguageMap("THIS DROPS AND FROM THEM SHOULD BE DECLINED"));
+        addEntry2(vbox3, vbox4, "entity/armor", getLanguageMap("THIS BOOK SHE GIVES PROTECTION ONLY ON TOP OF XP"));
+        addEntry2(vbox3, vbox4, "entity/energy",  getLanguageMap("THIS ENERGY SHE CHARGES ABILITY"));
+        addEntry2(vbox3, vbox4, "entity/star",  getLanguageMap("THIS IS A STAR AND SHE 10 EX"));
 
         hbox2.getChildren().addAll(vbox3, vbox4);
 

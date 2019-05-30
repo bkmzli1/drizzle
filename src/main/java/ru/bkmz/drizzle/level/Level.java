@@ -2,7 +2,6 @@ package ru.bkmz.drizzle.level;
 
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import ru.bkmz.drizzle.Application;
 import ru.bkmz.drizzle.entity.Entity;
@@ -36,7 +35,6 @@ public class Level {
     private Overlay overlay;
     private boolean paused = false;
     private boolean played = false;
-
 
     public class LevelController {
 
@@ -109,7 +107,7 @@ public class Level {
     public Level(Keyboard keyboard) {
         this.keyboard = keyboard;
         for (double x = 0, i = 0; i < 3; x = x - Commons.SCENE_WIDTH, i++) {
-            this.spawners.add(new RainSpawner(x, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, (SCENE_WIDTH.getValue() / 10) ));
+            this.spawners.add(new RainSpawner(x, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, (SCENE_WIDTH.getValue() / 10)));
         }
     }
 
@@ -124,8 +122,7 @@ public class Level {
     }
 
     private void draw(GraphicsContext gc) {
-        gc.drawImage(ImageLoader.INSTANCE.getImage("background/background" + BACKGROUND.getValue()), 0, 0, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
-
+            gc.drawImage(ImageLoader.INSTANCE.getImage("background/background" + BACKGROUND.getValue()), 0, 0, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         for (Entity p : this.particles) {
             p.draw(gc);
         }

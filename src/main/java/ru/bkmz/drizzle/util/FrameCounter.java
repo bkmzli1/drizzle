@@ -2,7 +2,7 @@ package ru.bkmz.drizzle.util;
 
 public class FrameCounter {
 
-    private static final int SAMPLE_SIZE = 100;
+    private static final int SAMPLE_SIZE = 10;
 
     private final double[] frameRates = new double[SAMPLE_SIZE];
 

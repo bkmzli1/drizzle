@@ -26,7 +26,6 @@ class Games {
 
     Games(Keyboard keyboard) {
 
-
         this.levelController = new Level(keyboard).getLevelController();
         new AnimationTimer() {
 

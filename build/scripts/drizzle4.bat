@@ -63,10 +63,10 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\drizzle4-v3.8.9.jar
+set CLASSPATH=%APP_HOME%\lib\drizzle4-v3.8.11.jar;%APP_HOME%\lib\conf
 
 @rem Execute drizzle4
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %DRIZZLE4_OPTS%  -classpath "%CLASSPATH%" ru.bkmz.drizzle.Application %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %DRIZZLE4_OPTS%  -classpath "%CLASSPATH%" your.main.Class %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell
