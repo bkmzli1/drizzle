@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="635cf8c3-f9d7-4a9b-8b59-ecc54b11be36" name="Default Changelist" comment="v3.9.0&#10;1) improved music playback&#10;2) localization added&#10;3) advanced settings&#10;4) Mutsyku bug fixes">
+    <list default="true" id="635cf8c3-f9d7-4a9b-8b59-ecc54b11be36" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" afterDir="false" />
@@ -111,14 +112,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/SoundEffects.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
+            <state relative-caret-position="561">
               <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -213,7 +223,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/mob/Player.java" />
         <option value="$PROJECT_DIR$/my_them.json" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/ImageLoader.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/entity/spawner/AcidSpawner.java" />
@@ -264,6 +273,7 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/Application.java" />
         <option value="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -293,41 +303,6 @@
             <path>
               <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
               <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="drizzle4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="drizzle" type="462c0819:PsiDirectoryNode" />
-              <item name="experimental" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="drizzle4" type="b2602c69:ProjectViewProjectNode" />
@@ -495,7 +470,7 @@
       <workItem from="1558955047948" duration="20874000" />
       <workItem from="1559044100603" duration="481000" />
       <workItem from="1559130462611" duration="21718000" />
-      <workItem from="1559217649493" duration="5394000" />
+      <workItem from="1559217649493" duration="5687000" />
     </task>
     <task id="LOCAL-00001" summary="v3.9.0&#10;1) improved music playback&#10;2) localization added&#10;3) advanced settings&#10;4) Mutsyku bug fixes">
       <created>1559221243924</created>
@@ -511,11 +486,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559222935546</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="v3.9.0&#10;1) improved music playback&#10;2) localization added&#10;3) advanced settings&#10;4) Mutsyku bug fixes">
+      <created>1559223195281</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1559223195281</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172897000" />
+    <option name="totallyTimeSpent" value="173190000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -528,8 +510,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49270073" visible="true" weight="0.30659026" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49270073" visible="true" weight="0.30659026" />
       <window_info id="Structure" order="1" sideWeight="0.50729924" side_tool="true" weight="0.18839541" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -548,7 +531,7 @@
       <window_info anchor="bottom" id="Duplicates" order="8" weight="0.32974428" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32974428" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="11" sideWeight="0.42406878" side_tool="true" visible="true" weight="0.44145358" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.42406878" side_tool="true" weight="0.44145358" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" weight="0.6581427" />
       <window_info anchor="bottom" id="Educational.CheckDetails" order="14" />
@@ -657,9 +640,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/f0f06f96-b9fe-42ea-abd2-73c69e3c8498/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="das://f0f06f96-b9fe-42ea-abd2-73c69e3c8498/schema/main/table/ru" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/util/CopyFiles.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1015,6 +995,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/SoundEffects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
@@ -1022,13 +1012,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/bkmz/drizzle/experimental/SoundEffects.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="289">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
         </state>
       </provider>
     </entry>
