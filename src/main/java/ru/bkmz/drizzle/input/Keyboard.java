@@ -1,5 +1,6 @@
 package ru.bkmz.drizzle.input;
 
+import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -39,6 +40,8 @@ public class Keyboard implements EventHandler<KeyEvent> {
     public boolean isHeld(KeyCode keyCode) {
         return currentMap.getOrDefault(keyCode, false);
     }
+
+    
 
     public boolean isPressed(KeyCode keyCode) {
         return isHeld(keyCode) && !wasHeld(keyCode);

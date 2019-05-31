@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import javafx.scene.image.Image;
+import ru.bkmz.drizzle.Application;
 
 public enum ImageLoader {
 
@@ -22,9 +23,6 @@ public enum ImageLoader {
     private String suffix = "";
     private boolean enableExternalSources = false;
 
-    public void setCommonPrefix(String prefix) {
-        this.prefix = Objects.requireNonNull(prefix);
-    }
 
     public void setCommonSuffix(String suffix) {
         this.suffix = Objects.requireNonNull(suffix);
@@ -43,7 +41,12 @@ public enum ImageLoader {
     }
 
     public void load(String token) {
-        load(token, -1, -1, false, false);
+        try {
+            load(token, -1, -1, false, false);
+        }catch (Exception e){
+
+            Application.addError(ImageLoader.class.getName()+": "+"ошибка загрузки: "+token+" Error: "+e );
+        }
     }
 
     public void load(String token, int width, int height) {

@@ -1,6 +1,7 @@
 package ru.bkmz.drizzle.entity.item;
 
 import ru.bkmz.drizzle.graphics.Sprite;
+import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.util.ImageLoader;
 

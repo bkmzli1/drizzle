@@ -1,8 +1,10 @@
 package ru.bkmz.drizzle.entity.spawner;
 
 import ru.bkmz.drizzle.entity.particle.RainParticle;
+import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.entity.Entity;
+
 
 public final class RainSpawner extends Spawner {
 
@@ -21,9 +23,9 @@ public final class RainSpawner extends Spawner {
     @Override
     public void spawn() {
         this.level.add(new RainParticle(getRandomX(), getRandomY(), WIDTH,
-                                        HEIGHT_MIN + Entity.RANDOM.nextInt(HEIGHT_MAX - HEIGHT_MIN + 1),
-                                        SPEED_X,
-                                        SPEED_Y_MIN + Entity.RANDOM.nextInt(SPEED_Y_MAX - SPEED_Y_MIN + 1),
-                                        this.level));
+                HEIGHT_MIN + Entity.RANDOM.nextInt(HEIGHT_MAX - HEIGHT_MIN + 1),
+                SPEED_X + GameData.PLAYER_LEVEL.getValue() / 2,
+                SPEED_Y_MIN + Entity.RANDOM.nextInt(SPEED_Y_MAX - SPEED_Y_MIN + 1),
+                this.level));
     }
 }

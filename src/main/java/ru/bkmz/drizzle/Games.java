@@ -2,6 +2,7 @@ package ru.bkmz.drizzle;
 
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.input.Keyboard;
+import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.level.Level.LevelController;
 import ru.bkmz.drizzle.util.Commons;
@@ -14,22 +15,23 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
 
-class Games {
-    private final Canvas canvas = new Canvas(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
-    private final GraphicsContext gc = canvas.getGraphicsContext2D();
+public class Games {
+    private static Canvas canvas = new Canvas(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);//размеры окна
+    private final GraphicsContext gc = canvas.getGraphicsContext2D();//2d
 
-    private final FrameCounter frameCounter = new FrameCounter();
+    private final FrameCounter frameCounter = new FrameCounter();//fps
 
-      private final LevelController levelController;
+    private final LevelController levelController;
+
 
     Games(Keyboard keyboard) {
 
         this.levelController = new Level(keyboard).getLevelController();
-
         new AnimationTimer() {
 
             @Override
             public void handle(long now) {
+
                 levelController.update(gc);
                 if (levelController.isClosed()) {
                     canvas.fireEvent(new StateEvent(StateEvent.MENU));
@@ -49,11 +51,14 @@ class Games {
 
                 keyboard.update();
                 frameCounter.sample(now);
-                if (Application.DEBUG_MODE) {
+                if (Application.DEBUG_MODE || GameData.FPS.getValue() == 1) {
                     gc.setFill(Color.WHITE);
-                    gc.fillText("getAverageFPS" + frameCounter.getAverageFPS(), 20, 680);
-                    gc.fillText("getInstantFPS" + frameCounter.getInstantFPS(), 20, 660);
+                    gc.fillText("Average FPS: " + (int) frameCounter.getAverageFPS(), 0, GameData.SCENE_HEIGHT.getValue());
+                } else if (GameData.FPS.getValue() == 2) {
+                    gc.setFill(Color.WHITE);
+                    gc.fillText("Instant FPS: " + (int) frameCounter.getInstantFPS(), 0, GameData.SCENE_HEIGHT.getValue());
                 }
+
             }
         }.start();
 
