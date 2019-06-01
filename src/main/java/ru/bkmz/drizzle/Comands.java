@@ -7,6 +7,7 @@ import ru.bkmz.drizzle.level.Level;
 import java.util.Scanner;
 
 class Comands extends Entity {
+
     Comands(double x, double y, double width, double height, Level level) {
         super(x, y, width, height, level);
     }
@@ -19,11 +20,12 @@ class Comands extends Entity {
                 System.out.println("en=int - прибавить очков\n" +
                         "hp=int - кол. хп стартовое\n" +
                         "addEnergy=int - добавить энергию\n" +
-                        "addShield=int - добовляет щит" +
+                        "addShield=int - добовляет щит\n" +
                         "addExperience=int - добовляет ex\n" +
                         "addhil=int - добовляет hp\n" +
                         "add_damage=int - наносит урон игроку\n" +
-                        "godmod=boolean - режим бога\n");
+                        "godmod=boolean - режим бога\n" +
+                        "level=int - добовляет лэвел ");
                 comands();
             }
             String[] comand = s.split("=");
@@ -68,6 +70,10 @@ class Comands extends Entity {
                     break;
                 case "godmod":
                     level.getPlayerProperties().setGodmod(Boolean.parseBoolean(value));
+                    break;
+                case "level":
+                    GameData.PLAYER_LEVEL.setVolume(Integer.parseInt(value));
+                    GameData.save();
                     break;
                 default:
                     System.out.println("команда:" + comand[0] + " не опознана");

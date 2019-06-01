@@ -5,6 +5,8 @@ import java.util.Objects;
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.level.Level;
 
+import static ru.bkmz.drizzle.level.GameData.PLAYER_LEVEL;
+
 public abstract class Spawner extends Entity {
 
     protected final int rate;
@@ -34,6 +36,7 @@ public abstract class Spawner extends Entity {
 
             if (Objects.nonNull(this.level)) {
                 for (int i = 0; i < this.count; i++) {
+
                     spawn();
                 }
             }

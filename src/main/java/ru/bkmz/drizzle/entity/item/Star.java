@@ -1,10 +1,14 @@
 package ru.bkmz.drizzle.entity.item;
 
+import ru.bkmz.drizzle.experimental.SoundEffects;
 import ru.bkmz.drizzle.graphics.Sprite;
+import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.util.ImageLoader;
 
 import javafx.scene.image.Image;
+
+
 
 public class Star extends Item {
 
@@ -33,9 +37,11 @@ public class Star extends Item {
                 this.level.getPlayerProperties().addShield();
                 break;
             case 2:
+
                 this.level.getPlayerProperties().addExperience(10 * 60);
                 break;
         }
+        SoundEffects.playNew("star.wav");
 
     }
 }
