@@ -58,7 +58,7 @@ class EventButton extends HBox {
 
     EventButton(EventType<StateEvent> eventType, int rotate) {
 
-        ImageView imageView = new ImageView(ImageLoader.INSTANCE.getImage("gui/icons/back"));
+        ImageView imageView = new ImageView(ImageLoader.IMAGE_LOADER.getImage("gui/icons/back"));
         imageView.setOpacity(0.3);
         imageView.setLayoutY(0);
         imageView.setScaleY(1);

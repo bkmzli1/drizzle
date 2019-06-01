@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static ru.bkmz.drizzle.level.GameData.*;
+import static ru.bkmz.drizzle.level.player.PlayerProperties.isGodmod;
 
 public class Level {
 
@@ -122,7 +123,7 @@ public class Level {
     }
 
     private void draw(GraphicsContext gc) {
-        gc.drawImage(ImageLoader.INSTANCE.getImage("background/background" + BACKGROUND.getValue()), 0, 0, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
+        gc.drawImage(ImageLoader.IMAGE_LOADER.getImage("background/background" + Settings_BACKGROUND.getValue()), 0, 0, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         for (Entity p : this.particles) {
             p.draw(gc);
         }
@@ -155,6 +156,7 @@ public class Level {
                 gc.fillText("Experience\t: " + this.properties.getExperienceProperty().intValue(),
                         20, 330);
             }
+            gc.fillText("godmod\t\t: " + isGodmod(), 20, 350);
         }
     }
 
@@ -216,7 +218,7 @@ public class Level {
 
         for (double x = 0, i = 0; i < 3; x = x - Commons.SCENE_WIDTH, i++) {
             this.spawners.add(new AcidSpawner(x, -50, Commons.SCENE_WIDTH, 0, this,
-                    AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
+                    Settings_AcidSpawner_rate.getValue(), Settings_AcidSpawner_variation.getValue(), Settings_AcidSpawner_count.getValue()));
 
 
             this.spawners.add(new ArmorSpawner(x, -50, Commons.SCENE_WIDTH, 0, this,

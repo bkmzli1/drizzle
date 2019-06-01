@@ -125,7 +125,7 @@ public class ShopPane extends BorderPane {
         text.setFont(Font.font("", FontWeight.BOLD, 20));
 
         HBox hbox = new HBox(new MenuButton(StateEvent.MENU), text);
-        hbox.setSpacing(GameData.SCENE_WIDTH.getValue() - 350);
+        hbox.setSpacing(GameData.SCENE_WIDTH.getValue() - 380);
         this.setTop(hbox);
 
         VBox vbox = new VBox(30);

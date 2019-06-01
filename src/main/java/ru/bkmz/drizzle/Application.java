@@ -29,12 +29,12 @@ import static ru.bkmz.drizzle.util.Language.getLanguageMap;
 import static ru.bkmz.drizzle.util.Language.sqlite;
 
 public class Application extends javafx.application.Application {
-    private static final String VERSION = "v3.9.1(Error)";
-    private static final String TITLE_DEBUG_PREFIX = "[DEBUG MODE]";
-    private static final String TITLE = "drizzle";
+    private static final String VERSIONS = "v3.9.1.2";
+    private static final String DEBUG_MODE1 = "[DEBUG_MODE]";
+    private static final String NAME_GAME = "drizzle";
     private static final String ARG_DEBUG = "debug";
 
-    private static File file = new File(config_file);
+
 
     public static boolean DEBUG_MODE = isDebugMode();
 
@@ -46,11 +46,11 @@ public class Application extends javafx.application.Application {
     private Games games;
 
     private static Pane paneMenu;
-    private static Pane paneShop;
-    private static Pane paneStat;
-    private static Pane paneHelp;
-    private static Pane paneSettings;
     private static Pane panePause;
+    private static Pane paneHelp;
+    private static Pane paneStat;
+    private static Pane paneSettings;
+    private static Pane paneShop;
     private static Pane paneOnline;
 
 
@@ -66,12 +66,13 @@ public class Application extends javafx.application.Application {
             @Override
             public void run() {
 
-                if (file.exists()) {
-                    DEBUG_MODE = true;
-                    System.out.println("Консоль on");
-                    Comands.comands();
-                } else {
-                    System.out.println("Консоль off");
+                for (String args: args) {
+                    System.out.println(args);
+                    if (args.equals(ARG_DEBUG)) {
+                        DEBUG_MODE = true;
+                        Comands.comands();
+                        System.out.println("Консоль on");
+                    }
                 }
             }
         }).start();
@@ -95,39 +96,39 @@ public class Application extends javafx.application.Application {
         /*
          * preferExternalSources тип загрузки
          * setCommonSuffix формат
-         * load загрузка
+         * loading загрузка
          * */
-        ImageLoader.INSTANCE.preferExternalSources(true);
+        ImageLoader.IMAGE_LOADER.preferExternalSources(true);
 
-        ImageLoader.INSTANCE.setCommonSuffix(".jpg");
-        ImageLoader.INSTANCE.load("background/background2");
-        ImageLoader.INSTANCE.load("background/background3");
-        ImageLoader.INSTANCE.load("background/background4");
-        ImageLoader.INSTANCE.load("background/background5");
-        ImageLoader.INSTANCE.load("background/background6");
-        ImageLoader.INSTANCE.load("background/background7");
+        ImageLoader.IMAGE_LOADER.setCommonSuffix(".jpg");
+        ImageLoader.IMAGE_LOADER.loading("background/background2");
+        ImageLoader.IMAGE_LOADER.loading("background/background3");
+        ImageLoader.IMAGE_LOADER.loading("background/background4");
+        ImageLoader.IMAGE_LOADER.loading("background/background5");
+        ImageLoader.IMAGE_LOADER.loading("background/background6");
+        ImageLoader.IMAGE_LOADER.loading("background/background7");
 
-        ImageLoader.INSTANCE.setCommonSuffix(".png");
-        ImageLoader.INSTANCE.load("background/background1");
+        ImageLoader.IMAGE_LOADER.setCommonSuffix(".png");
+        ImageLoader.IMAGE_LOADER.loading("background/background1");
 
-        ImageLoader.INSTANCE.load("entity/acid");
-        ImageLoader.INSTANCE.load("entity/armor");
-        ImageLoader.INSTANCE.load("entity/energy");
-        ImageLoader.INSTANCE.load("entity/player4");
-        ImageLoader.INSTANCE.load("entity/star");
+        ImageLoader.IMAGE_LOADER.loading("entity/acid");
+        ImageLoader.IMAGE_LOADER.loading("entity/armor");
+        ImageLoader.IMAGE_LOADER.loading("entity/energy");
+        ImageLoader.IMAGE_LOADER.loading("entity/player4");
+        ImageLoader.IMAGE_LOADER.loading("entity/star");
 
-        ImageLoader.INSTANCE.load("gui/bars/armor");
-        ImageLoader.INSTANCE.load("gui/bars/energy");
-        ImageLoader.INSTANCE.load("gui/bars/experience");
-        ImageLoader.INSTANCE.load("gui/bars/frame");
-        ImageLoader.INSTANCE.load("gui/bars/health");
+        ImageLoader.IMAGE_LOADER.loading("gui/bars/armor");
+        ImageLoader.IMAGE_LOADER.loading("gui/bars/energy");
+        ImageLoader.IMAGE_LOADER.loading("gui/bars/experience");
+        ImageLoader.IMAGE_LOADER.loading("gui/bars/frame");
+        ImageLoader.IMAGE_LOADER.loading("gui/bars/health");
 
-        ImageLoader.INSTANCE.load("gui/icons/ability");
-        ImageLoader.INSTANCE.load("gui/icons/back");
-        ImageLoader.INSTANCE.load("gui/icons/energy");
-        ImageLoader.INSTANCE.load("gui/icons/experience");
-        ImageLoader.INSTANCE.load("gui/icons/frame");
-        ImageLoader.INSTANCE.load("gui/icons/health");
+        ImageLoader.IMAGE_LOADER.loading("gui/icons/ability");
+        ImageLoader.IMAGE_LOADER.loading("gui/icons/back");
+        ImageLoader.IMAGE_LOADER.loading("gui/icons/energy");
+        ImageLoader.IMAGE_LOADER.loading("gui/icons/experience");
+        ImageLoader.IMAGE_LOADER.loading("gui/icons/frame");
+        ImageLoader.IMAGE_LOADER.loading("gui/icons/health");
 
         //копирование файлов из jar
         CopyFiles.failCopi("media/", "sine.mp3");
@@ -140,7 +141,7 @@ public class Application extends javafx.application.Application {
 
 
         //определение окона
-        sqlite(LANGUAGE.getValue());
+        sqlite(Settings_LANGUAGE.getValue());
         pane();
 
         this.keyboard = new Keyboard();
@@ -157,8 +158,7 @@ public class Application extends javafx.application.Application {
         paneStat = new StatPane();
         paneHelp = new HelpPane();
         paneOnline = new Online();
-
-        paneSettings = new SetingsPane();
+        paneSettings = new SettingsPane();
         panePause = new PausePane();
     }
 
@@ -200,7 +200,7 @@ public class Application extends javafx.application.Application {
 
             } else if (eventType == StateEvent.SETTINGS) {
 
-                ((SetingsPane) this.paneSettings).refresh();
+                ((SettingsPane) this.paneSettings).refresh();
                 switchPane(this.users, this.paneSettings);
 
             } else if (eventType == StateEvent.QUIT) {
@@ -236,22 +236,19 @@ public class Application extends javafx.application.Application {
             } else if (eventType == StateEvent.BACKGROUND) {
                 //notification("УВЕДОМЛЕНИЕ", "ДЛЯ ИЗМЕНЕНИЯ НАСТРОЕК ПРЕЗАПУСТИТЕ ПРОГРАММУ");
             } else if (eventType == StateEvent.COLLECTION) {
-                try {
-                    cleaning();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
+                    cleaningPlayer();
             }
             event.consume();
         });
 
-        stage.setTitle((DEBUG_MODE ? TITLE_DEBUG_PREFIX + " " : "") + TITLE + " " + VERSION);//Определяет заголовок
+        stage.setTitle((DEBUG_MODE ? DEBUG_MODE1 + " " : "") + NAME_GAME + " " + VERSIONS);//Определяет заголовок
         stage.setResizable(false);// запрет на изменение окна
         stage.show();//сборка окна
 
 
         //режим окна
-        if (SCREEN.getValue() == 0) {
+        if (Settings_SCREEN.getValue() == 0) {
             stage.setMaximized(false);
         } else {
             stage.setMaximized(true);
@@ -262,14 +259,14 @@ public class Application extends javafx.application.Application {
 
 
         media = new Media(appdata + "res/media/sine.mp3");
-        media.volume(RAIN_Volume.getValue());
+        media.volume(Settings_RAIN_Volume.getValue());
         media.indefinite();
         media.play();
 
 
         if (!error.equals("")) {
             writer();
-            addError("СОХРАНИНО В:  "+appdata+"log");
+            addError("SAVED IN:  "+appdata+"log");
             notification("error", error);
         }
 
@@ -282,7 +279,7 @@ public class Application extends javafx.application.Application {
         }
         try {
             Date dateNow = new Date();
-            SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy_MM_dd hh_mm");
+            SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy_MM_dd hh_mm_ss");
             file = new File(file + "/" + formatForDateNow.format(dateNow) + ".log");
             FileWriter fileWriter = new FileWriter(file);
             fileWriter.write(error);
@@ -293,7 +290,7 @@ public class Application extends javafx.application.Application {
     }
 
     //оповещение что нужна перезагрузка
-    void notification(String name, String info) {
+    private void notification(String name, String info) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
         alert.setTitle(name);

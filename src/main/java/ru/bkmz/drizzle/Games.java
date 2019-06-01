@@ -1,5 +1,6 @@
 package ru.bkmz.drizzle;
 
+import com.sun.scenario.animation.AbstractMasterTimer;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.input.Keyboard;
 import ru.bkmz.drizzle.level.GameData;
@@ -22,7 +23,7 @@ public class Games {
     private final FrameCounter frameCounter = new FrameCounter();//fps
 
     private final LevelController levelController;
-
+    private final AbstractMasterTimer timer = null;
 
     Games(Keyboard keyboard) {
 
@@ -50,13 +51,14 @@ public class Games {
                 }
 
                 keyboard.update();
+
                 frameCounter.sample(now);
-                if (Application.DEBUG_MODE || GameData.FPS.getValue() == 1) {
+                if ((Application.DEBUG_MODE || GameData.Settings_FPS.getValue() == 1) && GameData.Settings_FPS.getValue() != 2) {
                     gc.setFill(Color.WHITE);
-                    gc.fillText("Average FPS: " + (int) frameCounter.getAverageFPS(), 0, GameData.SCENE_HEIGHT.getValue());
-                } else if (GameData.FPS.getValue() == 2) {
+                    gc.fillText("Average Settings_FPS: " + (int) frameCounter.getAverageFPS(), 0, GameData.SCENE_HEIGHT.getValue());
+                } else if (GameData.Settings_FPS.getValue() == 2) {
                     gc.setFill(Color.WHITE);
-                    gc.fillText("Instant FPS: " + (int) frameCounter.getInstantFPS(), 0, GameData.SCENE_HEIGHT.getValue());
+                    gc.fillText("Instant Settings_FPS: " + (int) frameCounter.getInstantFPS(), 0, GameData.SCENE_HEIGHT.getValue());
                 }
 
             }

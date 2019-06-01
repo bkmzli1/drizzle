@@ -36,7 +36,7 @@ public class HelpPane extends BorderPane {
     }
 
     private void addEntry2(VBox v1, VBox v2, String s1, String s2) {
-        ImageView imageView = new ImageView(ImageLoader.INSTANCE.getImage(s1));
+        ImageView imageView = new ImageView(ImageLoader.IMAGE_LOADER.getImage(s1));
         Text t2 = new Text(s2);
         t2.setFill(Commons.colorTexOn);
         t2.setFont(Font.font("", FontWeight.NORMAL, 20));

@@ -35,8 +35,13 @@ public class PlayerProperties {
 
 
 
-    public void setGodmod(boolean godmod) {
-        this.godmod = godmod;
+    public void setGodmod() {
+        godmod = !godmod;
+        System.out.println(godmod);
+    }
+
+    public static boolean isGodmod() {
+        return godmod;
     }
 
     public PlayerProperties() {

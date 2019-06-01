@@ -25,18 +25,18 @@ public enum GameData {
     UPGRADE_DOUBLEXP(0, 1, "Двойной навык XP"),
     UPGRADE_SHIELDSPAWN(0, 1, "Щит отродясь мастерства"),
 
-    Effect_Volume(0, 10, "ГРОМКОСТЬ ЭФФЕКТОВ"),
-    FPS(0, 2, "FPS"),
-    RAIN_Volume(0, 10, "ГРОМКОСТЬ ДОЖДЯ"),
-    AcidSpawner_rate(10, 10, "Скорость"),
-    AcidSpawner_variation(10, 10, "отклонение"),
-    AcidSpawner_count(1, 3, "повтор"),
+    Settings_Effect_Volume(0, 10, "ГРОМКОСТЬ ЭФФЕКТОВ"),
+    Settings_FPS(0, 2, "Settings_FPS"),
+    Settings_RAIN_Volume(0, 10, "ГРОМКОСТЬ ДОЖДЯ"),
+    Settings_AcidSpawner_rate(10, 10, "Скорость"),
+    Settings_AcidSpawner_variation(10, 10, "отклонение"),
+    Settings_AcidSpawner_count(1, 3, "повтор"),
 
-    SCREEN(0, 1, "ЭКРАН"),
+    Settings_SCREEN(0, 1, "ЭКРАН"),
     SCENE_WIDTH((int) (Toolkit.getDefaultToolkit().getScreenSize().width / 1.2f), Integer.MAX_VALUE, "WIDTH"),
     SCENE_HEIGHT((int) (Toolkit.getDefaultToolkit().getScreenSize().height / 1.2f), Integer.MAX_VALUE, "HEIGHT"),
-    BACKGROUND(1, 7, "ФОН"),
-    LANGUAGE(0,1,"ЯЗЫК");
+    Settings_BACKGROUND(1, 7, "ФОН"),
+    Settings_LANGUAGE(0, 1, "ЯЗЫК");
     private static boolean DEBUG_MODE;
 
     public static boolean isDebugMode() {
@@ -67,6 +67,12 @@ public enum GameData {
     public static GameData[] getUpgrades() {
         return new GameData[]{UPGRADE_MOVEMENT, UPGRADE_POWERRATE, UPGRADE_SHOCKWAVE,
                 UPGRADE_DOUBLEXP, UPGRADE_SHIELDSPAWN};
+    }
+
+    public static GameData[] getSettings() {
+        return new GameData[]{Settings_Effect_Volume, Settings_FPS, Settings_RAIN_Volume,
+                Settings_AcidSpawner_rate, Settings_AcidSpawner_variation, Settings_AcidSpawner_count,
+                Settings_SCREEN, Settings_BACKGROUND, Settings_LANGUAGE};
     }
 
     //загруза
@@ -116,7 +122,7 @@ public enum GameData {
     //запись в фаил GameData
     private static void write(String file) throws IOException {
         File file1 = new File(appdata);
-        if(!file1.exists()){
+        if (!file1.exists()) {
             file1.mkdir();
         }
         FileOutputStream foStream = new FileOutputStream(new File(file), false);
@@ -190,22 +196,31 @@ public enum GameData {
     }
 
     //очистка GameData
-    public static void cleaning() throws IOException {
+    public static void cleaningPlayer() {
+        GameData[] gd = getStatistics();
 
-        File file = new File(SER_FILE);
-        file.delete();
-        FileOutputStream foStream = new FileOutputStream(new File(SER_FILE), false);
-        ObjectOutputStream ooStream = new ObjectOutputStream(foStream);
-        ooStream.reset();
-
-        for (int i = 0; i < GameData.values().length; i++) {
-            ooStream.writeInt(0);
+        for (int i = 0; i < gd.length; i++) {
+            gd[i].setVolume(0);
         }
-
-        ooStream.close();
-        foStream.close();
+        gd = getPlayerProperties();
+        for (int i = 0; i < gd.length; i++) {
+            gd[i].setVolume(0);
+        }
+        gd = getUpgrades();
+        for (int i = 0; i < gd.length; i++) {
+            gd[i].setVolume(0);
+        }
+        save();
         load();
     }
 
+    public static void cleaningSettings() {
+        GameData[] gd = getSettings();
+        for (int i = 0; i < gd.length; i++) {
+            gd[i].setVolume(gd[i].min);
+        }
+
+        load();
+    }
 
 }

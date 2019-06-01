@@ -16,6 +16,7 @@ public class Language {
         try {
             s = languageMapName.get(name).toUpperCase();
         } catch (Exception e) {
+            System.out.println(name +"error");
             s = "null";
         }
 

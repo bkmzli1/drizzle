@@ -13,13 +13,12 @@ import ru.bkmz.drizzle.Application;
 
 public enum ImageLoader {
 
-    INSTANCE;
+    IMAGE_LOADER;
 
     private static final File EXTERNAL_IMAGE_FOLDER = new File("");
     private static final boolean EXTERNAL_IMAGE_ENABLE = EXTERNAL_IMAGE_FOLDER.isDirectory();
 
-    private final Map<String, Image> buffer = new HashMap<>();
-    private String prefix = "";
+    private final Map<String, Image> bufferImege = new HashMap<>();
     private String suffix = "";
     private boolean enableExternalSources = false;
 
@@ -29,31 +28,31 @@ public enum ImageLoader {
     }
 
     private InputStream toInternalInputStream(String token) {
-        return ClassLoader.class.getResourceAsStream("/" + this.prefix + token + this.suffix);
+        return ClassLoader.class.getResourceAsStream("/" + token + this.suffix);
     }
 
     private InputStream toExternalInputStream(String token) throws IOException {
-        return new FileInputStream(new File(this.prefix + token + this.suffix));
+        return new FileInputStream(new File(token + this.suffix));
     }
 
     public void preferExternalSources(boolean prefer) {
         this.enableExternalSources = prefer;
     }
 
-    public void load(String token) {
+    public void loading(String token) {
         try {
-            load(token, -1, -1, false, false);
-        }catch (Exception e){
+            loading(token, -1, -1, false, false);
+        } catch (Exception e) {
 
-            Application.addError(ImageLoader.class.getName()+": "+"ошибка загрузки: "+token+" Error: "+e );
+            Application.addError(ImageLoader.class.getName() + ": " + "ошибка загрузки: " + token + " Error: " + e);
         }
     }
 
-    public void load(String token, int width, int height) {
-        load(token, width, height, false, false);
+    public void loading(String token, int width, int height) {
+        loading(token, width, height, false, false);
     }
 
-    public void load(String token, int width, int height, boolean keepAspectRatio, boolean smooth) {
+    public void loading(String token, int width, int height, boolean keepAspectRatio, boolean smooth) {
         InputStream stream;
 
         if (this.enableExternalSources && EXTERNAL_IMAGE_ENABLE) {
@@ -73,15 +72,15 @@ public enum ImageLoader {
             image = new Image(stream);
         }
 
-        this.buffer.put(token, image);
+        this.bufferImege.put(token, image);
     }
 
     public Image getImage(String token) {
-        if (!this.buffer.containsKey(token)) {
-            load(token);
+        if (!this.bufferImege.containsKey(token)) {
+            loading(token);
         }
 
-        return this.buffer.get(token);
+        return this.bufferImege.get(token);
     }
 
 }

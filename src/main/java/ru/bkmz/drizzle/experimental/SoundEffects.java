@@ -11,7 +11,7 @@ public class SoundEffects {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Sound sound1 = new Sound(new File(GameData.appdata + "res/media/" + name), GameData.Effect_Volume.getValue());
+                Sound sound1 = new Sound(new File(GameData.appdata + "res/media/" + name), GameData.Settings_Effect_Volume.getValue());
                 sound1.play();
             }
         }).start();
@@ -22,7 +22,7 @@ public class SoundEffects {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Sound sound1 = new Sound(new File(GameData.appdata + "res/media/" + name), GameData.Effect_Volume.getValue());
+                Sound sound1 = new Sound(new File(GameData.appdata + "res/media/" + name), GameData.Settings_Effect_Volume.getValue());
                 sound1.setVolume((int) (Math.random() * gd.getValue()));
                 sound1.play();
             }

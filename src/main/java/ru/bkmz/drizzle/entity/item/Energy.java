@@ -10,7 +10,7 @@ public class Energy extends Item {
 
     private static final double WIDTH = 7;
     private static final double HEIGHT = 7;
-    private static final Image IMAGE = ImageLoader.INSTANCE.getImage("entity/energy");
+    private static final Image IMAGE = ImageLoader.IMAGE_LOADER.getImage("entity/energy");
 
     private static final int IMAGE_ROWS = 1;
     private static final int IMAGE_COLS = 1;

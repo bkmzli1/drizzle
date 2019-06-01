@@ -24,10 +24,14 @@ class Comands extends Entity {
                         "addExperience=int - добовляет ex\n" +
                         "addhil=int - добовляет hp\n" +
                         "add_damage=int - наносит урон игроку\n" +
-                        "godmod=boolean - режим бога\n" +
+                        "godmod - режим бога\n" +
                         "level=int - добовляет лэвел ");
                 comands();
+            }else  if (s.equals("godmod")){
+                level.getPlayerProperties().setGodmod();
+                comands();
             }
+
             String[] comand = s.split("=");
             String value = comand[1];
             switch (comand[0]) {
@@ -67,9 +71,6 @@ class Comands extends Entity {
                     break;
                 case "add_damage":
                     level.getPlayerProperties().add_damage(Integer.parseInt(value));
-                    break;
-                case "godmod":
-                    level.getPlayerProperties().setGodmod(Boolean.parseBoolean(value));
                     break;
                 case "level":
                     GameData.PLAYER_LEVEL.setVolume(Integer.parseInt(value));

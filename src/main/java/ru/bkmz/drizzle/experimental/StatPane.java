@@ -46,7 +46,7 @@ public class StatPane extends BorderPane {
         vbox.setPadding(new Insets(10, 10, 10, 10));
         vbox.setAlignment(Pos.TOP_CENTER);
 
-        Text label = new Text(getLanguageMap("MENU"));
+        Text label = new Text(getLanguageMap("STATISTICS"));
         label.setFont(Font.font("", FontWeight.BOLD, 30));
         label.setFill(Commons.GRADIENT2);
         label.setUnderline(true);
@@ -68,6 +68,7 @@ public class StatPane extends BorderPane {
         vbox1.getChildren().clear();
         vbox2.getChildren().clear();
 
+        addEntry(vbox1, vbox2, GameData.PLAYER_LEVEL, getLanguageMap("level"));
         addEntry(vbox1, vbox2, GameData.STAT_COUNT_DAMAGE, getLanguageMap("DAMAGE"));
         addEntry(vbox1, vbox2, GameData.STAT_COUNT_EXPERIENCE, getLanguageMap("EXPERIENCE"));
         addEntry(vbox1, vbox2, GameData.STAT_COUNT_JUMP, getLanguageMap("JUMP"));
