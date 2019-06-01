@@ -12,8 +12,8 @@ import javafx.scene.paint.Color;
 
 public class Overlay implements Drawable {
 
-    private static final Sprite HLT_BAR = new Sprite(ImageLoader.IMAGE_LOADER
-            .getImage("gui/bars/health"), 1, 10);
+    private static  Sprite HLT_BAR = new Sprite(ImageLoader.IMAGE_LOADER
+            .getImage("gui/bars/health10"), 1, 10);
     private static final Sprite ARM_BAR = new Sprite(ImageLoader.IMAGE_LOADER
             .getImage("gui/bars/armor"), 1, 10);
     private static final Sprite EXP_BAR = new Sprite(ImageLoader.IMAGE_LOADER
@@ -72,7 +72,12 @@ public class Overlay implements Drawable {
         });
 
         properties.getHealthProperty().addListener((Observable, OldValue, NewValue) -> {
-            HLT_BAR.setTileSpan(1, NewValue.intValue());
+            try {
+
+                HLT_BAR = new Sprite(ImageLoader.IMAGE_LOADER
+                        .getImage("gui/bars/health" + NewValue.intValue()), 1, 1);
+            }catch (Exception ignored){}
+            //HLT_BAR.setTileSpan(1, NewValue.intValue());
         });
 
         properties.getArmorProperty().addListener((Observable, OldValue, NewValue) -> {

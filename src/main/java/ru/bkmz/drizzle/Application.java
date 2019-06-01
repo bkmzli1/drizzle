@@ -16,20 +16,19 @@ import ru.bkmz.drizzle.experimental.*;
 import ru.bkmz.drizzle.input.Keyboard;
 import ru.bkmz.drizzle.util.*;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
+
 
 
 import static ru.bkmz.drizzle.level.GameData.*;
-import static ru.bkmz.drizzle.util.Language.getLanguageMap;
-import static ru.bkmz.drizzle.util.Language.sqlite;
+import static ru.bkmz.drizzle.util.Language.*;
+
 
 public class Application extends javafx.application.Application {
-    private static final String VERSIONS = "v3.9.1.2";
+    private static final String VERSIONS = "v3.9.2";
     private static final String DEBUG_MODE1 = "[DEBUG_MODE]";
     private static final String NAME_GAME = "drizzle";
     private static final String ARG_DEBUG = "debug";
@@ -121,7 +120,10 @@ public class Application extends javafx.application.Application {
         ImageLoader.IMAGE_LOADER.loading("gui/bars/energy");
         ImageLoader.IMAGE_LOADER.loading("gui/bars/experience");
         ImageLoader.IMAGE_LOADER.loading("gui/bars/frame");
-        ImageLoader.IMAGE_LOADER.loading("gui/bars/health");
+        for (int i = 1; i <=10 ; i++) {
+            ImageLoader.IMAGE_LOADER.loading("gui/bars/health"+i);
+        }
+
 
         ImageLoader.IMAGE_LOADER.loading("gui/icons/ability");
         ImageLoader.IMAGE_LOADER.loading("gui/icons/back");
@@ -144,8 +146,8 @@ public class Application extends javafx.application.Application {
         sqlite(Settings_LANGUAGE.getValue());
         pane();
 
-        this.keyboard = new Keyboard();
-        this.games = new Games(this.keyboard);
+        keyboard = new Keyboard();
+        this.games = new Games(keyboard);
 
         this.users = new Group();
         this.root = new Group(this.games.getCanvas(), this.users);
@@ -179,29 +181,29 @@ public class Application extends javafx.application.Application {
 
             if (eventType == StateEvent.MENU) {
 
-                switchPane(this.users, this.paneMenu);
+                switchPane(this.users, paneMenu);
 
             } else if (eventType == StateEvent.PLAY) {
                 switchPane(this.users, null);
                 this.games.play();
 
             } else if (eventType == StateEvent.ONLINE) {
-                switchPane(this.users, this.paneOnline);
+                switchPane(this.users, paneOnline);
 
             } else if (eventType == StateEvent.SHOP) {
 
-                ((ShopPane) this.paneShop).refresh();
-                switchPane(this.users, this.paneShop);
+                ((ShopPane) paneShop).refresh();
+                switchPane(this.users, paneShop);
 
             } else if (eventType == StateEvent.STAT) {
 
-                ((StatPane) this.paneStat).refresh();
-                switchPane(this.users, this.paneStat);
+                ((StatPane) paneStat).refresh();
+                switchPane(this.users, paneStat);
 
             } else if (eventType == StateEvent.SETTINGS) {
 
-                ((SettingsPane) this.paneSettings).refresh();
-                switchPane(this.users, this.paneSettings);
+                ((SettingsPane) paneSettings).refresh();
+                switchPane(this.users, paneSettings);
 
             } else if (eventType == StateEvent.QUIT) {
                 Platform.exit();
@@ -209,11 +211,11 @@ public class Application extends javafx.application.Application {
 
             } else if (eventType == StateEvent.HELP) {
 
-                switchPane(this.users, this.paneHelp);
+                switchPane(this.users, paneHelp);
 
             } else if (eventType == StateEvent.PAUSE) {
 
-                switchPane(this.users, this.panePause);
+                switchPane(this.users, panePause);
                 this.games.pause();
 
             } else if (eventType == StateEvent.UNPAUSE) {
@@ -223,18 +225,16 @@ public class Application extends javafx.application.Application {
 
             } else if (eventType == StateEvent.STOP) {
 
-                switchPane(this.users, this.paneMenu);
+                switchPane(this.users, paneMenu);
                 this.games.close();
 
             } else if (eventType == StateEvent.MENU_SETTINGS) {
 
-                switchPane(this.users, this.paneSettings);
+                switchPane(this.users, paneSettings);
                 this.games.close();
 
             } else if (eventType == StateEvent.SCREEN) {
                 notification(getLanguageMap("NOTIFICATION"), getLanguageMap("RESTART"));
-            } else if (eventType == StateEvent.BACKGROUND) {
-                //notification("УВЕДОМЛЕНИЕ", "ДЛЯ ИЗМЕНЕНИЯ НАСТРОЕК ПРЕЗАПУСТИТЕ ПРОГРАММУ");
             } else if (eventType == StateEvent.COLLECTION) {
 
                     cleaningPlayer();
