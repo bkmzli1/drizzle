@@ -13,6 +13,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import static ru.bkmz.drizzle.util.Commons.getColor;
 import static ru.bkmz.drizzle.util.Language.getLanguageMap;
 
 
@@ -54,7 +55,7 @@ public class PausePane extends BorderPane {
 
         Text text = new Text(getLanguageMap("ESC"));
         text.setFont(Font.font("", FontWeight.BOLD, 15));
-        text.setFill(Commons.colorTexOn);
+        text.setFill(getColor("colorTexOn"));
 
         vbox.getChildren().addAll(label, text);
 

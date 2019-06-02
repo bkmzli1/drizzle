@@ -55,10 +55,10 @@ public class Games {
                 frameCounter.sample(now);
                 if ((Application.DEBUG_MODE || GameData.Settings_FPS.getValue() == 1) && GameData.Settings_FPS.getValue() != 2) {
                     gc.setFill(Color.WHITE);
-                    gc.fillText("Average Settings_FPS: " + (int) frameCounter.getAverageFPS(), 0, GameData.SCENE_HEIGHT.getValue());
+                    gc.fillText("Average Settings_FPS: " + (int) frameCounter.getAverageFPS(), 0, Commons.SCENE_HEIGHT);
                 } else if (GameData.Settings_FPS.getValue() == 2) {
                     gc.setFill(Color.WHITE);
-                    gc.fillText("Instant Settings_FPS: " + (int) frameCounter.getInstantFPS(), 0, GameData.SCENE_HEIGHT.getValue());
+                    gc.fillText("Instant Settings_FPS: " + (int) frameCounter.getInstantFPS(), 0, Commons.SCENE_HEIGHT);
                 }
 
             }

@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 
 import ru.bkmz.drizzle.util.ImageLoader;
 
+import static ru.bkmz.drizzle.util.Commons.getColor;
 import static ru.bkmz.drizzle.util.Language.*;
 
 
@@ -28,7 +29,7 @@ public class HelpPane extends BorderPane {
         t1.setFont(Font.font("", FontWeight.BOLD, 20));
 
         Text t2 = new Text(s2);
-        t2.setFill(Commons.colorTexOn);
+        t2.setFill(getColor("colorTexOn"));
         t2.setFont(Font.font("", FontWeight.NORMAL, 20));
 
         v1.getChildren().add(t1);
@@ -38,7 +39,7 @@ public class HelpPane extends BorderPane {
     private void addEntry2(VBox v1, VBox v2, String s1, String s2) {
         ImageView imageView = new ImageView(ImageLoader.IMAGE_LOADER.getImage(s1));
         Text t2 = new Text(s2);
-        t2.setFill(Commons.colorTexOn);
+        t2.setFill(getColor("colorTexOn"));
         t2.setFont(Font.font("", FontWeight.NORMAL, 20));
 
         v1.getChildren().add(imageView);

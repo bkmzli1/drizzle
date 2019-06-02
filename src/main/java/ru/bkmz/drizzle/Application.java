@@ -24,11 +24,12 @@ import java.util.*;
 
 
 import static ru.bkmz.drizzle.level.GameData.*;
+import static ru.bkmz.drizzle.util.Commons.colorLoader;
 import static ru.bkmz.drizzle.util.Language.*;
 
 
 public class Application extends javafx.application.Application {
-    private static final String VERSIONS = "v3.9.2";
+    private static final String VERSIONS = "v3.9.3(test Color)";
     private static final String DEBUG_MODE1 = "[DEBUG_MODE]";
     private static final String NAME_GAME = "drizzle";
     private static final String ARG_DEBUG = "debug";
@@ -66,8 +67,8 @@ public class Application extends javafx.application.Application {
             public void run() {
 
                 for (String args: args) {
-                    System.out.println(args);
                     if (args.equals(ARG_DEBUG)) {
+                        System.out.println("on:"+DEBUG_MODE1);
                         DEBUG_MODE = true;
                         Comands.comands();
                         System.out.println("Консоль on");
@@ -91,7 +92,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void init() {
         load();//загрузка GameData
-
+        colorLoader();
         /*
          * preferExternalSources тип загрузки
          * setCommonSuffix формат
@@ -100,12 +101,11 @@ public class Application extends javafx.application.Application {
         ImageLoader.IMAGE_LOADER.preferExternalSources(true);
 
         ImageLoader.IMAGE_LOADER.setCommonSuffix(".jpg");
-        ImageLoader.IMAGE_LOADER.loading("background/background2");
-        ImageLoader.IMAGE_LOADER.loading("background/background3");
-        ImageLoader.IMAGE_LOADER.loading("background/background4");
-        ImageLoader.IMAGE_LOADER.loading("background/background5");
-        ImageLoader.IMAGE_LOADER.loading("background/background6");
-        ImageLoader.IMAGE_LOADER.loading("background/background7");
+        for (int i = 2; i <= 7; i++) {
+            ImageLoader.IMAGE_LOADER.loading("background/background"+i);
+        }
+
+
 
         ImageLoader.IMAGE_LOADER.setCommonSuffix(".png");
         ImageLoader.IMAGE_LOADER.loading("background/background1");
@@ -116,7 +116,9 @@ public class Application extends javafx.application.Application {
         ImageLoader.IMAGE_LOADER.loading("entity/player4");
         ImageLoader.IMAGE_LOADER.loading("entity/star");
 
-        ImageLoader.IMAGE_LOADER.loading("gui/bars/armor");
+        for (int i = 1; i <=10 ; i++) {
+            ImageLoader.IMAGE_LOADER.loading("gui/bars/armor"+i);
+        }
         ImageLoader.IMAGE_LOADER.loading("gui/bars/energy");
         ImageLoader.IMAGE_LOADER.loading("gui/bars/experience");
         ImageLoader.IMAGE_LOADER.loading("gui/bars/frame");

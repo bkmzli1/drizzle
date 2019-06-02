@@ -21,6 +21,7 @@ import java.awt.*;
 import java.io.IOException;
 
 import static ru.bkmz.drizzle.level.GameData.*;
+import static ru.bkmz.drizzle.util.Commons.getColor;
 import static ru.bkmz.drizzle.util.Language.getLanguageMap;
 import static ru.bkmz.drizzle.util.Language.sqlite;
 
@@ -36,7 +37,7 @@ public class SettingsPane extends BorderPane {
         Text reset = new Text(getLanguageMap("Reset"));
         reset.setOnMouseClicked(event -> {
 
-                cleaningSettings();
+            cleaningSettings();
 
             save();
             refresh();
@@ -64,8 +65,7 @@ public class SettingsPane extends BorderPane {
         this.setPrefSize(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         this.setPadding(new Insets(10, 10, 10, 10));
 
-        MenuButton menu = new MenuButton(StateEvent.MENU);
-        this.setTop(menu);
+
 
         VBox vbox = new VBox(30);
         this.setCenter(vbox);
@@ -110,6 +110,8 @@ public class SettingsPane extends BorderPane {
     }
 
     public void refresh() {
+        MenuButton menu = new MenuButton(StateEvent.MENU);
+        this.setTop(menu);
         vBox.getChildren().clear();
 
 
@@ -137,7 +139,7 @@ public class SettingsPane extends BorderPane {
         hBox.getChildren().clear();
         Text name = new Text(names);
         Text setT = new Text();
-        setT.setFill(Commons.colorTexOff);
+        setT.setFill(getColor("colorTexOff"));
         setT.setFont(Font.font("", FontWeight.BOLD, 20));
         if (pd.getValue() == 0) {
             setT.setText(getLanguageMap("WINDOW MODE"));
@@ -146,7 +148,7 @@ public class SettingsPane extends BorderPane {
             setT.setText(getLanguageMap("FULL SCREENS MODE"));
         }
 
-        name.setFill(Commons.colorTexOff);
+        name.setFill(getColor("colorTexOff"));
         name.setFont(Font.font("", FontWeight.BOLD, 20));
 
         EventButton eventButtonL = new EventButton(null, 0);
@@ -183,11 +185,11 @@ public class SettingsPane extends BorderPane {
         hBox.getChildren().clear();
         Text name = new Text(names);
         Text setT = new Text();
-        setT.setFill(Commons.colorTexOff);
+        setT.setFill(getColor("colorTexOff"));
         setT.setFont(Font.font("", FontWeight.BOLD, 20));
         setT.setText(pd.getValue() + "");
 
-        name.setFill(Commons.colorTexOff);
+        name.setFill(getColor("colorTexOff"));
         name.setFont(Font.font("", FontWeight.BOLD, 20));
 
         EventButton eventButtonL = new EventButton(null, 0);
@@ -235,6 +237,8 @@ public class SettingsPane extends BorderPane {
 
         if (pd.getName().equals(Settings_BACKGROUND.getName())) {
             pd.setVolume(value);
+            Commons.colorLoader();
+            Application.pane();
         }
         if (pd.getName().equals(Settings_FPS.getName())) {
 
@@ -250,10 +254,10 @@ public class SettingsPane extends BorderPane {
         Text name = new Text(names);
         Text difficulty = new Text();
 
-        difficulty.setFill(Commons.colorTexOff);
+        difficulty.setFill(getColor("colorTexOff"));
         difficulty.setFont(Font.font("", FontWeight.BOLD, 20));
 
-        name.setFill(Commons.colorTexOff);
+        name.setFill(getColor("colorTexOff"));
         name.setFont(Font.font("", FontWeight.BOLD, 20));
 
         difficulty.setText(states[count.getValue() - 1]);
@@ -276,13 +280,13 @@ public class SettingsPane extends BorderPane {
         });
 
         difficulty.setOnMouseEntered(event -> {
-            difficulty.setFill(Commons.colorTexOff);
+            difficulty.setFill(getColor("colorTexOn"));
             Glow glow = new Glow(1000);
             difficulty.setEffect(glow);
         });
 
         difficulty.setOnMouseExited(event -> {
-            difficulty.setFill(Commons.colorTexOff);
+            difficulty.setFill(getColor("colorTexOff"));
             Glow glow = new Glow(0);
             difficulty.setEffect(glow);
         });
@@ -297,10 +301,10 @@ public class SettingsPane extends BorderPane {
         Text name = new Text(names);
         Text difficulty = new Text();
 
-        difficulty.setFill(Commons.colorTexOff);
+        difficulty.setFill(getColor("colorTexOff"));
         difficulty.setFont(Font.font("", FontWeight.BOLD, 20));
 
-        name.setFill(Commons.colorTexOff);
+        name.setFill(getColor("colorTexOff"));
         name.setFont(Font.font("", FontWeight.BOLD, 20));
 
         difficulty.setText(states[gd.getValue()]);
@@ -324,13 +328,13 @@ public class SettingsPane extends BorderPane {
 
         difficulty.setOnMouseEntered(event -> {
 
-            difficulty.setFill(Commons.colorTexOff);
+            difficulty.setFill(getColor("colorTexOn"));
             Glow glow = new Glow(1000);
             difficulty.setEffect(glow);
         });
 
         difficulty.setOnMouseExited(event -> {
-            difficulty.setFill(Commons.colorTexOff);
+            difficulty.setFill(getColor("colorTexOff"));
             Glow glow = new Glow(0);
             difficulty.setEffect(glow);
         });

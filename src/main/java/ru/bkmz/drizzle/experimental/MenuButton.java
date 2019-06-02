@@ -16,6 +16,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import ru.bkmz.drizzle.util.Language;
 
+import static ru.bkmz.drizzle.util.Commons.*;
+
 
 class MenuButton extends HBox {
 
@@ -23,7 +25,7 @@ class MenuButton extends HBox {
     MenuButton(EventType<StateEvent> eventType) {
         Text menu = new Text(Language.getLanguageMap("MENU"));
         menu.setFont(Font.font("", FontWeight.BOLD, 30));
-        menu.setFill(Commons.colorTexOff);
+        menu.setFill(getColor("colorTexOff"));
 
         Glow glow = new Glow(0);
         menu.setEffect(glow);
@@ -36,14 +38,14 @@ class MenuButton extends HBox {
 
         this.setOnMouseEntered(event -> {
             SoundEffects.playNew("Hard_kick_drum.wav");
-            menu.setFill(Commons.colorTexOn);
+            menu.setFill(getColor("colorTexOn"));
             menu.setOpacity(0.8);
             glow.setLevel(1000);
             menu.setEffect(glow);
         });
 
         this.setOnMouseExited(event -> {
-            menu.setFill(Commons.colorTexOff);
+            menu.setFill(getColor("colorTexOff"));
             menu.setOpacity(0.6);
             glow.setLevel(0);
             menu.setEffect(glow);

@@ -155,8 +155,9 @@ public class Level {
                 gc.fillText("Level\t\t: " + this.properties.getLevelProperty().intValue(), 20, 315);
                 gc.fillText("Experience\t: " + this.properties.getExperienceProperty().intValue(),
                         20, 330);
+                gc.fillText("godmod\t\t: " + isGodmod(), 20, 345);
             }
-            gc.fillText("godmod\t\t: " + isGodmod(), 20, 350);
+
         }
     }
 

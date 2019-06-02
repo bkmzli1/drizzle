@@ -32,7 +32,7 @@ public class Online extends BorderPane {
         VBox vbox = new VBox(30);
         this.setCenter(vbox);
 
-        vbox.setAlignment(Pos.TOP_CENTER);
+        vbox.setAlignment(Pos.CENTER);
 
 
         vbox.getChildren().addAll(text);

@@ -10,7 +10,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import ru.bkmz.drizzle.util.Commons;
+
+import static ru.bkmz.drizzle.util.Commons.getColor;
 
 
 class MenuItem extends HBox {
@@ -22,7 +23,7 @@ class MenuItem extends HBox {
 
         Text labelText = new Text(label);
         labelText.setFont(FONT_LAYOUT_ITEM);
-        labelText.setFill(Commons.colorTexOff);
+        labelText.setFill(getColor("colorTexOff"));
         labelText.setOpacity(0.8);
         labelText.setOnMouseClicked(event -> {
             fireEvent(new StateEvent(eventType));
@@ -31,14 +32,14 @@ class MenuItem extends HBox {
 
         labelText.setOnMouseEntered(event -> {
             SoundEffects.playNew("Hard_kick_drum.wav");
-            labelText.setFill(Commons.colorTexOn);
+            labelText.setFill(getColor("colorTexOn"));
             Glow glow = new Glow(1000);
             labelText.setOpacity(1);
             labelText.setEffect(glow);
         });
 
         labelText.setOnMouseExited(event -> {
-            labelText.setFill(Commons.colorTexOff);
+            labelText.setFill(getColor("colorTexOff"));
             Glow glow = new Glow(0);
             labelText.setOpacity(0.8);
             labelText.setEffect(glow);

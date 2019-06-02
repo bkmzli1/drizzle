@@ -14,6 +14,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import static ru.bkmz.drizzle.util.Commons.getColor;
 import static ru.bkmz.drizzle.util.Language.getLanguageMap;
 
 public class StatPane extends BorderPane {
@@ -23,11 +24,11 @@ public class StatPane extends BorderPane {
 
     private static void addEntry(VBox v1, VBox v2, GameData pd, String name) {
         Text t1 = new Text(name + ":");
-        t1.setFill(Commons.colorTexOff);
+        t1.setFill(getColor("colorTexOff"));
         t1.setFont(Font.font("", FontWeight.BOLD, 20));
 
         Text t2 = new Text("" + pd.getValue());
-        t2.setFill(Commons.numbers);
+        t2.setFill(getColor("numbers"));
         t2.setFont(Font.font("", FontWeight.NORMAL, 20));
 
         v1.getChildren().add(t1);
