@@ -1,5 +1,6 @@
 package ru.bkmz.drizzle.graphics.animation;
 
+import javafx.scene.image.ImageView;
 import ru.bkmz.drizzle.graphics.Sprite;
 
 import javafx.scene.image.Image;
@@ -17,7 +18,6 @@ public class AnimatedSprite extends Sprite {
 
     public AnimatedSprite(Image image, int rows, int columns, int frameTime, Step... frames) {
         super(image, rows, columns);
-
         if (frames.length < 1) {
             throw new IllegalArgumentException("Animated Sprite must contain at least one frame!");
         }

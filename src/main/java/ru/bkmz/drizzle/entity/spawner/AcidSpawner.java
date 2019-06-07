@@ -1,6 +1,7 @@
 package ru.bkmz.drizzle.entity.spawner;
 
 import ru.bkmz.drizzle.entity.mob.Acid;
+import ru.bkmz.drizzle.experimental.HelpPane;
 import ru.bkmz.drizzle.level.Level;
 
 public class AcidSpawner extends Spawner {
@@ -9,6 +10,7 @@ public class AcidSpawner extends Spawner {
                        int variation, int count) {
         super(x, y, width, height, level, rate, variation, count);
     }
+
 
     @Override
     public void spawn() {

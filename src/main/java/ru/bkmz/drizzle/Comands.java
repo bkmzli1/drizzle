@@ -7,31 +7,39 @@ import ru.bkmz.drizzle.level.Level;
 import java.util.Scanner;
 
 class Comands extends Entity {
+
     Comands(double x, double y, double width, double height, Level level) {
         super(x, y, width, height, level);
     }
+    static Thread thread ;
+    public static void comands() {
+        String s = null;
 
-   public static void comands() {
         try {
             Scanner scanner = new Scanner(System.in);
-            String s = String.valueOf(scanner.next());
+            s = String.valueOf(scanner.next());
             if (s.equals("help")) {
                 System.out.println("en=int - прибавить очков\n" +
                         "hp=int - кол. хп стартовое\n" +
                         "addEnergy=int - добавить энергию\n" +
-                        "addShield=int - добовляет щит" +
+                        "addShield=int - добовляет щит\n" +
                         "addExperience=int - добовляет ex\n" +
                         "addhil=int - добовляет hp\n" +
                         "add_damage=int - наносит урон игроку\n" +
-                        "godmod=boolean - режим бога\n");
+                        "godmod - режим бога\n" +
+                        "level=int - добовляет лэвел ");
+                comands();
+            } else if (s.equals("godmod")) {
+                level.getPlayerProperties().setGodmod();
                 comands();
             }
+
             String[] comand = s.split("=");
             String value = comand[1];
             switch (comand[0]) {
                 case "en":
                     System.out.println("en:" + GameData.PLAYER_POINTS.getValue());
-                    GameData.PLAYER_POINTS.setVolume(Integer.parseInt(value)+ GameData.PLAYER_POINTS.getValue());
+                    GameData.PLAYER_POINTS.setVolume(Integer.parseInt(value) + GameData.PLAYER_POINTS.getValue());
                     System.out.println("en:" + GameData.PLAYER_POINTS.getValue());
                     break;
                 case "hp":
@@ -66,8 +74,9 @@ class Comands extends Entity {
                 case "add_damage":
                     level.getPlayerProperties().add_damage(Integer.parseInt(value));
                     break;
-                case "godmod":
-                    level.getPlayerProperties().setGodmod(Boolean.parseBoolean(value));
+                case "level":
+                    GameData.PLAYER_LEVEL.setVolume(Integer.parseInt(value));
+                    GameData.save();
                     break;
                 default:
                     System.out.println("команда:" + comand[0] + " не опознана");
@@ -75,12 +84,21 @@ class Comands extends Entity {
 
             }
         } catch (Exception e) {
-            System.out.println("при исполнении команды произошла ошибка");
-            System.out.println(e);
+            System.out.println("при исполнении команды " + s + " произошла ошибка");
+            System.err.println(e);
         }
         comands();
     }
+    public static void run(){
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                comands();
+            }
+        });
+        thread.start();
 
+    }
     @Override
     public void tick() {
 

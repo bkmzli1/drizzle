@@ -3,7 +3,10 @@ package ru.bkmz.drizzle.entity.spawner;
 import java.util.Objects;
 
 import ru.bkmz.drizzle.entity.Entity;
+import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
+
+import static ru.bkmz.drizzle.level.GameData.PLAYER_LEVEL;
 
 public abstract class Spawner extends Entity {
 
@@ -25,7 +28,17 @@ public abstract class Spawner extends Entity {
 
         this.frameLimit = rate;
     }
+    protected Spawner(double x, double y, double width, double height, Level level, int rate,
+                      int variation, GameData count,int power) {
+        super(x, y, width, height, level);
 
+        this.count = (count.getValue()/100)*power;
+
+        this.variation = variation;
+        this.rate = rate;
+
+        this.frameLimit = rate;
+    }
     @Override
     public final void tick() {
         if (this.frameCount++ >= this.frameLimit) {
@@ -34,6 +47,7 @@ public abstract class Spawner extends Entity {
 
             if (Objects.nonNull(this.level)) {
                 for (int i = 0; i < this.count; i++) {
+
                     spawn();
                 }
             }
