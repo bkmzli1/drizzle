@@ -172,7 +172,7 @@ public class Level {
                 gc.fillText("Energy\t\t: " + this.properties.getEnergyProperty().intValue(), 20,
                         300);
                 gc.fillText("Level\t\t: " + this.properties.getLevelProperty().intValue(), 20, 315);
-                gc.fillText("Experience\t: " + this.properties.getExperienceProperty().intValue(),
+                gc.fillText("Experience\t: " + this.properties.getExperienceProperty().doubleValue(),
                         20, 330);
                 gc.fillText("godmod\t\t: " + isGodmod(), 20, 345);
             }
@@ -252,7 +252,7 @@ public class Level {
                     20 * Timescale.TICKS_PER_SECOND, 0, 1));
         }
         this.properties.getHealthProperty().addListener((Observable, OldValue, NewValue) -> {
-            if (NewValue.intValue() <= 0) {
+            if (NewValue.intValue() <= 0||NewValue.intValue() > 10) {
                 Platform.runLater(() -> {
                     GameData.save();
                     stop();

@@ -1,6 +1,8 @@
 package ru.bkmz.drizzle.level.player;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.experimental.SoundEffects;
@@ -18,11 +20,11 @@ public class PlayerProperties {
     private static final double EXP_POOL_MOD = 1.2;
 
     private static boolean godmod = false;
-    private final IntegerProperty healthProperty = new SimpleIntegerProperty(0);
-    private final IntegerProperty armorProperty = new SimpleIntegerProperty(0);
-    private final IntegerProperty levelProperty = new SimpleIntegerProperty(0);
-    private final IntegerProperty experienceProperty = new SimpleIntegerProperty(0);
-    private final IntegerProperty energyProperty = new SimpleIntegerProperty(0);
+    private final SimpleDoubleProperty healthProperty = new SimpleDoubleProperty(0.0001);
+    private final SimpleDoubleProperty armorProperty = new SimpleDoubleProperty(0);
+    private final SimpleDoubleProperty levelProperty = new SimpleDoubleProperty(0);
+    private final SimpleDoubleProperty experienceProperty = new SimpleDoubleProperty(0);
+    private final SimpleDoubleProperty energyProperty = new SimpleDoubleProperty(0);
     private final int energyRate;
 
     private boolean skillActive = false;
@@ -45,7 +47,8 @@ public class PlayerProperties {
     }
 
     public PlayerProperties() {
-        healthProperty.set((int)GameData.PLAYER_HEALTH.getValue());
+        healthProperty.set(GameData.PLAYER_HEALTH.getValue()+0.0000000000004565414654165665);
+
         levelProperty.set((int)GameData.PLAYER_LEVEL.getValue());
 
         int ord =(int) GameData.PLAYER_SELECTEDSKILL.getValue();
@@ -94,7 +97,7 @@ public class PlayerProperties {
         GameData.STAT_COUNT_EXPERIENCE.incrementBy(experienceMultiplier * multiplier);
 
         experience += experienceMultiplier * multiplier;
-        experienceProperty.set((int) (100 * experience /
+        experienceProperty.set((100 * experience /
                 (EXP_POOL * Math.pow(EXP_POOL_MOD, levelProperty.intValue()))));
         if (experience >= EXP_POOL * Math.pow(EXP_POOL_MOD, levelProperty.intValue())) {
             experience = 0;
@@ -131,7 +134,7 @@ public class PlayerProperties {
             if (armorProperty.intValue() > 0) {
                 armorProperty.set(armorProperty.intValue() - 1);
             } else if (healthProperty.intValue() > 0) {
-                healthProperty.set(healthProperty.intValue() - 1);
+                healthProperty.set(healthProperty.doubleValue() - 1);
             }
         }
     }
@@ -156,27 +159,27 @@ public class PlayerProperties {
         }
     }
 
-    public IntegerProperty getArmorProperty() {
+    public DoubleProperty getArmorProperty() {
         return armorProperty;
     }
 
-    public IntegerProperty getEnergyProperty() {
+    public DoubleProperty getEnergyProperty() {
         return energyProperty;
     }
 
-    public IntegerProperty getExperienceProperty() {
+    public DoubleProperty getExperienceProperty() {
         return experienceProperty;
     }
 
-    public int getHealth() {
-        return this.healthProperty.intValue();
+    public double getHealth() {
+        return this.healthProperty.doubleValue();
     }
 
-    public IntegerProperty getHealthProperty() {
+    public DoubleProperty getHealthProperty() {
         return healthProperty;
     }
 
-    public IntegerProperty getLevelProperty() {
+    public DoubleProperty getLevelProperty() {
         return levelProperty;
     }
 

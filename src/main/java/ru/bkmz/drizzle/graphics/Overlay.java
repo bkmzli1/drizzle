@@ -40,6 +40,7 @@ public class Overlay implements Drawable {
 
     private Skill skill;
     private int level;
+    private Double health;
 
     public Overlay(double x, double y, PlayerProperties properties) {
         this.x = x;
@@ -47,7 +48,7 @@ public class Overlay implements Drawable {
         this.skill = properties.getSelectedSkill();
 
         level = properties.getLevelProperty().intValue();
-
+        health = properties.getHealth();
         HLT_BAR.setTileSpan(1, GameData.PLAYER_HEALTH.getValue());
         ARM_BAR.setTileSpan(1, 0);
         EXP_BAR.setTileSpan(1, 0);
@@ -70,6 +71,7 @@ public class Overlay implements Drawable {
 
         properties.getLevelProperty().addListener((Observable, OldValue, NewValue) -> {
             level = NewValue.intValue();
+
         });
 
         properties.getHealthProperty().addListener((Observable, OldValue, NewValue) -> {
@@ -79,6 +81,7 @@ public class Overlay implements Drawable {
             }else {
                 HLT_BAR.setTileSpan(1, 0);
             }
+            health = NewValue.doubleValue();
             //HLT_BAR.setTileSpan(1, NewValue.intValue());
         });
 
@@ -94,7 +97,7 @@ public class Overlay implements Drawable {
         });
 
         properties.getExperienceProperty().addListener((Observable, OldValue, NewValue) -> {
-            EXP_BAR.setTileSpan(1, NewValue.intValue());
+            EXP_BAR.setTileSpan(1, NewValue.doubleValue());
         });
 
         properties.getEnergyProperty().addListener((Observable, OldValue, NewValue) -> {
@@ -119,6 +122,8 @@ public class Overlay implements Drawable {
 
         gc.setFill(Color.YELLOW);
         gc.fillText("" + level, x + 230, y + 42);
+        gc.setFill(Color.RED);
+        gc.fillText("" + (int)health.doubleValue(), x + 230, y + 21);
     }
 
     private void drawStatic(GraphicsContext gc) {

@@ -67,7 +67,7 @@ class Comands extends Entity {
                     if (level.getPlayerProperties().getHealth() + Integer.parseInt(value) < 10) {
                         level.getPlayerProperties().addhil(Integer.parseInt(value));
                     } else if (level.getPlayerProperties().getHealth() + Integer.parseInt(value) > 10) {
-                        int difference = 10 - level.getPlayerProperties().getHealth();
+                        int difference = (int) (10 - level.getPlayerProperties().getHealth());
                         level.getPlayerProperties().addhil(difference);
                     }
                     break;

@@ -1,35 +1,40 @@
 package ru.bkmz.drizzle;
 
 import com.sun.javafx.application.LauncherImpl;
+
 import javafx.application.Platform;
+
 import javafx.event.Event;
 import javafx.event.EventType;
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
+
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.experimental.*;
 import ru.bkmz.drizzle.input.Keyboard;
-import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.util.*;
-
-import java.io.*;
-
-import java.text.SimpleDateFormat;
-import java.util.*;
-
-
 import static ru.bkmz.drizzle.level.GameData.*;
 import static ru.bkmz.drizzle.util.Commons.colorLoader;
 import static ru.bkmz.drizzle.util.Language.*;
 
+import java.io.*;
+
+import java.text.SimpleDateFormat;
+
+import java.util.*;
+
+
+
+
 
 public class Application extends javafx.application.Application {
-    private static final String VERSIONS = "v3.10";
+    private static final String VERSIONS = "v3.10.1";
     private static final String DEBUG_MODE1 = "[DEBUG_MODE]";
     private static final String NAME_GAME = "drizzle";
     private static final String ARG_DEBUG = "debug";
@@ -108,9 +113,11 @@ public class Application extends javafx.application.Application {
         for (int i = 1; i <= 10; i++) {
             ImageLoader.IMAGE_LOADER.loading("gui/bars/armor" + i);
         }
+
         ImageLoader.IMAGE_LOADER.loading("gui/bars/energy");
         ImageLoader.IMAGE_LOADER.loading("gui/bars/experience");
         ImageLoader.IMAGE_LOADER.loading("gui/bars/frame");
+
         for (int i = 1; i <= 10; i++) {
             ImageLoader.IMAGE_LOADER.loading("gui/bars/health" + i);
         }
@@ -122,6 +129,8 @@ public class Application extends javafx.application.Application {
         ImageLoader.IMAGE_LOADER.loading("gui/icons/experience");
         ImageLoader.IMAGE_LOADER.loading("gui/icons/frame");
         ImageLoader.IMAGE_LOADER.loading("gui/icons/health");
+
+        ImageLoader.IMAGE_LOADER.loading("icon/icon");
 
         //копирование файлов из jar
         CopyFiles.failCopi("media/", "sine.mp3");
@@ -165,7 +174,7 @@ public class Application extends javafx.application.Application {
 
         this.keyboard.addEventSource(stage);//добовление ивентоов
         stage.initStyle(StageStyle.TRANSPARENT);//тип окна
-
+        stage.getIcons().add(ImageLoader.IMAGE_LOADER.getImage("icon/icon"));
         scene = new Scene(this.root, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);//определение окна
         stage.setScene(scene);//создание окна
         //stage.sizeToScene();
@@ -268,7 +277,6 @@ public class Application extends javafx.application.Application {
             addError("SAVED IN:  " + appdata + "log");
             notification("error", error);
         }
-
     }
 
     private void writer() {
