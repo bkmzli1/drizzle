@@ -24,7 +24,6 @@ public class Sprite {
         if (rowCount < 1 || colCount < 1) {
             throw new IllegalArgumentException("Sprite has to have at least 1 row and 1 column!");
         }
-
         this.image = image;
         this.rowCount = rowCount;
         this.colCount = colCount;

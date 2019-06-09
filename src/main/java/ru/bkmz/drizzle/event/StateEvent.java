@@ -5,6 +5,7 @@ import javafx.event.EventType;
 
 public class StateEvent extends Event {
 
+
     private static final long serialVersionUID = 4606669955706420844L;
 
     public static final EventType<StateEvent> STATE = new EventType<>(ANY, "STATE");
@@ -23,7 +24,10 @@ public class StateEvent extends Event {
     public static final EventType<StateEvent> UNPAUSE = new EventType<>(GAME, "UNPAUSE");
     public static final EventType<StateEvent> STOP = new EventType<>(GAME, "STOP");
     public static final EventType<StateEvent> COLLECTION = new EventType<>(GAME, "COLLECTION");
+    public static final EventType<StateEvent> BACKGROUND = new EventType<>(GAME, "BACKGROUND");
 
+
+    public static final EventType<StateEvent> SCREEN  = new EventType<>(GAME, "SCREEN");
     public StateEvent(EventType<? extends Event> eventType) {
         super(eventType);
     }
