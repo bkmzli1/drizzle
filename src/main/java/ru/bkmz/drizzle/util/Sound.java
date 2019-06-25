@@ -15,24 +15,18 @@ public class Sound implements AutoCloseable {
     private int i = 0;
     private FloatControl volumeControl = null;
     private boolean playing = false;
-    private boolean error = false;
 
-    public Sound(File f,int volume) {
-        try {
-            stream = AudioSystem.getAudioInputStream(f);
-            clip = AudioSystem.getClip();
-            clip.open(stream);
-            clip.addLineListener(new Listener());
-            volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            released = true;
-            setVolume(volume);
-        } catch (Exception e) {
-            Application.addError(Sound.class.getName()+": "+e);
-            e.printStackTrace();
-            released = false;
-            error = true;
-            close();
-        }
+
+    public Sound(File f, int volume) throws Exception {
+
+        stream = AudioSystem.getAudioInputStream(f);
+        clip = AudioSystem.getClip();
+        clip.open(stream);
+        clip.addLineListener(new Listener());
+        volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        released = true;
+        setVolume(volume);
+
     }
 
     // true если звук успешно загружен, false если произошла ошибка
@@ -52,29 +46,21 @@ public class Sound implements AutoCloseable {
 	  Иначе ничего не произойдёт
 	*/
     public void play(boolean breakOld) {
-        try {
 
+        if (breakOld) {
+            clip.setFramePosition(i);
+            i++;
+            clip.start();
 
-            if (!error) {
-                if (breakOld) {
-                    clip.setFramePosition(i);
-                    i++;
-                    clip.start();
-
-                }
-            }
-        }catch (Exception e){
-            error = true;
-            Application.addError(Media.class.getName()+": "+e);
-            System.err.println(e);
         }
     }
 
+
     // То же самое, что и playNew(true)
     public void play() {
-        if (!error) {
-            play(true);
-        }
+
+        play(true);
+
     }
 
     // Останавливает воспроизведение

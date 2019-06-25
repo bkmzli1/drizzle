@@ -17,4 +17,6 @@ public class AcidSpawner extends Spawner {
         this.level.add(new Acid(getRandomX(), getRandomY(), this.level));
     }
 
+
+
 }

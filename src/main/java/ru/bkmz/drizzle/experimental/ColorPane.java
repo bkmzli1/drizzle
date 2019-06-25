@@ -15,19 +15,19 @@ import ru.bkmz.drizzle.Application;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.util.Commons;
 
-import static ru.bkmz.drizzle.util.Commons.colorName;
-import static ru.bkmz.drizzle.util.Commons.getColor;
+import static ru.bkmz.drizzle.util.Commons.*;
 import static ru.bkmz.drizzle.util.Language.getLanguageMap;
 
 
 public class ColorPane extends BorderPane {
     private VBox vBoxColor, vBoxT;
     private HBox hBox, hBox2, hBoxT, hBoxT2, hBoxPrevy;
-    private Text label, tipColor, text, text2, text3, text4, text5, text6, text7, text8, text9, text10, text11;
+    private Text label, tipColor,cleaning, text, text2, text3, text4, text5, text6, text7, text8, text9, text10, text11;
     private int idColor = 0;
 
 
     public ColorPane() {
+        text();
         this.setPrefSize(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         this.setPadding(new Insets(10, 10, 10, 10));
 
@@ -55,7 +55,6 @@ public class ColorPane extends BorderPane {
 
         vBoxColor = new VBox(10);
         vBoxColor.setAlignment(Pos.TOP_CENTER);
-        text();
 
 
         hBoxT = new HBox(20);
@@ -64,8 +63,6 @@ public class ColorPane extends BorderPane {
         hBoxT.setAlignment(Pos.TOP_CENTER);
         hBoxT2.setAlignment(Pos.TOP_CENTER);
 
-        hBoxT.getChildren().addAll(text, text2, text3, text4, text5, text6);
-        hBoxT2.getChildren().addAll(text7, text8, text9, text10, text11);
 
         vBoxT = new VBox(20);
         vBoxT.getChildren().addAll(hBoxT, hBoxT2);
@@ -74,7 +71,7 @@ public class ColorPane extends BorderPane {
 
         vBox.getChildren().addAll(label, hBox, hBox2, tipColor, vBoxColor, hBoxPrevy);
 
-        Text cleaning = new Text(getLanguageMap("reset threads"));
+        cleaning = new Text(getLanguageMap("reset threads"));
         cleaning.setOnMouseClicked(event -> {
             Commons.nullColor();
             Application.pane();
@@ -104,9 +101,14 @@ public class ColorPane extends BorderPane {
 
     public void refresh() {
         text();
+        cleaning.setFill(Commons.GRADIENT2);
         hBox.getChildren().clear();
         hBox2.getChildren().clear();
         vBoxColor.getChildren().clear();
+        hBoxT.getChildren().clear();
+        hBoxT2.getChildren().clear();
+        hBoxT.getChildren().addAll(text, text2, text3, text4, text5, text6);
+        hBoxT2.getChildren().addAll(text7, text8, text9, text10, text11);
 
         label.setFill(Commons.GRADIENT2);
         text.setFill(Commons.GRADIENT);
@@ -117,7 +119,6 @@ public class ColorPane extends BorderPane {
         tipColor.setTextAlignment(TextAlignment.CENTER);
 
 
-
         MenuButton menu = new MenuButton(StateEvent.MENU);
         this.setTop(menu);
         for (int i = 0; i < Commons.colorName.length; i++) {
@@ -126,11 +127,13 @@ public class ColorPane extends BorderPane {
         settingsButtons(textProcessor("red"), (int) (Commons.getColor(colorName[idColor]).getRed() * 255));
         settingsButtons(textProcessor("green"), (int) (Commons.getColor(colorName[idColor]).getGreen() * 255));
         settingsButtons(textProcessor("blue"), (int) (Commons.getColor(colorName[idColor]).getBlue() * 255));
-
+        settingsButtons(textProcessor("opacity"), (int) (Commons.getColor(colorName[idColor]).getOpacity() * 100));
+        text();
 
     }
 
     private void text() {
+
         text = new Text("TEXT");
         text.setFont(Font.font("", FontWeight.LIGHT, 30));
         text.setUnderline(true);
@@ -192,13 +195,7 @@ public class ColorPane extends BorderPane {
 
         Text text = new Text(name);
 
-        if (name.equals(textProcessor("red"))) {
-            text.setFill(Color.RED);
-        } else if (name.equals(textProcessor("green"))) {
-            text.setFill(Color.GREEN);
-        } else if (name.equals(textProcessor("blue"))) {
-            text.setFill(Color.BLUE);
-        }
+        getCollorText(text, name, colorValve);
         text.setFont(Font.font("", FontWeight.BOLD, 23));
         text.setTextAlignment(TextAlignment.CENTER);
 
@@ -211,51 +208,25 @@ public class ColorPane extends BorderPane {
         Text valve = new Text(colorValveS);
         valve.setFill(getColor("numbers"));
         valve.setFont(Font.font("", FontWeight.BOLD, 23));
-        if (name.equals(textProcessor("red"))) {
-            valve.setFill(Color.RED);
-        } else if (name.equals(textProcessor("green"))) {
-            valve.setFill(Color.GREEN);
-        } else if (name.equals(textProcessor("blue"))) {
-            valve.setFill(Color.BLUE);
-        }
+        getCollorText(valve, name, colorValve);
 
-        EventButton eventButtonL = new EventButton(null, 0);
-        EventButton eventButtonR = new EventButton(null, 180);
+        Text addOneL = new Text("  -1  ");
+        Text addTenL = new Text("  -10  ");
+        Text addAHundredL = new Text("  -100  ");
 
-        eventButtonL.setOnMouseClicked(event -> {
-            if (name.equals(textProcessor("red"))) {
-                Commons.setColorRed(colorName[idColor], colorValve - 1);
-            } else if (name.equals(textProcessor("green"))) {
-                Commons.setColorGreen(colorName[idColor], colorValve - 1);
-            } else if (name.equals(textProcessor("blue"))) {
-                Commons.setColorBlue(colorName[idColor], colorValve - 1);
-            }
-            try {
-                Commons.write();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            Application.pane();
-            refresh();
+        Text addOneR = new Text("  +1  ");
+        Text addTenR = new Text("  +10  ");
+        Text addAHundredR = new Text("  +100  ");
 
-        });
-        eventButtonR.setOnMouseClicked(event -> {
-            if (name.equals(textProcessor("red"))) {
-                Commons.setColorRed(colorName[idColor], colorValve + 1);
-            } else if (name.equals(textProcessor("green"))) {
-                Commons.setColorGreen(colorName[idColor], colorValve + 1);
-            } else if (name.equals(textProcessor("blue"))) {
-                Commons.setColorBlue(colorName[idColor], colorValve + 1);
-            }
-            try {
-                Commons.write();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            Application.pane();
-            refresh();
-        });
-        hBox.getChildren().addAll(text, eventButtonL, valve, eventButtonR);
+        buttonText(addOneL, name, Integer.parseInt(addOneL.getText().replace(" ","")), colorValve);
+        buttonText(addTenL, name, Integer.parseInt(addTenL.getText().replace(" ","")), colorValve);
+        buttonText(addAHundredL, name, Integer.parseInt(addAHundredL.getText().replace(" ","")), colorValve);
+
+        buttonText(addOneR, name, Integer.parseInt(addOneR.getText().replace(" ","")), colorValve);
+        buttonText(addTenR, name, Integer.parseInt(addTenR.getText().replace(" ","")), colorValve);
+        buttonText(addAHundredR, name, Integer.parseInt(addAHundredR.getText().replace(" ","")), colorValve);
+
+        hBox.getChildren().addAll(text, addAHundredL, addTenL, addOneL, valve, addOneR, addTenR, addAHundredR);
         vBoxColor.getChildren().addAll(hBox);
 
 
@@ -299,4 +270,53 @@ public class ColorPane extends BorderPane {
         return getLanguageMap(text);
     }
 
+    private void buttonText(Text text, String name, int offset, int colorValve) {
+
+        text.setFont(Font.font("", FontWeight.BOLD, 23));
+        text.setTextAlignment(TextAlignment.CENTER);
+        Glow glow = new Glow(0);
+        getCollorText(text, name, colorValve);
+        text.setOnMouseEntered(event -> {
+
+            glow.setLevel(1000);
+            text.setEffect(glow);
+        });
+
+        text.setOnMouseExited(event -> {
+
+            glow.setLevel(0);
+            text.setEffect(glow);
+        });
+
+        text.setOnMouseClicked(
+                event -> {
+                    collorSettings(name, offset, colorValve);
+
+                });
+    }
+
+
+
+    private void collorSettings(String name, int offset, int colorValve) {
+        if (name.equals(textProcessor("red"))) {
+            Commons.setColorRed(colorName[idColor], colorValve + offset);
+        } else if (name.equals(textProcessor("green"))) {
+            Commons.setColorGreen(colorName[idColor], colorValve + offset);
+        } else if (name.equals(textProcessor("blue"))) {
+            Commons.setColorBlue(colorName[idColor], colorValve + offset);
+        } else if (name.equals(textProcessor("opacity"))) {
+            if (colorValve <= 100 && colorValve >= 0) {
+                Commons.setColorOpacity(colorName[idColor],colorValve+offset);
+            }
+        }
+
+
+        Application.pane();
+        refresh();
+        try {
+            Commons.write();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

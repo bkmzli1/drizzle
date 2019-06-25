@@ -12,11 +12,12 @@ class Comands extends Entity {
         super(x, y, width, height, level);
     }
     static Thread thread ;
+    static Scanner scanner = new Scanner(System.in);
     public static void comands() {
         String s = null;
 
         try {
-            Scanner scanner = new Scanner(System.in);
+
             s = String.valueOf(scanner.next());
             if (s.equals("help")) {
                 System.out.println("en=int - прибавить очков\n" +

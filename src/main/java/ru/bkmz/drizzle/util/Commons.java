@@ -1,11 +1,14 @@
 package ru.bkmz.drizzle.util;
 
 import javafx.scene.paint.*;
+import javafx.scene.text.Text;
 import ru.bkmz.drizzle.level.GameData;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+
+import static ru.bkmz.drizzle.util.Language.getLanguageMap;
 
 public class Commons {
 
@@ -38,17 +41,7 @@ public class Commons {
 
     public static void colorLoader() {
         if (GameData.THEME.getValue() == 1) {
-            colorMap.put("colorGradient1", Color.rgb(0, 255, 255));
-            colorMap.put("colorGradient2", Color.rgb(0, 0, 255));
-            colorMap.put("colorTexOff", Color.rgb(0, 145, 225));
-            colorMap.put("colorTexOn", Color.rgb(0, 225, 225));
-            colorMap.put("canBuy", Color.rgb(0, 255, 255, 0.8f));
-            colorMap.put("notBuy", Color.rgb(0, 255, 255, 0.5f));
-            colorMap.put("buyFull", Color.rgb(0, 255, 200));
-            colorMap.put("numbers", Color.rgb(0, 255, 255, 0.5f));
-            colorMap.put("skillDisabled", Color.rgb(0, 150, 150));
-            colorMap.put("skillOn", Color.rgb(0, 255, 145));
-            colorMap.put("skillOff", Color.rgb(0, 145, 255));
+            nullColor();
         } else if (GameData.THEME.getValue() == 2) {
             if (!new File(file).exists()) {
                 nullColor();
@@ -81,17 +74,17 @@ public class Commons {
     }
 
     public static void nullColor() {
-        colorMap.put("colorGradient1", Color.rgb(0, 255, 255));
-        colorMap.put("colorGradient2", Color.rgb(0, 0, 255));
-        colorMap.put("colorTexOff", Color.rgb(0, 145, 225));
-        colorMap.put("colorTexOn", Color.rgb(0, 225, 225));
+        colorMap.put("colorGradient1", Color.rgb(0, 255, 255,1.0f));
+        colorMap.put("colorGradient2", Color.rgb(0, 0, 255,1.0f));
+        colorMap.put("colorTexOff", Color.rgb(0, 145, 225,1.0f));
+        colorMap.put("colorTexOn", Color.rgb(0, 225, 225,1.0f));
         colorMap.put("canBuy", Color.rgb(0, 255, 255, 0.8f));
         colorMap.put("notBuy", Color.rgb(0, 255, 255, 0.5f));
-        colorMap.put("buyFull", Color.rgb(0, 255, 200));
+        colorMap.put("buyFull", Color.rgb(0, 255, 200,1.0f));
         colorMap.put("numbers", Color.rgb(0, 255, 255, 0.5f));
-        colorMap.put("skillDisabled", Color.rgb(0, 150, 150));
-        colorMap.put("skillOn", Color.rgb(0, 255, 145));
-        colorMap.put("skillOff", Color.rgb(0, 145, 255));
+        colorMap.put("skillDisabled", Color.rgb(0, 150, 150,1f));
+        colorMap.put("skillOn", Color.rgb(0, 255, 145,1.0f));
+        colorMap.put("skillOff", Color.rgb(0, 145, 255,1.0f));
         gradent();
         try {
             write();
@@ -119,10 +112,10 @@ public class Commons {
 
     public static void setColorRed(String name, int red) {
         try {
-
             colorMap.put(name, Color.rgb(red, (int) (255 * getColor(name).getGreen()), (int) (255 * getColor(name).getBlue())));
             gradent();
         } catch (Exception ignored) {
+
         }
 
     }
@@ -147,7 +140,17 @@ public class Commons {
         }
     }
 
-    private static void read() throws Exception {
+    public static void setColorOpacity(String name, int opacity) {
+        try {
+            colorMap.put(name, Color.rgb((int) (255 * getColor(name).getRed()), (int) (255 * getColor(name).getGreen()), (int) (255 * getColor(name).getBlue()), opacity/100f));
+            gradent();
+        } catch (Exception ignored) {
+
+        }
+
+    }
+
+    public static void read() throws Exception {
         FileInputStream fiStream = new FileInputStream(new File(file));
         ObjectInputStream oiStream = new ObjectInputStream(fiStream);
         for (String s : colorName) {
@@ -174,6 +177,22 @@ public class Commons {
 
         ooStream.close();
         foStream.close();
+    }
+
+    public static Color getColor(int r, int g, int b, float o) {
+        o = o / 100f;
+        return Color.rgb(r, g, b, o);
+    }
+    public static void getCollorText(Text text, String name, int colorValve) {
+        if (name.equals(getLanguageMap("red"))) {
+            text.setFill(getColor(colorValve, 0, 0, 100));
+        } else if (name.equals(getLanguageMap("green"))) {
+            text.setFill(getColor(0, colorValve, 0, 100));
+        } else if (name.equals(getLanguageMap("blue"))) {
+            text.setFill(getColor(0, 0, colorValve, 100));
+        }else if (name.equals(getLanguageMap("opacity"))) {
+            text.setFill(getColor((int) (Math.random()*255), (int) (Math.random()*255), (int) (Math.random()*255), 100));
+        }
     }
 
 

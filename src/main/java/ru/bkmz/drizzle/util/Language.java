@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Language {
     private static Map<String, String> languageMapName = new HashMap<String, String>();
-    private static Map languageMapId = new HashMap();
+    private static Map<Integer, String> languageMapId = new HashMap<Integer, String>();
     private static Connection con;
 
     public static String getLanguageMap(String name) {

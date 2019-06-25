@@ -1,5 +1,6 @@
 package ru.bkmz.drizzle.util;
 
+import ru.bkmz.drizzle.Application;
 import ru.bkmz.drizzle.level.GameData;
 
 import java.io.File;
@@ -17,7 +18,7 @@ public class CopyFiles {
 
     public static void failCopi(String url, String fileName) {
         File f = new File(GameData.appdata + "res/" + url + fileName);
-        if (!f.exists() || fileName.equals("language")) {
+        if (!f.exists() || (fileName.equals("language") && Application.DEBUG_MODE)) {
             System.out.println("loading jar:"+ url + fileName);
             fileResources(GameData.appdata + "res");
             fileResources(GameData.appdata + "res/" + url);

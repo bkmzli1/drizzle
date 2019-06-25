@@ -21,12 +21,13 @@ public class MenuPane extends GridPane {
 
 
     public MenuPane() {
-        Text label = new Text(getLanguageMap("gameName"));
         this.setPrefSize(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         this.setVgap(10);
         this.setHgap(10);
         this.setPadding(new Insets(10, 10, 10, 15));
         this.setAlignment(Pos.CENTER);
+
+        Text label = new Text(getLanguageMap("gameName"));
         label.setFont(Font.font("", FontWeight.LIGHT, 100));
         label.setFill(Commons.GRADIENT);
         label.setOpacity(0.6);

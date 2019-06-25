@@ -19,6 +19,7 @@ import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.experimental.*;
 import ru.bkmz.drizzle.input.Keyboard;
 import ru.bkmz.drizzle.util.*;
+
 import static ru.bkmz.drizzle.level.GameData.*;
 import static ru.bkmz.drizzle.util.Commons.colorLoader;
 import static ru.bkmz.drizzle.util.Language.*;
@@ -30,11 +31,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-
-
-
 public class Application extends javafx.application.Application {
-    private static final String VERSIONS = "v3.10.1";
+    private static final String VERSIONS = "v3.10.3";
     private static final String DEBUG_MODE1 = "[DEBUG_MODE]";
     private static final String NAME_GAME = "drizzle";
     private static final String ARG_DEBUG = "debug";
@@ -46,7 +44,7 @@ public class Application extends javafx.application.Application {
     private Group users;
     public Scene scene;
 
-    private  Keyboard keyboard;
+    private Keyboard keyboard;
 
     private Games games;
 
@@ -63,6 +61,7 @@ public class Application extends javafx.application.Application {
 
     private static Media media;
 
+    public  static  double xMuse,yMuse;
     public static void main(String... args) {
         //включение режима отладки
         for (String arg : args) {
@@ -107,7 +106,7 @@ public class Application extends javafx.application.Application {
         ImageLoader.IMAGE_LOADER.loading("entity/acid");
         ImageLoader.IMAGE_LOADER.loading("entity/armor");
         ImageLoader.IMAGE_LOADER.loading("entity/energy");
-        ImageLoader.IMAGE_LOADER.loading("entity/player4");
+        ImageLoader.IMAGE_LOADER.loading("entity/kitchen");
         ImageLoader.IMAGE_LOADER.loading("entity/star");
 
         for (int i = 1; i <= 10; i++) {
@@ -133,7 +132,7 @@ public class Application extends javafx.application.Application {
         ImageLoader.IMAGE_LOADER.loading("icon/icon");
 
         //копирование файлов из jar
-        CopyFiles.failCopi("media/", "sine.mp3");
+      CopyFiles.failCopi("media/", "sine.mp3");
         CopyFiles.failCopi("media/", "Acid.wav");
         CopyFiles.failCopi("media/", "electric.wav");
         CopyFiles.failCopi("media/", "Shield.wav");
@@ -149,7 +148,6 @@ public class Application extends javafx.application.Application {
 
         keyboard = new Keyboard();
         this.games = new Games(keyboard);
-
         this.users = new Group();
         this.root = new Group(this.games.getCanvas(), this.users);
 
@@ -209,6 +207,10 @@ public class Application extends javafx.application.Application {
                 switchPane(this.users, paneSettings);
 
             } else if (eventType == StateEvent.QUIT) {
+                if (!error.equals("")) {
+                    writer();
+                    notification("error", error);
+                }
                 Platform.exit();
                 System.exit(0);
 
@@ -236,7 +238,7 @@ public class Application extends javafx.application.Application {
                 switchPane(this.users, paneSettings);
 
 
-            }else if (eventType == StateEvent.COLOR) {
+            } else if (eventType == StateEvent.COLOR) {
                 ((ColorPane) paneColor).refresh();
                 switchPane(this.users, paneColor);
 
@@ -266,15 +268,19 @@ public class Application extends javafx.application.Application {
         stage.fireEvent(new StateEvent(StateEvent.MENU));//открытие меню
 
 
-        media = new Media(appdata + "res/media/sine.mp3");
-        media.volume(Settings_RAIN_Volume.getValue());
-        media.indefinite();
-        media.play();
+        try {
+            media = new Media(appdata + "res/media/sine.mp3");
+            media.volume(Settings_RAIN_Volume.getValue());
+            media.indefinite();
+            media.play();
+        } catch (Exception e) {
+            error += e;
+        }
 
 
         if (!error.equals("")) {
             writer();
-            addError("SAVED IN:  " + appdata + "log");
+            addError("\nSAVED IN:  " + appdata + "log");
             notification("error", error);
         }
     }
@@ -306,7 +312,7 @@ public class Application extends javafx.application.Application {
         alert.showAndWait();
     }
 
-    public static void setVolume(int volume) {
+    public static void setVolume(int volume) throws Exception {
         media.volume(volume);
         if (volume == 0) {
             media.stop();

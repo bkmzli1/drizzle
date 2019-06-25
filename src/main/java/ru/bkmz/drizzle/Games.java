@@ -1,6 +1,5 @@
 package ru.bkmz.drizzle;
 
-import com.sun.scenario.animation.AbstractMasterTimer;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.input.Keyboard;
 import ru.bkmz.drizzle.level.GameData;
@@ -16,7 +15,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
 
-public class Games {
+class Games {
     private static Canvas canvas = new Canvas(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);//размеры окна
     private final GraphicsContext gc = canvas.getGraphicsContext2D();//2d
 

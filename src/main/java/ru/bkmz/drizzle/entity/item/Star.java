@@ -36,8 +36,8 @@ public class Star extends Item {
                 this.level.getPlayerProperties().addShield();
                 break;
             case 2:
-
                 this.level.getPlayerProperties().addExperience(10 * 60);
+
                 break;
         }
         SoundEffects.playNew("star.wav");

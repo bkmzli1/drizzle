@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import ru.bkmz.drizzle.Application;
 import ru.bkmz.drizzle.graphics.Drawable;
 import ru.bkmz.drizzle.graphics.Sprite;
+import ru.bkmz.drizzle.level.GameData;
 import ru.bkmz.drizzle.level.Level;
 
 import java.util.Objects;
@@ -51,7 +52,7 @@ public abstract class Entity implements Drawable {
             this.sprite.draw(gc, this.x + this.spriteXOffset, this.y + this.spriteYOffset);
         }
 
-        if (Application.DEBUG_MODE) {
+        if (Application.DEBUG_MODE && GameData.BAG.getValue() != 1) {
             gc.setStroke(Color.WHITE);
             gc.strokeRect(this.x, this.y, this.width, this.height);
 

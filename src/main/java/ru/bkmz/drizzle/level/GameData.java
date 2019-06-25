@@ -38,7 +38,8 @@ public enum GameData {
     Settings_BACKGROUND(1, 2, "ФОН"),
     Settings_LANGUAGE(0, 1, "ЯЗЫК"),
     POWER_OF_RAIN(0, 10, "Сила дождя"),
-    THEME(1, 2, "тема"),;
+    THEME(1, 2, "тема"),
+    BAG(0,1,"BAG");
     private static boolean DEBUG_MODE;
 
     public static boolean isDebugMode() {
@@ -47,7 +48,6 @@ public enum GameData {
 
     public static final String appdata = System.getenv("APPDATA") + "\\.drizzle\\";
     private static final String SER_FILE = appdata + "playdata.ser";
-    public static final String config_file = appdata + "configData.conf";
 
     private final int min;
     private final int max;

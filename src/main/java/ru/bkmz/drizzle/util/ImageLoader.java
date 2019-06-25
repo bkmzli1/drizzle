@@ -40,12 +40,9 @@ public enum ImageLoader {
     }
 
     public void loading(String token) {
-        try {
-            loading(token, -1, -1, false, false);
-        } catch (Exception e) {
 
-            Application.addError(ImageLoader.class.getName() + ": " + "ошибка загрузки: " + token + " Error: " + e);
-        }
+            loading(token, -1, -1, false, false);
+
     }
 
     public void loading(String token, int width, int height) {

@@ -35,12 +35,10 @@
     </column>
     <index id="13" parent="6" name="en_id_uindex">
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="14" parent="6" name="en_name_uindex">
       <ColNames>name</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="15" parent="6" name="en_pk">
@@ -63,12 +61,10 @@
     </column>
     <index id="19" parent="7" name="ru_id_uindex">
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="20" parent="7" name="ru_name_uindex">
       <ColNames>name</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="21" parent="7" name="ru_pk">

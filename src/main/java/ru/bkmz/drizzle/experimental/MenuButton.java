@@ -7,7 +7,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import ru.bkmz.drizzle.event.StateEvent;
-import ru.bkmz.drizzle.util.Commons;
+
 import ru.bkmz.drizzle.util.ImageLoader;
 
 import javafx.event.EventType;

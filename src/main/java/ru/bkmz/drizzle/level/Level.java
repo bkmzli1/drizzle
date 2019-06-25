@@ -8,7 +8,7 @@ import ru.bkmz.drizzle.Application;
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.entity.item.Item;
 import ru.bkmz.drizzle.entity.mob.Mob;
-import ru.bkmz.drizzle.entity.mob.Player;
+import ru.bkmz.drizzle.entity.mob.Kitchen;
 import ru.bkmz.drizzle.entity.particle.Particle;
 import ru.bkmz.drizzle.entity.particle.RainParticle;
 import ru.bkmz.drizzle.entity.spawner.*;
@@ -113,6 +113,7 @@ public class Level {
         public void rainReset() {
             rain();
         }
+
     }
 
     public Level(Keyboard keyboard) {
@@ -120,12 +121,16 @@ public class Level {
         rain();
     }
 
-    public void rain() {
+    private void rain() {
         this.spawners.subList(0, spawners.size()).clear();
-        for (double x = 0, i = 0; i < 3; x = x - Commons.SCENE_WIDTH, i++) {
-            this.spawners.add(new RainSpawner(x, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, SCENE_WIDTH, POWER_OF_RAIN.getValue()));
+        if (POWER_OF_RAIN.getValue() !=0 ) {
+            for (double x = 0, i = 0; i < 3; x = x - Commons.SCENE_WIDTH, i++) {
+                this.spawners.add(new RainSpawner(x, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, SCENE_WIDTH, POWER_OF_RAIN.getValue()));
+            }
+
         }
     }
+
 
     public void add(Entity e) {
         if (e instanceof Mob || e instanceof Item) {
@@ -142,7 +147,9 @@ public class Level {
             upImag();
             i = Settings_BACKGROUND.getValue();
         }
-        gc.drawImage(imag, 0, 0, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
+        if (BAG.getValue() == 0) {
+            gc.drawImage(imag, 0, 0, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
+        }
         for (Entity p : this.particles) {
             p.draw(gc);
         }
@@ -155,7 +162,7 @@ public class Level {
             this.overlay.draw(gc);
         }
 
-        if (Application.DEBUG_MODE) {
+        if (Application.DEBUG_MODE && BAG.getValue() != 1) {
             gc.setFill(Color.WHITE);
             gc.fillText("Spawners\t\t: " + this.spawners.size(), 20, 150);
             gc.fillText("Mobs\t\t: " + this.mobs.size(), 20, 165);
@@ -188,8 +195,11 @@ public class Level {
         return mobs.subList(1, mobs.size());
     }
 
-    public Player getPlayer() {
-        return (this.mobs.size() > 0) ? (Player) this.mobs.get(0) : null;
+    public Kitchen getPlayer() {
+        try {
+            return (this.mobs.size() > 0) ? (Kitchen) this.mobs.get(0) : null;
+        }catch (Exception ignored){}
+        return null;
     }
 
     public PlayerProperties getPlayerProperties() {
@@ -233,7 +243,7 @@ public class Level {
         this.properties = new PlayerProperties();
         this.overlay = new Overlay(0, 20, this.properties);
 
-        this.mobs.add(new Player((Commons.SCENE_WIDTH - Player.getWIDTH()) / 2, Commons.SCENE_GROUND,
+        this.mobs.add(new Kitchen((Commons.SCENE_WIDTH - Kitchen.getWIDTH()) / 2, Commons.SCENE_GROUND,
                 this, this.keyboard, this.properties));
 
         for (double x = 0, i = 0; i < 3; x = x - Commons.SCENE_WIDTH, i++) {
@@ -273,6 +283,7 @@ public class Level {
         this.mobs.clear();
         this.spawners.subList(1, spawners.size()).clear();
         this.particles.removeIf(E -> !(E instanceof RainParticle));
+        rain();
     }
 
 

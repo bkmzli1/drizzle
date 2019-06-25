@@ -57,7 +57,7 @@ public class Overlay implements Drawable {
                 .getImage("gui/bars/health"+GameData.PLAYER_HEALTH.getValue() ), 1, 1);
         if (Objects.nonNull(skill)) {
             switch (skill) {
-                case SHOCKWAVE:
+                case SHORTWAVE:
                     ABL_ICO.selectTile(0, 0);
                     break;
                 case SHIELD_SPAWN:

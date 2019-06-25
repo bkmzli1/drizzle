@@ -7,45 +7,31 @@ import java.io.File;
 
 public class Media {
     private static MediaPlayer mediaPlayer;
-    private boolean error = false;
 
-    public Media(String f) {
 
-        try {
+    public Media(String f)  throws Exception{
 
-            mediaPlayer = new MediaPlayer(
-                    new javafx.scene.media.Media(new File(f).toURI().toString())
 
-            );
-        } catch (Exception e) {
-            error = true;
-            Application.addError(Media.class.getName() + ": " + e);
-            System.err.println(e);
-        }
+        mediaPlayer = new MediaPlayer(
+                new javafx.scene.media.Media(new File(f).toURI().toString())
+
+        );
+
     }
 
     public void indefinite() {
-        if (!error) {
-            try {
 
-                mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-            } catch (Exception e) {
-                error = true;
-                Application.addError(Media.class.getName() + ": " + e);
-            }
-        }
+
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+
+
     }
 
     public void play() {
-        if (!error) {
-            try {
-                mediaPlayer.play();
-            } catch (Exception e) {
-                error = true;
-                Application.addError(Media.class.getName() + ": " + e);
-                System.err.println(e);
-            }
-        }
+
+        mediaPlayer.play();
+
+
     }
 
     public void stop() {
@@ -53,17 +39,12 @@ public class Media {
     }
 
     public void volume(int volume) {
-        if (!error) {
-            try {
 
-                mediaPlayer.setVolume(volume / 10f);
-            } catch (Exception e) {
-                error = true;
-                Application.addError(Media.class.getName() + ": " + e);
-            }
-        }
+
+        mediaPlayer.setVolume(volume / 10f);
+
     }
-
-
 }
+
+
 

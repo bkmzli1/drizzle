@@ -13,7 +13,6 @@ import javafx.scene.text.TextAlignment;
 import ru.bkmz.drizzle.Application;
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.level.GameData;
-import ru.bkmz.drizzle.level.Level;
 import ru.bkmz.drizzle.util.Commons;
 
 import java.awt.*;
@@ -33,12 +32,10 @@ public class SettingsPane extends BorderPane {
         this.setPrefSize(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         this.setPadding(new Insets(10, 10, 10, 10));
 
-
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_CENTER);
 
-
-        label = new Text(getLanguageMap("SETTINGS"));
+        label = new Text();
         label.setFont(Font.font("", FontWeight.BOLD, 30));
         label.setFill(Commons.GRADIENT2);
         label.setUnderline(true);
@@ -66,9 +63,11 @@ public class SettingsPane extends BorderPane {
         vBox2.getChildren().clear();
 
         label.setFill(Commons.GRADIENT2);
+        label.setText(getLanguageMap("SETTINGS"));
 
         MenuButton menu = new MenuButton(StateEvent.MENU);
         this.setTop(menu);
+
 
         complexity = new String[]{getLanguageMap("Easy"), getLanguageMap("normal"), getLanguageMap("hard")};
         language = new String[]{"РУССКИЙ", "ENGLISH"};
@@ -82,10 +81,12 @@ public class SettingsPane extends BorderPane {
         settingsClic(vBox1, vBox2, Settings_AcidSpawner_count, getLanguageMap("Complexity:"));
         settingsClic(vBox1, vBox2, Settings_FPS, getLanguageMap("FPS"));
         settingsButtons(vBox1, vBox2, Settings_LANGUAGE, getLanguageMap("Language"));
-        settingsButtons(vBox1, vBox2, THEME, getLanguageMap("theme"));
 
-        if (THEME.getValue()== 2){
+        settingsButtons(vBox1, vBox2, THEME, getLanguageMap("theme"));
+        if (THEME.getValue() == 2) {
+
             Text t1 = new Text(getLanguageMap("repeat"));
+            Text t2 = new Text("  ");
             t1.setTextAlignment(TextAlignment.CENTER);
             t1.setFill(getColor("colorTexOff"));
             t1.setFont(Font.font("", FontWeight.BOLD, 20));
@@ -105,9 +106,13 @@ public class SettingsPane extends BorderPane {
                 Glow glow = new Glow(0);
                 t1.setEffect(glow);
             });
+            vBox1.getChildren().addAll(t2);
+            vBox2.getChildren().addAll(t1);
+        }
 
 
-           vBox2.getChildren().addAll(t1);
+        if (Application.DEBUG_MODE) {
+            settingsClic(vBox1, vBox2, BAG, "BAG");
         }
     }
 
@@ -134,13 +139,12 @@ public class SettingsPane extends BorderPane {
             actR(gd);
         });
 
+
         v1.getChildren().addAll(text);
         hBox.getChildren().addAll(eventButtonL);
         hBox.getChildren().addAll(information);
         hBox.getChildren().addAll(eventButtonR);
         v2.getChildren().addAll(hBox);
-
-
     }
 
     private void settingsClic(VBox v1, VBox v2, GameData gd, String name) {
@@ -168,6 +172,9 @@ public class SettingsPane extends BorderPane {
             Glow glow = new Glow(0);
             information.setEffect(glow);
         });
+
+
+
         v1.getChildren().addAll(text);
         v2.getChildren().addAll(information);
 
@@ -187,7 +194,6 @@ public class SettingsPane extends BorderPane {
                 case 3:
                     gd.setVolume(1);
                     break;
-
             }
 
         } else if (gd == Settings_FPS) {
@@ -202,6 +208,18 @@ public class SettingsPane extends BorderPane {
                 case 2:
                     gd.setVolume(0);
                     break;
+            }
+
+        } else if (gd == BAG) {
+
+            switch (gd.getValue()) {
+                case 0:
+                    gd.setVolume(1);
+                    break;
+                case 1:
+                    gd.setVolume(0);
+                    break;
+
             }
 
         }
@@ -227,7 +245,11 @@ public class SettingsPane extends BorderPane {
 
 
         } else if (gd == Settings_RAIN_Volume) {
-            Application.setVolume(gd.getValue() - 1);
+            try {
+                Application.setVolume(gd.getValue() - 1);
+            } catch (Exception e) {
+
+            }
             gd.setVolume(gd.getValue() - 1);
         } else if (gd == Settings_Effect_Volume) {
             SoundEffects.playNew("Hard_kick_drum.wav");
@@ -265,7 +287,11 @@ public class SettingsPane extends BorderPane {
             Commons.colorLoader();
             Application.pane();
         } else if (gd == Settings_RAIN_Volume) {
-            Application.setVolume(gd.getValue() + 1);
+            try {
+                Application.setVolume(gd.getValue() + 1);
+            } catch (Exception e) {
+
+            }
             gd.setVolume(gd.getValue() + 1);
         } else if (gd == Settings_Effect_Volume) {
             SoundEffects.playNew("Hard_kick_drum.wav");
@@ -306,6 +332,8 @@ public class SettingsPane extends BorderPane {
             s = language[Settings_LANGUAGE.getValue()];
         } else if (gd == Settings_FPS) {
             s = fps[Settings_FPS.getValue()];
+        }else if (gd == BAG) {
+            s = String.valueOf(BAG.getValue());
         }
 
         return s;

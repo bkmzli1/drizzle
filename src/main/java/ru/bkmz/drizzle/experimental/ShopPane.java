@@ -24,6 +24,7 @@ public class ShopPane extends BorderPane {
     private VBox vbox1, vbox2, vbox3,vbox4;
     private Text text = new Text();
     private HBox hbox;
+    private static float opacity = 0.5f;
     private static void addEntry(ShopPane p, VBox v, String name, GameData d, int id) {
 
 
@@ -38,7 +39,7 @@ public class ShopPane extends BorderPane {
         } else {
             t1.setFill(getColor("skillDisabled"));
         }
-        t1.setOpacity(0.5);
+        t1.setOpacity(opacity+0.2);
         t1.setFont(Font.font("", FontWeight.BOLD, 20));
         t1.setOnMouseClicked(event -> {
             if (d.getValue() == d.getMax()) {
@@ -60,7 +61,7 @@ public class ShopPane extends BorderPane {
         });
 
         t1.setOnMouseExited(event -> {
-            t1.setOpacity(0.5);
+            t1.setOpacity(opacity+0.2);
             glow.setLevel(0);
             t1.setEffect(glow);
         });
@@ -71,7 +72,7 @@ public class ShopPane extends BorderPane {
     private static void addEntry(ShopPane p, VBox v4, VBox v1, VBox v2, GameData pd, String name) {
         Glow glow = new Glow(0);
         Text t1 = new Text(name);
-        t1.setOpacity(0.5);
+        t1.setOpacity(opacity);
         t1.setFont(Font.font("", FontWeight.BLACK, 20));
         t1.setTextAlignment(TextAlignment.CENTER);
         if (pd.getValue() < pd.getMax()) {
@@ -105,7 +106,7 @@ public class ShopPane extends BorderPane {
         });
 
         t1.setOnMouseExited(event -> {
-            t1.setOpacity(0.5);
+            t1.setOpacity(opacity);
             glow.setLevel(0);
             t1.setEffect(glow);
         });
@@ -181,7 +182,7 @@ public class ShopPane extends BorderPane {
         cleaning.setFont(Font.font("", FontWeight.BOLD, 30));
         cleaning.setFill(Commons.GRADIENT2);
         cleaning.setUnderline(true);
-        cleaning.setOpacity(0.5);
+        cleaning.setOpacity(opacity);
         cleaning.setOnMouseEntered(event -> {
             cleaning.setOpacity(1);
             Glow glow = new Glow(1000);
@@ -189,7 +190,7 @@ public class ShopPane extends BorderPane {
         });
 
         cleaning.setOnMouseExited(event -> {
-            cleaning.setOpacity(0.5);
+            cleaning.setOpacity(opacity);
             Glow glow = new Glow(0);
             cleaning.setEffect(glow);
         });
