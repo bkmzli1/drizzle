@@ -189,6 +189,7 @@ public class Application extends javafx.application.Application {
                 this.games.play();
 
             } else if (eventType == StateEvent.ONLINE) {
+                ((Online) paneOnline).refresh();
                 switchPane(this.users, paneOnline);
 
             } else if (eventType == StateEvent.SHOP) {
