@@ -191,7 +191,7 @@ public class Commons {
         } else if (name.equals(getLanguageMap("blue"))) {
             text.setFill(getColor(0, 0, colorValve, 100));
         }else if (name.equals(getLanguageMap("opacity"))) {
-            text.setFill(getColor((int) (Math.random()*255), (int) (Math.random()*255), (int) (Math.random()*255), 100));
+            text.setFill(getColor(0, 0, 0, 100));
         }
     }
 

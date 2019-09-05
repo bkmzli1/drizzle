@@ -1,18 +1,18 @@
 package ru.bkmz.drizzle;
 
-import ru.bkmz.drizzle.event.StateEvent;
-import ru.bkmz.drizzle.input.Keyboard;
-import ru.bkmz.drizzle.level.GameData;
-import ru.bkmz.drizzle.level.Level;
-import ru.bkmz.drizzle.level.Level.LevelController;
-import ru.bkmz.drizzle.util.Commons;
-import ru.bkmz.drizzle.util.FrameCounter;
-
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+import ru.bkmz.drizzle.event.StateEvent;
+import ru.bkmz.drizzle.input.Keyboard;
+import ru.bkmz.drizzle.level.GameData;
+import ru.bkmz.drizzle.level.Level;
+import ru.bkmz.drizzle.level.Level.LevelController;
+import ru.bkmz.drizzle.util.Cmd;
+import ru.bkmz.drizzle.util.Commons;
+import ru.bkmz.drizzle.util.FrameCounter;
 
 
 class Games {
@@ -27,11 +27,15 @@ class Games {
     Games(Keyboard keyboard) {
 
         this.levelController = new Level(keyboard).getLevelController();
+        if (Application.DEBUG_MODE) {
+            Thread cmd = new Thread(new Cmd(levelController), "cmd");
+            cmd.start();
+        }
         new AnimationTimer() {
 
             @Override
             public void handle(long now) {
-                if (rainUp != GameData.POWER_OF_RAIN.getValue()){
+                if (rainUp != GameData.POWER_OF_RAIN.getValue()) {
                     levelController.rainReset();
                     rainUp = GameData.POWER_OF_RAIN.getValue();
                 }
@@ -39,6 +43,7 @@ class Games {
                 if (levelController.isClosed()) {
                     canvas.fireEvent(new StateEvent(StateEvent.MENU));
                 }
+
 
                 if (keyboard.isPressed(KeyCode.ESCAPE)) {
                     if (levelController.isRunning()) {

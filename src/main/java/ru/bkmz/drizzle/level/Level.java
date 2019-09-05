@@ -110,9 +110,14 @@ public class Level {
             this.level.draw(gc);
         }
 
+        public Level getLevel() {
+            return level;
+        }
+
         public void rainReset() {
             rain();
         }
+
 
     }
 

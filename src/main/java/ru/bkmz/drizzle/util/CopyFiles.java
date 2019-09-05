@@ -18,15 +18,15 @@ public class CopyFiles {
 
     public static void failCopi(String url, String fileName) {
         File f = new File(GameData.appdata + "res/" + url + fileName);
-        if (!f.exists() || (fileName.equals("language") && Application.DEBUG_MODE)) {
-            System.out.println("loading jar:"+ url + fileName);
+        if (!f.exists() || Application.UPDATE ) {
+            System.out.println("loading jar:" + url + fileName);
             fileResources(GameData.appdata + "res");
             fileResources(GameData.appdata + "res/" + url);
 
             try {
                 InputStream inpStream = CopyFiles.class.getClassLoader().getResourceAsStream(url + fileName);
 
-                if (inpStream == null) throw new FileNotFoundException(url + fileName + " not found");
+                if (inpStream == null) throw new FileNotFoundException(url + fileName + " not    found");
                 Path target = Paths.get(urlout + fileName);
                 Files.copy(inpStream, target, REPLACE_EXISTING);
                 inpStream.close();

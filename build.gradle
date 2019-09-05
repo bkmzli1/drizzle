@@ -1,14 +1,43 @@
+buildscript {
+    dependencies {
+        classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.8.2'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
 plugins {
     id 'java'
     id 'application'
+    id 'edu.sc.seis.launch4j' version '2.4.6'
+
+}
+launch4j {
+    mainClassName = 'ru.bkmz.drizzle.Application'
+    outfile = "drizzle v3.10.5.1.exe"
+    version = "3.10.5.1"
+    textVersion = "3.10.5.1"
+    icon = "B:\\icon.ico"
+    companyName = "BkzmLitel"
+    copyright = "BkzmLitel"
+    launch4j.language = 'RUSSIAN'
+    launch4j.jreMinVersion = "1.8.0_211"
+
+    internalName = "drizzle"
 }
 
 compileJava.options.encoding = "UTF-8"
 group 'drizzle'
-version 'v3.10.3'
+version 'v3.10.4'
 
 
-
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
 
 sourceCompatibility = 1.8
 mainClassName = 'ru.bkmz.drizzle.Application'
@@ -24,7 +53,6 @@ dependencies {
 repositories {
     mavenCentral()
 }
-
 
 jar {
     exclude 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.SF'

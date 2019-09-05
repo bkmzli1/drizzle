@@ -18,7 +18,6 @@ public class StateEvent extends Event {
     public static final EventType<StateEvent> SETTINGS = new EventType<>(STATE, "SETTINGS");
     public static final EventType<StateEvent> HELP = new EventType<>(STATE, "HELP1");
     public static final EventType<StateEvent> QUIT = new EventType<>(STATE, "QUIT");
-    public static final EventType<StateEvent> ONLINE = new EventType<>(STATE, "ONLINE");
 
     private static final EventType<StateEvent> GAME = new EventType<>(STATE, "GAME");
 

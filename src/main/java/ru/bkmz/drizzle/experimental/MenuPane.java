@@ -2,6 +2,7 @@ package ru.bkmz.drizzle.experimental;
 
 import javafx.scene.effect.Glow;
 import javafx.scene.effect.Reflection;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.TextAlignment;
 import ru.bkmz.drizzle.Application;
 import ru.bkmz.drizzle.event.StateEvent;
@@ -21,6 +22,7 @@ public class MenuPane extends GridPane {
 
 
     public MenuPane() {
+
         this.setPrefSize(Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
         this.setVgap(10);
         this.setHgap(10);
@@ -58,13 +60,22 @@ public class MenuPane extends GridPane {
         VBox vbox = new VBox(17);
         vbox.setAlignment(Pos.CENTER);
         vbox.getChildren().addAll(new MenuItem(getLanguageMap("game"), StateEvent.PLAY),
-                new MenuItem(getLanguageMap("onlineGame"), StateEvent.ONLINE),
                 new MenuItem(getLanguageMap("IMPROVEMENT"), StateEvent.SHOP),
                 new MenuItem(getLanguageMap("STATISTICS"), StateEvent.STAT),
                 new MenuItem(getLanguageMap("SETTINGS"), StateEvent.SETTINGS),
                 new MenuItem(getLanguageMap("MANAGEMENT_And_INFORMATION"), StateEvent.HELP), new HBox(),
                 new MenuItem(getLanguageMap("exit"), StateEvent.QUIT));
+
         this.add(vbox, 0, 1);
+        VBox vbox2 = new VBox(17);
+        vbox2.setAlignment(Pos.BASELINE_CENTER);
+        Text version = new Text(""+Application.VERSIONS);
+        version.setFill(Commons.getColor("colorTexOff"));
+        vbox2.setTranslateY(135);
+        vbox2.getChildren().addAll(version);
+        this.add(vbox2,0,3);
+
+        this.setAlignment(Pos.CENTER);
     }
 
 }

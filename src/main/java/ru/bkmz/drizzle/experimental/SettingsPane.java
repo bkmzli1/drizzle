@@ -70,7 +70,7 @@ public class SettingsPane extends BorderPane {
 
 
         complexity = new String[]{getLanguageMap("Easy"), getLanguageMap("normal"), getLanguageMap("hard")};
-        language = new String[]{"РУССКИЙ", "ENGLISH"};
+        language = new String[]{getLanguageMap("ru"), getLanguageMap("en")};
         fps = new String[]{getLanguageMap("off"), getLanguageMap("average FPS"), getLanguageMap("instant FPS")};
 
         settingsButtons(vBox1, vBox2, Settings_SCREEN, getLanguageMap("SCREEN"));

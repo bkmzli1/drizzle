@@ -34,7 +34,7 @@ public class Kitchen extends Mob {
     }
 
     private static final Step ANIMATION_STEPS[] = { new Step(0, 0), new Step(1, 0), new Step(1, 1),
-            new Step(1, 2), new Step(1, 3) };
+            new Step(1, 2), new Step(1, 3)};
 
     private Keyboard keyboard;
     private final double speed;

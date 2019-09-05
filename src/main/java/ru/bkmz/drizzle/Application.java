@@ -1,44 +1,46 @@
 package ru.bkmz.drizzle;
 
 import com.sun.javafx.application.LauncherImpl;
-
 import javafx.application.Platform;
-
 import javafx.event.Event;
 import javafx.event.EventType;
-
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
-
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import ru.bkmz.drizzle.event.StateEvent;
 import ru.bkmz.drizzle.experimental.*;
 import ru.bkmz.drizzle.input.Keyboard;
-import ru.bkmz.drizzle.util.*;
+import ru.bkmz.drizzle.util.Commons;
+import ru.bkmz.drizzle.util.CopyFiles;
+import ru.bkmz.drizzle.util.ImageLoader;
+import ru.bkmz.drizzle.util.Media;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Objects;
 
 import static ru.bkmz.drizzle.level.GameData.*;
 import static ru.bkmz.drizzle.util.Commons.colorLoader;
-import static ru.bkmz.drizzle.util.Language.*;
-
-import java.io.*;
-
-import java.text.SimpleDateFormat;
-
-import java.util.*;
+import static ru.bkmz.drizzle.util.Language.getLanguageMap;
+import static ru.bkmz.drizzle.util.Language.sqlite;
 
 
 public class Application extends javafx.application.Application {
-    private static final String VERSIONS = "v3.10.3";
+    public static final String VERSIONS = "Build:v3.10.5.1";
     private static final String DEBUG_MODE1 = "[DEBUG_MODE]";
     private static final String NAME_GAME = "drizzle";
     private static final String ARG_DEBUG = "debug";
+    private static final String ARG_UPDATE = "upFile";
 
 
     public static boolean DEBUG_MODE = isDebugMode();
+    public static boolean UPDATE = false;
 
     private Group root;
     private Group users;
@@ -61,15 +63,24 @@ public class Application extends javafx.application.Application {
 
     private static Media media;
 
-    public  static  double xMuse,yMuse;
+    public static double xMuse, yMuse;
+
     public static void main(String... args) {
         //включение режима отладки
         for (String arg : args) {
             if (arg.equals(ARG_DEBUG)) {
                 System.out.println("on:" + DEBUG_MODE1);
                 DEBUG_MODE = true;
-                Comands.run();
-                System.out.println("Консоль on");
+            }
+            if (arg.equals(ARG_UPDATE)) {
+                System.out.println("on:" + ARG_UPDATE);
+                UPDATE = true;
+            }
+            if (arg.equals("all")) {
+                System.out.println("on:" + DEBUG_MODE1);
+                DEBUG_MODE = true;
+                System.out.println("on:" + ARG_UPDATE);
+                UPDATE = true;
             }
         }
         //старт игры
@@ -106,7 +117,7 @@ public class Application extends javafx.application.Application {
         ImageLoader.IMAGE_LOADER.loading("entity/acid");
         ImageLoader.IMAGE_LOADER.loading("entity/armor");
         ImageLoader.IMAGE_LOADER.loading("entity/energy");
-        ImageLoader.IMAGE_LOADER.loading("entity/kitchen");
+        ImageLoader.IMAGE_LOADER.loading("entity/kitchen",218,131);
         ImageLoader.IMAGE_LOADER.loading("entity/star");
 
         for (int i = 1; i <= 10; i++) {
@@ -132,7 +143,7 @@ public class Application extends javafx.application.Application {
         ImageLoader.IMAGE_LOADER.loading("icon/icon");
 
         //копирование файлов из jar
-      CopyFiles.failCopi("media/", "sine.mp3");
+        CopyFiles.failCopi("media/", "sine.mp3");
         CopyFiles.failCopi("media/", "Acid.wav");
         CopyFiles.failCopi("media/", "electric.wav");
         CopyFiles.failCopi("media/", "Shield.wav");
@@ -158,7 +169,7 @@ public class Application extends javafx.application.Application {
         paneShop = new ShopPane();
         paneStat = new StatPane();
         paneHelp = new HelpPane();
-        paneOnline = new Online();
+
         paneSettings = new SettingsPane();
         panePause = new PausePane();
         paneColor = new ColorPane();
@@ -187,10 +198,6 @@ public class Application extends javafx.application.Application {
             } else if (eventType == StateEvent.PLAY) {
                 switchPane(this.users, null);
                 this.games.play();
-
-            } else if (eventType == StateEvent.ONLINE) {
-                ((Online) paneOnline).refresh();
-                switchPane(this.users, paneOnline);
 
             } else if (eventType == StateEvent.SHOP) {
 
