@@ -8,7 +8,7 @@ import ru.bkmz.drizzle.util.QuadConsumer;
 
 public enum Skill {
 
-    SHOCKWAVE((X, Y, L, PP) -> L.add(new ShockParticle(X, Commons.SCENE_GROUND, 0, 0, L)), 2 *
+    SHORTWAVE((X, Y, L, PP) -> L.add(new ShockParticle(X, Commons.SCENE_GROUND, 0, 0, L)), 2 *
             Timescale.TICKS_PER_SECOND, 5),
 
     SHIELD_SPAWN((X, Y, L, PP) -> PP.addShield(), Timescale.TICKS_PER_SECOND >> 1, 3),

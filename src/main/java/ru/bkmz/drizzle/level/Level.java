@@ -8,7 +8,7 @@ import ru.bkmz.drizzle.Application;
 import ru.bkmz.drizzle.entity.Entity;
 import ru.bkmz.drizzle.entity.item.Item;
 import ru.bkmz.drizzle.entity.mob.Mob;
-import ru.bkmz.drizzle.entity.mob.Player;
+import ru.bkmz.drizzle.entity.mob.Kitchen;
 import ru.bkmz.drizzle.entity.particle.Particle;
 import ru.bkmz.drizzle.entity.particle.RainParticle;
 import ru.bkmz.drizzle.entity.spawner.*;
@@ -23,20 +23,27 @@ import java.util.List;
 import java.util.Objects;
 
 import static ru.bkmz.drizzle.level.GameData.*;
+import static ru.bkmz.drizzle.level.player.PlayerProperties.isGodmod;
 
 public class Level {
 
     private final List<Entity> mobs = new ArrayList<>();
     private final List<Entity> particles = new ArrayList<>();
     private final List<Spawner> spawners = new ArrayList<>();
-    private final Image background = ImageLoader.INSTANCE.getImage("background/background");
+
     private final Keyboard keyboard;
     private final LevelController levelController = new LevelController(this);
-
     private PlayerProperties properties;
     private Overlay overlay;
     private boolean paused = false;
     private boolean played = false;
+    private Image imag = ImageLoader.IMAGE_LOADER.getImage("background/background" + Settings_BACKGROUND.getValue());
+    private int i = 1;
+
+    private void upImag() {
+        System.out.println("Imag up");
+        this.imag = ImageLoader.IMAGE_LOADER.getImage("background/background" + Settings_BACKGROUND.getValue());
+    }
 
     public class LevelController {
 
@@ -44,6 +51,7 @@ public class Level {
 
         private boolean inScope = false;
         private boolean hasClosedFlag = false;
+
 
         private LevelController(Level level) {
             this.level = level;
@@ -102,14 +110,32 @@ public class Level {
             this.level.draw(gc);
         }
 
+        public Level getLevel() {
+            return level;
+        }
+
+        public void rainReset() {
+            rain();
+        }
+
 
     }
 
     public Level(Keyboard keyboard) {
         this.keyboard = keyboard;
-
-        this.spawners.add(new RainSpawner(0, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, 5));
+        rain();
     }
+
+    private void rain() {
+        this.spawners.subList(0, spawners.size()).clear();
+        if (POWER_OF_RAIN.getValue() !=0 ) {
+            for (double x = 0, i = 0; i < 3; x = x - Commons.SCENE_WIDTH, i++) {
+                this.spawners.add(new RainSpawner(x, -20, Commons.SCENE_WIDTH, 0, this, 0, 0, SCENE_WIDTH, POWER_OF_RAIN.getValue()));
+            }
+
+        }
+    }
+
 
     public void add(Entity e) {
         if (e instanceof Mob || e instanceof Item) {
@@ -122,8 +148,13 @@ public class Level {
     }
 
     private void draw(GraphicsContext gc) {
-        gc.drawImage(this.background, 0, 0, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
-
+        if (Settings_BACKGROUND.getValue() != i) {
+            upImag();
+            i = Settings_BACKGROUND.getValue();
+        }
+        if (BAG.getValue() == 0) {
+            gc.drawImage(imag, 0, 0, Commons.SCENE_WIDTH, Commons.SCENE_HEIGHT);
+        }
         for (Entity p : this.particles) {
             p.draw(gc);
         }
@@ -136,7 +167,7 @@ public class Level {
             this.overlay.draw(gc);
         }
 
-        if (Application.DEBUG_MODE) {
+        if (Application.DEBUG_MODE && BAG.getValue() != 1) {
             gc.setFill(Color.WHITE);
             gc.fillText("Spawners\t\t: " + this.spawners.size(), 20, 150);
             gc.fillText("Mobs\t\t: " + this.mobs.size(), 20, 165);
@@ -149,13 +180,15 @@ public class Level {
             if (Objects.nonNull(this.properties)) {
                 gc.fillText("Health\t\t: " + this.properties.getHealth(), 20, 270);
                 gc.fillText("Shield\t\t: " + this.properties.getArmorProperty().intValue(), 20,
-                            285);
+                        285);
                 gc.fillText("Energy\t\t: " + this.properties.getEnergyProperty().intValue(), 20,
-                            300);
+                        300);
                 gc.fillText("Level\t\t: " + this.properties.getLevelProperty().intValue(), 20, 315);
-                gc.fillText("Experience\t: " + this.properties.getExperienceProperty().intValue(),
-                            20, 330);
+                gc.fillText("Experience\t: " + this.properties.getExperienceProperty().doubleValue(),
+                        20, 330);
+                gc.fillText("godmod\t\t: " + isGodmod(), 20, 345);
             }
+
         }
     }
 
@@ -167,8 +200,11 @@ public class Level {
         return mobs.subList(1, mobs.size());
     }
 
-    public Player getPlayer() {
-        return (this.mobs.size() > 0) ? (Player) this.mobs.get(0) : null;
+    public Kitchen getPlayer() {
+        try {
+            return (this.mobs.size() > 0) ? (Kitchen) this.mobs.get(0) : null;
+        }catch (Exception ignored){}
+        return null;
     }
 
     public PlayerProperties getPlayerProperties() {
@@ -210,23 +246,28 @@ public class Level {
         this.played = true;
 
         this.properties = new PlayerProperties();
-        this.overlay = new Overlay(0, 0, this.properties);
+        this.overlay = new Overlay(0, 20, this.properties);
 
-        this.mobs.add(new Player((Commons.SCENE_WIDTH - Player.getWIDTH()) / 2, Commons.SCENE_GROUND,
-                                 this, this.keyboard, this.properties));
+        this.mobs.add(new Kitchen((Commons.SCENE_WIDTH - Kitchen.getWIDTH()) / 2, Commons.SCENE_GROUND,
+                this, this.keyboard, this.properties));
 
-        this.spawners.add(new AcidSpawner(0, -50, Commons.SCENE_WIDTH, 0, this, AcidSpawner_rate.getValue(), AcidSpawner_variation.getValue(), AcidSpawner_count.getValue()));
-        this.spawners.add(new ArmorSpawner(0, -50, Commons.SCENE_WIDTH, 0, this,
-                                           Timescale.TICKS_PER_MINUTE >> 1,
-                                           10 * Timescale.TICKS_PER_SECOND, 1));
-        this.spawners
-                .add(new EnergySpawner(0, -50, Commons.SCENE_WIDTH, 0, this,
-                                       Timescale.TICKS_PER_SECOND, Timescale.TICKS_PER_SECOND, 1));
-        this.spawners.add(new StarSpawner(0, -50, Commons.SCENE_WIDTH, 0, this,
-                                          20 * Timescale.TICKS_PER_SECOND, 0, 1));
+        for (double x = 0, i = 0; i < 3; x = x - Commons.SCENE_WIDTH, i++) {
+            this.spawners.add(new AcidSpawner(x, -50, Commons.SCENE_WIDTH, 0, this,
+                    Settings_AcidSpawner_rate.getValue(), Settings_AcidSpawner_variation.getValue(), Settings_AcidSpawner_count.getValue()));
 
+
+            this.spawners.add(new ArmorSpawner(x, -50, Commons.SCENE_WIDTH, 0, this,
+                    Timescale.TICKS_PER_MINUTE >> 1, 10 * Timescale.TICKS_PER_SECOND, 1));
+
+            this.spawners.add(new EnergySpawner(x, -50, Commons.SCENE_WIDTH, 0, this,
+                    Timescale.TICKS_PER_SECOND, Timescale.TICKS_PER_SECOND, 1));
+
+
+            this.spawners.add(new StarSpawner(x, -50, Commons.SCENE_WIDTH, 0, this,
+                    20 * Timescale.TICKS_PER_SECOND, 0, 1));
+        }
         this.properties.getHealthProperty().addListener((Observable, OldValue, NewValue) -> {
-            if (NewValue.intValue() <= 0) {
+            if (NewValue.intValue() <= 0||NewValue.intValue() > 10) {
                 Platform.runLater(() -> {
                     GameData.save();
                     stop();
@@ -247,5 +288,8 @@ public class Level {
         this.mobs.clear();
         this.spawners.subList(1, spawners.size()).clear();
         this.particles.removeIf(E -> !(E instanceof RainParticle));
+        rain();
     }
+
+
 }

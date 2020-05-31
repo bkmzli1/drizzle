@@ -1,11 +1,12 @@
 package ru.bkmz.drizzle.level;
 
+import java.awt.*;
 import java.io.*;
 import java.util.Properties;
 
 public enum GameData {
-
-    STAT_COUNT_EXPERIENCE(0, Integer.MAX_VALUE, "опыт"),
+    //данные игры
+    STAT_COUNT_EXPERIENCE(0, Integer.MAX_VALUE, "ОПЫТ"),
     STAT_COUNT_DAMAGE(0, Integer.MAX_VALUE, "урон"),
     STAT_COUNT_SHIELD(0, Integer.MAX_VALUE, "собрано щитов"),
     STAT_COUNT_NODES(0, Integer.MAX_VALUE, "Собранные узлы"),
@@ -13,33 +14,40 @@ public enum GameData {
     STAT_COUNT_JUMP(0, Integer.MAX_VALUE, "кол прыжков"),
     STAT_COUNT_SKILLACTIVATION(0, Integer.MAX_VALUE, "кол навыков актевиравоно"),
 
-    PLAYER_LEVEL(1, Integer.MAX_VALUE, "уровень"),
+    PLAYER_LEVEL(0, Integer.MAX_VALUE, "уровень"),
     PLAYER_POINTS(0, Integer.MAX_VALUE, "Точки обновления"),
     PLAYER_SELECTEDSKILL(0, 3, "Выбранный Навык"),
     PLAYER_HEALTH(3, 10, "Здоровье"),
 
     UPGRADE_MOVEMENT(0, 1, "Обновление движения"),
     UPGRADE_POWERRATE(1, 2, "Тариф на электроэнергию"),
-    UPGRADE_SHOCKWAVE(0, 1, "Навык \"Ударная Волна\" "),
+    UPGRADE_SHOCKWAVE(0, 1, "Навык Ударная Волна"),
     UPGRADE_DOUBLEXP(0, 1, "Двойной навык XP"),
     UPGRADE_SHIELDSPAWN(0, 1, "Щит отродясь мастерства"),
 
-    ACID_Volume(0, 10, "Громкость капель"),
-    RAIN_Volume(0, 10, "Громкость дождя"),
-    AcidSpawner_rate(10, 10, "Скорость"),
-    AcidSpawner_variation(10, 10, "отклонение"),
-    AcidSpawner_count(1, 3, "повтор");
+    Settings_Effect_Volume(0, 10, "ГРОМКОСТЬ ЭФФЕКТОВ"),
+    Settings_FPS(0, 2, "Settings_FPS"),
+    Settings_RAIN_Volume(0, 10, "ГРОМКОСТЬ ДОЖДЯ"),
+    Settings_AcidSpawner_rate(10, 10, "Скорость"),
+    Settings_AcidSpawner_variation(10, 10, "отклонение"),
+    Settings_AcidSpawner_count(1, 3, "повтор"),
 
-    public static Properties properties = new Properties();
+    Settings_SCREEN(0, 1, "ЭКРАН"),
+    SCENE_WIDTH((int) (Toolkit.getDefaultToolkit().getScreenSize().width / 1.2f), Integer.MAX_VALUE, "WIDTH"),
+    SCENE_HEIGHT((int) (Toolkit.getDefaultToolkit().getScreenSize().height / 1.2f), Integer.MAX_VALUE, "HEIGHT"),
+    Settings_BACKGROUND(1, 2, "ФОН"),
+    Settings_LANGUAGE(0, 1, "ЯЗЫК"),
+    POWER_OF_RAIN(0, 10, "Сила дождя"),
+    THEME(1, 2, "тема"),
+    BAG(0,1,"BAG");
     private static boolean DEBUG_MODE;
-
 
     public static boolean isDebugMode() {
         return DEBUG_MODE;
     }
 
-    private static final String SER_FILE = "playdata.ser";
-    public static final String config_file = "configData.conf";
+    public static final String appdata = System.getenv("APPDATA") + "\\.drizzle\\";
+    private static final String SER_FILE = appdata + "playdata.ser";
 
     private final int min;
     private final int max;
@@ -47,6 +55,8 @@ public enum GameData {
 
     private int value;
 
+
+    //вывод определённых данных
     public static GameData[] getStatistics() {
         return new GameData[]{STAT_COUNT_EXPERIENCE, STAT_COUNT_DAMAGE, STAT_COUNT_SHIELD,
                 STAT_COUNT_NODES, STAT_COUNT_STARS, STAT_COUNT_JUMP, STAT_COUNT_SKILLACTIVATION};
@@ -61,6 +71,13 @@ public enum GameData {
                 UPGRADE_DOUBLEXP, UPGRADE_SHIELDSPAWN};
     }
 
+    public static GameData[] getSettings() {
+        return new GameData[]{Settings_Effect_Volume, Settings_FPS, Settings_RAIN_Volume,
+                Settings_AcidSpawner_rate, Settings_AcidSpawner_variation, Settings_AcidSpawner_count,
+                Settings_SCREEN, Settings_BACKGROUND, Settings_LANGUAGE};
+    }
+
+    //загруза
     public static void load() {
         try {
             read(SER_FILE);
@@ -75,6 +92,7 @@ public enum GameData {
         }
     }
 
+    //сохронение
     public static void save() {
         try {
             write(SER_FILE);
@@ -82,6 +100,8 @@ public enum GameData {
             e.printStackTrace();
         }
     }
+
+    //чтение и запись в GameData
     private static void read(String file) throws ClassNotFoundException, IOException {
         FileInputStream fiStream = new FileInputStream(new File(file));
         ObjectInputStream oiStream = new ObjectInputStream(fiStream);
@@ -101,7 +121,12 @@ public enum GameData {
         fiStream.close();
     }
 
+    //запись в фаил GameData
     private static void write(String file) throws IOException {
+        File file1 = new File(appdata);
+        if (!file1.exists()) {
+            file1.mkdir();
+        }
         FileOutputStream foStream = new FileOutputStream(new File(file), false);
         ObjectOutputStream ooStream = new ObjectOutputStream(foStream);
         ooStream.reset();
@@ -114,7 +139,7 @@ public enum GameData {
         foStream.close();
     }
 
-
+    //создание GameData
     GameData(int defaultValue, int max, String name) {
         this.value = defaultValue;
         this.max = max;
@@ -122,6 +147,7 @@ public enum GameData {
         this.name = name;
     }
 
+    //получение определённого параметра
     public String getName() {
         return this.name;
     }
@@ -137,15 +163,24 @@ public enum GameData {
     public int getValue() {
         return this.value;
     }
+
     public double getValueD() {
         return this.value;
     }
+
+    //прибовление к параметру
     public void increment() {
         if (this.value < this.max) {
             this.value++;
         }
     }
+    public void decrease(){
+        if (this.value > this.min) {
+            this.value--;
+        }
+    }
 
+    //прибовление определёного значения к параметру
     public void incrementBy(float value) {
         if (this.value + value > this.max) {
             this.value = this.max;
@@ -156,6 +191,7 @@ public enum GameData {
         }
     }
 
+    //изменение параметра
     public void setVolume(int value) {
         if (value > this.max) {
             this.value = this.max;
@@ -166,36 +202,32 @@ public enum GameData {
         }
     }
 
-    public static void readC() throws IOException {
+    //очистка GameData
+    public static void cleaningPlayer() {
+        GameData[] gd = getStatistics();
 
-        InputStream inputStream = new FileInputStream(GameData.config_file);
-        properties.load(inputStream);
-
-        DEBUG_MODE = Boolean.parseBoolean(properties.getProperty("DEBUG_MODE"));
-
-    }
-
-    public static void writeC() throws IOException {
-        OutputStream fileOutputStream = new FileOutputStream(GameData.config_file);
-        properties.setProperty("DEBUG_MODE", "true");
-        properties.store(fileOutputStream, null);
-    }
-    public static void cleaning() throws IOException {
-
-        File file = new File(SER_FILE);
-        file.delete();
-        FileOutputStream foStream = new FileOutputStream(new File(SER_FILE), false);
-        ObjectOutputStream ooStream = new ObjectOutputStream(foStream);
-        ooStream.reset();
-
-        for (int i = 0; i < GameData.values().length; i++) {
-            ooStream.writeInt(0);
+        for (int i = 0; i < gd.length; i++) {
+            gd[i].setVolume(0);
         }
-
-        ooStream.close();
-        foStream.close();
+        gd = getPlayerProperties();
+        for (int i = 0; i < gd.length; i++) {
+            gd[i].setVolume(0);
+        }
+        gd = getUpgrades();
+        for (int i = 0; i < gd.length; i++) {
+            gd[i].setVolume(0);
+        }
+        save();
         load();
     }
 
+    public static void cleaningSettings() {
+        GameData[] gd = getSettings();
+        for (int i = 0; i < gd.length; i++) {
+            gd[i].setVolume(gd[i].min);
+        }
+
+        load();
+    }
 
 }

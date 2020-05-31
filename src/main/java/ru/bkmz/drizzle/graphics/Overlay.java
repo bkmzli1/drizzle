@@ -12,27 +12,27 @@ import javafx.scene.paint.Color;
 
 public class Overlay implements Drawable {
 
-    private static final Sprite HLT_BAR = new Sprite(ImageLoader.INSTANCE
-            .getImage("gui/bars/health"), 1, 10);
-    private static final Sprite ARM_BAR = new Sprite(ImageLoader.INSTANCE
-            .getImage("gui/bars/armor"), 1, 10);
-    private static final Sprite EXP_BAR = new Sprite(ImageLoader.INSTANCE
+    private static Sprite HLT_BAR = new Sprite(ImageLoader.IMAGE_LOADER
+            .getImage("gui/bars/health10"), 1, 1);
+    private static Sprite ARM_BAR = new Sprite(ImageLoader.IMAGE_LOADER
+            .getImage("gui/bars/armor10"), 1, 1);
+    private static final Sprite EXP_BAR = new Sprite(ImageLoader.IMAGE_LOADER
             .getImage("gui/bars/experience"), 1, 100);
-    private static final Sprite PWR_BAR = new Sprite(ImageLoader.INSTANCE
+    private static final Sprite PWR_BAR = new Sprite(ImageLoader.IMAGE_LOADER
             .getImage("gui/bars/energy"), 2, 100);
 
-    private static final Sprite ABL_ICO = new Sprite(ImageLoader.INSTANCE
+    private static final Sprite ABL_ICO = new Sprite(ImageLoader.IMAGE_LOADER
             .getImage("gui/icons/ability"), 1, 4);
-    private static final Sprite HLC_ICO = new Sprite(ImageLoader.INSTANCE
+    private static final Sprite HLC_ICO = new Sprite(ImageLoader.IMAGE_LOADER
             .getImage("gui/icons/health"), 1, 1);
-    private static final Sprite EXP_ICO = new Sprite(ImageLoader.INSTANCE
+    private static final Sprite EXP_ICO = new Sprite(ImageLoader.IMAGE_LOADER
             .getImage("gui/icons/experience"), 1, 1);
-    private static final Sprite PWR_ICO = new Sprite(ImageLoader.INSTANCE
+    private static final Sprite PWR_ICO = new Sprite(ImageLoader.IMAGE_LOADER
             .getImage("gui/icons/energy"), 1, 1);
 
-    private static final Sprite SQ_FRAME = new Sprite(ImageLoader.INSTANCE
+    private static final Sprite SQ_FRAME = new Sprite(ImageLoader.IMAGE_LOADER
             .getImage("gui/icons/frame"), 1, 1);
-    private static final Sprite RC_FRAME = new Sprite(ImageLoader.INSTANCE
+    private static final Sprite RC_FRAME = new Sprite(ImageLoader.IMAGE_LOADER
             .getImage("gui/bars/frame"), 1, 1);
 
     private final double x;
@@ -40,6 +40,7 @@ public class Overlay implements Drawable {
 
     private Skill skill;
     private int level;
+    private Double health;
 
     public Overlay(double x, double y, PlayerProperties properties) {
         this.x = x;
@@ -47,15 +48,16 @@ public class Overlay implements Drawable {
         this.skill = properties.getSelectedSkill();
 
         level = properties.getLevelProperty().intValue();
-
+        health = properties.getHealth();
         HLT_BAR.setTileSpan(1, GameData.PLAYER_HEALTH.getValue());
         ARM_BAR.setTileSpan(1, 0);
         EXP_BAR.setTileSpan(1, 0);
         PWR_BAR.setTileSpan(1, 0);
-
+        HLT_BAR = new Sprite(ImageLoader.IMAGE_LOADER
+                .getImage("gui/bars/health"+GameData.PLAYER_HEALTH.getValue() ), 1, 1);
         if (Objects.nonNull(skill)) {
             switch (skill) {
-                case SHOCKWAVE:
+                case SHORTWAVE:
                     ABL_ICO.selectTile(0, 0);
                     break;
                 case SHIELD_SPAWN:
@@ -69,18 +71,33 @@ public class Overlay implements Drawable {
 
         properties.getLevelProperty().addListener((Observable, OldValue, NewValue) -> {
             level = NewValue.intValue();
+
         });
 
         properties.getHealthProperty().addListener((Observable, OldValue, NewValue) -> {
-            HLT_BAR.setTileSpan(1, NewValue.intValue());
+            if (NewValue.intValue()!=0) {
+                HLT_BAR = new Sprite(ImageLoader.IMAGE_LOADER
+                        .getImage("gui/bars/health" + NewValue.intValue()), 1, 1);
+            }else {
+                HLT_BAR.setTileSpan(1, 0);
+            }
+            health = NewValue.doubleValue();
+            //HLT_BAR.setTileSpan(1, NewValue.intValue());
         });
 
         properties.getArmorProperty().addListener((Observable, OldValue, NewValue) -> {
-            ARM_BAR.setTileSpan(1, NewValue.intValue());
+
+            if (NewValue.intValue()!=0) {
+                ARM_BAR = new Sprite(ImageLoader.IMAGE_LOADER
+                        .getImage("gui/bars/armor" + NewValue.intValue()), 1, 1);
+            }else {
+                ARM_BAR.setTileSpan(1, 0);
+            }
+
         });
 
         properties.getExperienceProperty().addListener((Observable, OldValue, NewValue) -> {
-            EXP_BAR.setTileSpan(1, NewValue.intValue());
+            EXP_BAR.setTileSpan(1, NewValue.doubleValue());
         });
 
         properties.getEnergyProperty().addListener((Observable, OldValue, NewValue) -> {
@@ -105,6 +122,8 @@ public class Overlay implements Drawable {
 
         gc.setFill(Color.YELLOW);
         gc.fillText("" + level, x + 230, y + 42);
+        gc.setFill(Color.RED);
+        gc.fillText("" + (int)health.doubleValue(), x + 230, y + 21);
     }
 
     private void drawStatic(GraphicsContext gc) {

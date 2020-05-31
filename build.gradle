@@ -1,18 +1,67 @@
+buildscript {
+    dependencies {
+        classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.8.2'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
 plugins {
     id 'java'
     id 'application'
+    id 'edu.sc.seis.launch4j' version '2.4.6'
+
+}
+launch4j {
+    mainClassName = 'ru.bkmz.drizzle.Application'
+    outfile = "drizzle v3.10.5.1.exe"
+    version = "3.10.5.1"
+    textVersion = "3.10.5.1"
+    icon = "B:\\icon.ico"
+    companyName = "BkzmLitel"
+    copyright = "BkzmLitel"
+    launch4j.language = 'RUSSIAN'
+    launch4j.jreMinVersion = "1.8.0_211"
+
+    internalName = "drizzle"
 }
 
-group 'drizzle'
-version 'v3.8.1'
-
 compileJava.options.encoding = "UTF-8"
+group 'drizzle'
+version 'v3.10.4'
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
 sourceCompatibility = 1.8
+mainClassName = 'ru.bkmz.drizzle.Application'
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.xerial:sqlite-jdbc:3.27.2.1'
+    implementation 'org.xerial:sqlite-jdbc:3.27.2.1'
+    implementation 'com.sun.net.httpserver:http:20070405'
+
+}
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+jar {
+    exclude 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.SF'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    manifest {
+        attributes(
+                'Class-Path': configurations.runtime.files.collect { "lib/$it.name" }.join(' '),
+                'Main-Class': 'ru.bkmz.drizzle.Application'
+        )
+
+    }
 }
