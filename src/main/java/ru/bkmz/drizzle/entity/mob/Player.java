@@ -22,7 +22,7 @@ public class Player extends Mob {
     private static final double SPEED_X_INCREMENT = 0.5;
     private static final double SPEED_X_INCREMENT2 = 0.6;
     private static final double SPEED_Y_INCREMENT = 0.5;
-    private static final Image IMAGE = ImageLoader.INSTANCE.getImage("entity/player4");
+    private static final Image IMAGE = ImageLoader.IMAGE_LOADER.getImage("entity/player4");
     private static final int IMAGE_ROWS = 2;
     private static final int IMAGE_COLS = 4;
     private static final double SPRITE_X_OFFSET = -4;
@@ -36,7 +36,7 @@ public class Player extends Mob {
     private static final Step ANIMATION_STEPS[] = { new Step(0, 0), new Step(1, 0), new Step(1, 1),
             new Step(1, 2), new Step(1, 3) };
 
-    private final Keyboard keyboard;
+    private Keyboard keyboard;
     private final double speed;
 
     private boolean jump = true;
@@ -45,8 +45,8 @@ public class Player extends Mob {
         super(x, y, WIDTH, HEIGHT,
                 new AnimatedSprite(IMAGE, IMAGE_ROWS, IMAGE_COLS, ANIMATION_DELTA, ANIMATION_STEPS),
                 SPRITE_X_OFFSET, SPRITE_Y_OFFSET, level);
+            this.keyboard = Objects.requireNonNull(keyboard);
 
-        this.keyboard = Objects.requireNonNull(keyboard);
         this.speed = (GameData.UPGRADE_MOVEMENT.getValue() > 0) ? SPEED_X_INCREMENT2 :
                 SPEED_X_INCREMENT;
     }
